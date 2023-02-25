@@ -128,6 +128,3 @@ $$
 \newcommand{\li}{\mathfrak L^{-1}}
 \newcommand{\Li}{\mathcal L^{-1}}
 $$
-
-
-
