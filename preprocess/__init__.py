@@ -120,14 +120,83 @@ def process_math_blocks(lines: List[str]) -> List[str]:
     return new_lines
 
 
-def all_processor(lines: List[str]) -> List[str]:
+def process_highlight(lines):
+    """
+    Replace all instances of `==some text==` with `<mark>some text</mark>` in the input lines of a markdown file.
+    Args:
+    - lines: list of strings representing the lines of a markdown file
+    Returns:
+    - processed_lines: list of strings representing the processed lines of the markdown file
+    """
+    processed_lines = []
+    
+    # compile regex pattern
+    pattern = re.compile(r"==(.+?)==")
+    
+    for line in lines:
+        # find all matches of pattern in line
+        matches = re.findall(pattern, line)
+        # replace each match with <mark>match</mark>
+        for match in matches:
+            line = line.replace(f"=={match}==", f"<mark>{match}</mark>")
+        processed_lines.append(line)
+    
+    return processed_lines
+
+
+def process_rel_paths(content: Tuple[str], rel_path: Path) -> List[str]:
+    """Takes lines from a markdown file and the path of that markdown file.
+    It finds relative paths in the format `src="images/graph.svg"` and `![text](relative_path_to_image)`
+    and prefix them with relative path in `rel_path`.
+
+    Args:
+        content (Tuple[str]): The content of the markdown file as a tuple of lines
+        rel_path (Path): The path to the markdown file
+
+    Returns:
+        List[str]: The updated content as a list of lines
+    """
+    HTML_ROOT = "/notes/docs/"
+    # regex pattern to match `src="images/graph.svg"`
+    src_pattern = re.compile(r'src="([^"]+)"')
+    # regex pattern to match `![text](relative_path_to_image)`
+    img_pattern = re.compile(r'!\[.*\]\(([^)]+)\)')
+
+    # iterate through each line in the content
+    updated_content = []
+    for line in content:
+        # search for matches in the line
+        src_matches = src_pattern.findall(line)
+        img_matches = img_pattern.findall(line)
+
+        # replace matches with full paths
+        if src_matches:
+            for match in src_matches:
+                full_path = HTML_ROOT + str(rel_path.parent / match)
+                line = line.replace(match, full_path)
+
+        if img_matches:
+            for match in img_matches:
+                full_path = HTML_ROOT + str(rel_path.parent / match)
+                line = line.replace(match, full_path)
+
+        updated_content.append(line)
+
+    return updated_content
+
+
+def all_processor(lines: List[str], rel_path: Path) -> List[str]:
+    from .math import math_processor
     matter, content = parse_front_matter(lines)
-    content = process_math_blocks(content)
+    # content = process_math_blocks(content)
+    content = math_processor(content)
+    content = process_highlight(content)
+    content = process_rel_paths(content, rel_path)
     lines = add_front_matter(matter, content)
     return lines
 
 
-def preprocess(src_root: Path, tgt_root: Path, processor: Callable[[List[str]], List[str]]):
+def preprocess(src_root: Path, tgt_root: Path, processor: Callable[[List[str], Path], List[str]]):
     file_cnt = 0
     # create tgt_root if it doesn't exist
     if not tgt_root.exists():
@@ -150,7 +219,7 @@ def preprocess(src_root: Path, tgt_root: Path, processor: Callable[[List[str]], 
             if src_path.suffix == '.md':
                 with open(src_path, 'r') as f:
                     lines = f.readlines()
-                processed_lines = processor(lines)
+                processed_lines = processor(lines, rel_path)
                 if src_path.name == 'README.md':
                     # if the file is named README.md, copy it to _index.md
                     tgt_path = tgt_path.parent / '_index.md'
