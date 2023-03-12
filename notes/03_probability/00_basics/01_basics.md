@@ -32,6 +32,8 @@ Suppose $(\Omega, \F , P)$ is a probability space and $X \in \L(\Omega \to \Omeg
 - Probability measure $P_X := P \circ X^{-1}$ is the **distribution** of $X$ on $\Omega'$.
 - We write $X \sim \mu$ if $X$ has distribution $\mu$.
 - Random variables with the same distribution are called **identically distributed** (i.d.).
+  - Denote $X \sim Y$ if $X, Y$ have the same distribution.
+
 
 Suppose $(X_i)_{i \in I} \in \L(\Omega \to \Omega_i, \F / \F_i)$. Then $(\times_i \Omega_i, \otimes_i \F_i, \times_iP_{X_i})$ is a measure space. And $\times_i P_{X_i}$ is the **joint distribution** of $(X_i)_{i \in I}$.
 

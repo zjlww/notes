@@ -127,4 +127,5 @@ $$
 \newcommand{\l}{\mathfrak L}
 \newcommand{\li}{\mathfrak L^{-1}}
 \newcommand{\Li}{\mathcal L^{-1}}
+\newcommand{\const}{\text{const.}}
 $$

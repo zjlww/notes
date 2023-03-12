@@ -1,12 +1,8 @@
-$$
-\newcommand{supp}{\operatorname{supp}}
-$$
+> Shin, J., & Kim, S.J. (2006). A Mathematical Theory of Communication.
 
+#### Information Measures in the Discrete Case
 
-
-### Information Measures in the Discrete Case
-
-Suppose $X, Y, Z, W$ are discrete random variables on $(\Omega, \F, P)$. There image $\mathcal {X, Y, Z, W}$ are countable supports, denoted by $\supp X = \mathcal X$.
+Suppose $X, Y, Z, W$ are discrete random variables on $(\Omega, \F, P)$. There image $\mathcal {X, Y, Z, W}$ are countable supports, denoted by $\su X = \mathcal X$.
 
 ##### Probability mass function
 
@@ -222,13 +218,13 @@ $$
 &\implies I(X;Y)/\log(e) \ge \sum_{p(x, y) > 0} \left(p(x, y) - p(x)p(y)\right)\ge 1 - \sum_{p(x)p(y) > 0} p(x) p(y) = 0
 \end{aligned}
 $$
-Notice that $\supp(X, Y) \subseteq \mathcal X \times \mathcal Y$, so we have the last inequality.
+Notice that $\su(X, Y) \subseteq \mathcal X \times \mathcal Y$, so we have the last inequality.
 $$
 \begin{aligned}
-I(X; Y)  = 0 &\iff \forall (x, y) \in \supp(X, Y): \ln \frac{p(x, y)}{p(x)p(y)} = 1 - \frac{p(x)p(y)}{p(x, y)}\\
-& \iff \forall (x, y) \in \supp (X, Y): p(x, y) = p(x)p(y)\\
+I(X; Y)  = 0 &\iff \forall (x, y) \in \su(X, Y): \ln \frac{p(x, y)}{p(x)p(y)} = 1 - \frac{p(x)p(y)}{p(x, y)}\\
+& \iff \forall (x, y) \in \su (X, Y): p(x, y) = p(x)p(y)\\
 & \iff \forall (x, y) \in \mathcal X \times \mathcal Y: p(x, y) = p(x) p(y) \iff X \perp Y\\
-& \implies \mathcal X \times \mathcal Y = \supp(X, Y)
+& \implies \mathcal X \times \mathcal Y = \su(X, Y)
 \end{aligned}
 $$
 
