@@ -51,9 +51,7 @@ Suppose $\I = [0, T]$, $T \in (0, \infty]$. And $E$ is **topological** with $\E$
   
 - We similarly define right / left-continuous and a.s. right / left-continuous.
 
-- When $(E, \E) = (\R, \B(\R))$, $(X_t)$ is a **bounded variation** process if $X_0 = 0$ and all paths are of **bounded variation**.
-
-- $(X_t)$ is **progressively measurable** if
+- $(X_t)$ is **progressively measurable** with regard to $(\F_t)$.
   $$
   \forall t \in (0, T):X_u(\omega) \in \L([0,t] \times \Omega \to E, \B[0, t] \otimes \F_t/\E)
   $$
@@ -166,6 +164,23 @@ And $(X_t)_{t \in \I}$ is an adapted real process with the **independent increme
 
   - $E[1_B(X_t)| X_s] = E[1_B(X_t)| X_s = X_s(\omega)]$.
   - $E[1_B(X_t) | \F_s^X] = E[1_B(X_t) | X_{\le s} = X_{\le s}(\omega)]$.
+
+##### Delay operation and ergodic sets
+
+Suppose $(X_t)_{t = 1}^\infty$ is a random process on $(\Omega, \F, P)$. Where $\X = \cup_t X_t[\Omega]$.
+
+Define time delay function $\bT: \X^\infty \to \X^\infty$ as $(x_1, x_2, \ldots) \mapsto (x_2, x_3, \ldots)$.
+
+A set of values $A \subseteq \X^\infty$ is called **$\mathbb T$-invariant** if $\bT[A] \subseteq A$.
+
+- Clearly $\bT^k [A] \subseteq \cdots \subseteq A$ by repeated application of $\bT$.
+- For any $a \in A$, denote $[a]:=\c{\mathbb T^k(a):k \in \N}$, called the $\bT$-invariant group containing $a$.
+
+A set of values $A \subseteq \X^\infty$ is called **ergodic** if it satisfies $A = \bT^{-1}[A]$.
+
+- Then $\bT[A] = A$.
+
+$(X_t)$ is **ergodic** if for all ergodic sets $A \in \bX_* \F$ are either $P(A) = 1$ or $P(A) = 0$.
 
 #### Stopping Time
 

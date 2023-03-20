@@ -1,4 +1,12 @@
+##### Amortized variational inference
+
+In traditional VI, we optimize the variational parameters for each data point independently, which can be computationally expensive for large datasets. 
+
+Amortized variational inference, on the other hand, aims to share the computational cost across data points by learning a function that maps the observed data to the variational parameters. This function, often parameterized by a neural network, effectively "amortizes" the cost of inference over the dataset, making it more scalable and efficient.
+
 ##### Variational autoencoders
+
+VAEs are a class of deep generative models that use amortized variational inference to learn the parameters of the generative model.
 
 Suppose $p_\theta(z, x)$ is a parameterized latent variable model. And $p_*(x)$ is the data density.
 
@@ -13,7 +21,10 @@ This leads to the following properties:
 Introduce a **estimated posterior** $q_\phi(z|x)$ to estimate $p_\theta(z | x)$. Let $\what Z \sim q_\phi(z|x)$.
 $$
 \newcommand{\elbo}{\operatorname{ELBO}}
-\elbo(p_\theta, q_\phi, x) := E\s{\log \frac{p_\theta(x | \what Z) p_\theta(\what Z)}{q_\phi(\what Z | x)}} = \log p_\theta(x) - \d{q_\phi(z|x)}{p_\theta(z)}
+\begin{aligned}
+\elbo(p_\theta, q_\phi, x) & := E\s{\log \frac{p_\theta(x | \what Z) p_\theta(\what Z)}{q_\phi(\what Z | x)}} = \log p_\theta(x) - \d{q_\phi(z|x)}{p_\theta(z | x)}\\
+& = E\s{\log p_\theta(x | \what Z)}-\d{q_\phi(z|x)}{p_\theta(z)}
+\end{aligned}
 $$
 The training loss of the Variational autoencoder is:
 $$

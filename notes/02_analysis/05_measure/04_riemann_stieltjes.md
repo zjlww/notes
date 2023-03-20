@@ -239,7 +239,7 @@ Suppose $\alpha \nearrow [a, b]$ and $f \in R(\alpha)[a, b]$.
 
 Define $F(x) = \int_a^x f d\alpha$ for $x \in [a, b]$.
 
-- For $(x, y) \in [a, b]^2$ define $c: [a, b]^2 \to \R$ as the mean value of $\int_x^y f d\alpha$.
+- For $(x, y) \in [a, b]^2$ define $c: [a, b]^2 \to \R$ as the mean value of $\int_x^y f \dd \alpha$.
   - Where $F(y) - F(x) = \int_x^y f d\alpha = c(x, y)[\alpha(y) - \alpha(x)]$.
   - And $c(x, y)\in[\inf f[x, y], \sup f[x, y]]$.
 - $F \in V[a, b]$.
@@ -261,26 +261,26 @@ Suppose $f \in R[a, b]$. Suppose $F$ is a primitive of $f$ on $[a, b]$. Then we 
 - $\forall \epsilon > 0, \exists P_\epsilon \in P[a, b], \forall P \supseteq P_\epsilon, \forall T \triangledown P: |S(P, T, f, x) - A| < \epsilon$.
 - $F(b) - F(a) = \sum_{k = 1}^n f'(v_k)\Delta x_k$. So $|F(b) - F(a) - A| < \epsilon$ as well.
 
-Notice that $F(x) - F(a) = \int_a^x f(x) dx$.
+Notice that $F(x) - F(a) = \int_a^x f(x) \dd x$.
 
 ##### IBP for Riemann
 
 Suppose $f, g: [a, b] \to \R$ and $f, g \in C[a, b]$. Suppose $F, G$ are primitives of $f, g$. Then by (**FTC III**) and (**Reduce to Riemann**) and (**IBP I**).
 $$
-\int_a^b f(t) G(t) dt + \int_a^b F(t) g(t) dt = \left [ F(t) G(t)\right]_a^b
+\int_a^b f(t) G(t) \dd t + \int_a^b F(t) g(t) \dd t = \left [ F(t) G(t)\right]_a^b
 $$
 ##### Reduce to Riemann II
 
 Suppose $f \in R[a, b]$, $\alpha \in D(a, b)$ and $\alpha' \in R[a, b]$ (might not be defined on end points).
 
-- $\alpha(x) - \alpha(a) = \int_a^x \alpha' dt$ by (**FTC III**).
-- Since $f, \alpha' \in R[a, b]$. So $f \in R(\alpha)[a, b]$ and $\int_a^b f d \alpha = \int_a^b f \alpha' dx$.
+- $\alpha(x) - \alpha(a) = \int_a^x \alpha' \dd t$ by (**FTC III**).
+- Since $f, \alpha' \in R[a, b]$. So $f \in R(\alpha)[a, b]$ and $\int_a^b f d \alpha = \int_a^b f \alpha' \dd x$.
 
 ##### Change of Variable for Riemann I
 
 Suppose $g \in C^1[c, d]$ and $f \in C[g[c, d]]$.
 $$
-\int_c^d f[g(t)] g'(t) dt = \int_{g(c)}^{g(d)} f(t) dt
+\int_c^d f[g(t)] g'(t) \dd t = \int_{g(c)}^{g(d)} f(t) \dd t
 $$
 ##### Change of Variable for Riemann II
 
@@ -289,7 +289,7 @@ $$
 
 Then $(f \circ g) \cdot h \in R[c, d]$ and the following is true:
 $$
-\int_c^d f[g(t)] h(t) dt = \int_{g(c)}^{g(d)} f(t) dt
+\int_c^d f[g(t)] h(t) \dd t = \int_{g(c)}^{g(d)} f(t) \dd t
 $$
 
 ##### Mean Value Theorem for Riemann I
@@ -299,14 +299,14 @@ Suppose $f \in R[a, b]$.
 - There is a unique $c \in [\inf f[a, b], \sup f[a, b]]$.
 
 $$
-  \int_{a}^{b} f(x) dx =c (b - a)
+  \int_{a}^{b} f(x) \dd x =c (b - a)
 $$
 
 - Can treat $c$ as a function $c(a, b)$ of the end points.
 - Suppose further $f \in C[a, b]$, $\exists x_0 \in [a, b]: f(x_0) = c(a, b)$.
 
 $$
-  \int_{a}^{b} f(x) d (x)= f(x_0) (b - a)
+  \int_{a}^{b} f(x) \dd (x)= f(x_0) (b - a)
 $$
 
 ##### Mean Value Theorem for Riemann II
@@ -315,12 +315,12 @@ Suppose $f \nearrow [a, b]$. Suppose $g \in C[a, b]$.
 
 - There exists a point $x_0 \in [a, b]$ such that 
   $$
-  \int_{a}^{b} f(x) g(x) d x=f(a) \int_{a}^{x_{0}} g(x) d x+f(b) \int_{x_{0}}^{b} g(x) d x
+  \int_{a}^{b} f(x) g(x) \dd x=f(a) \int_{a}^{x_{0}} g(x) d x+f(b) \int_{x_{0}}^{b} g(x) \dd x
   $$
 
 - (**Bonnet**) Further suppose $\forall x \in [a, b]: f(x) \ge 0$. There exists a $x_0 \in [a, b]$ such that:
   $$
-  \int_{a}^{b} f(x) g(x) d x=f(b) \int_{x_{0}}^{b} g(x) d x
+  \int_{a}^{b} f(x) g(x) d x=f(b) \int_{x_{0}}^{b} g(x) \dd x
   $$
 
 - Since modify $f(a)$ and $f(b)$ does not change Riemann integrals. You can replace $f(a)$ with any $A \le f(a+)$ and $f(b)$ with $B \ge f(b-)$.
@@ -329,7 +329,7 @@ Suppose $f \nearrow [a, b]$. Suppose $g \in C[a, b]$.
 
 Suppose $f: [a, b] \times [c, d] \to \R$ is continuous. Suppose $\alpha \in V[a, b]$. Define
 $$
-F(y) = \int_a^b f(x, y) d\alpha(x)
+F(y) = \int_a^b f(x, y) \dd \alpha(x)
 $$
 Then $F \in C[c, d]$. For any $y_0 \in [c, d]$:
 $$
@@ -337,5 +337,5 @@ $$
 $$
 Suppose $g \in R[a, b]$, and $G = \int_a^x g \in C[a, b]$. Replace $\alpha(x)$ by $G$ gives:
 $$
-\lim _{y \to y_{0}} \int_{a}^{b} f(x, y)g(x) d x = \int_{a}^{b} \lim _{y \to y_{0}} f(x, y) g(x)dx = \int_{a}^{b} f\left(x, y_{0}\right) d G(x)
+\lim _{y \to y_{0}} \int_{a}^{b} f(x, y)g(x) \dd x = \int_{a}^{b} \lim _{y \to y_{0}} f(x, y) g(x)\dd x = \int_{a}^{b} f\left(x, y_{0}\right) \dd G(x)
 $$

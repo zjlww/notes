@@ -230,3 +230,22 @@ Then $f$ has a unique fixed point $p \in S$.
   $$
   \n{f^n(x) - x} \le \p{\sum_{j = n}^\infty \theta_j} \n{f(x) - x}
   $$
+
+##### Newton's method
+
+Newton's method is a common numerical methods for finding roots of a differentiable function.
+
+Formally, suppose $f \in C^2(S \to \R)$ and $S \subseteq \R$ is open.
+
+Newton's method is a mapping $\mathcal I(f, x_0)$ that outputs a sequence $(x_0, x_1, x_2, \ldots)$ following iteration $x_{n + 1} = K(x_n)$ where $K(x_n) := x_n - f(x_n) / f'(x_n)$.
+
+For $\bar x \in S$ where $f(\bar x) = 0$, and $f'(\bar x) \neq 0$, there is a closed interval $I$ around $\bar x$ such that $K$ is a contractive mapping on $I$.
+
+- W.L.O.G. we can assume $\bar x = 0$. And only conside an open interval of $0$.
+- $K'(x) = f(x)\cdot f''(x) / f'(x)^2$ is continuous and $K'(0) = 0$.
+- Now solve for $\abs{K(x)} < \abs{x}$.
+  - Notice that $K(x) = \int_0^x K'(s) \dd s$. So $\abs{K(x)} < \int_{0}^{\abs{x}}\abs{K'(s)}\dd s$.
+  - Since $K'(x)$ is continuous, for some closed interval $[a, b]$ where $a < 0 < b$ we have $0 \le \abs{K'(x)} < c < 1$.
+  - Therefore $\abs{K(x)} < c\abs{x}$ in $[a, b]$.
+- $K(x)$ is a contractive mapping on $[a, b]$ therefore has unique fixed point $0$.
+  - The convergence is guaranteed to be exponential in $[a, b]$.

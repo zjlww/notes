@@ -270,9 +270,7 @@ $$
 
 The codomain of $f$ in the theorem can be extended to $\R, \eR$ and $\C$.
 
-##### Change of variable in Lebesgue integral
-
- ==TODO==
+##### Change of variable in Lebesgue integral ==TODO==
 
 > When $\mu$ is the Lebesgue measure, and $\phi$ is a $C^1$-diffeomorphism. We can give $\phi_* \mu$ analytically.
 >
@@ -287,7 +285,7 @@ Suppose $\phi$ is a $C^1$-diffeomorphism, $\phi \in C^1[X]$ and $\phi^{-1} \in C
 
 Further suppose $\abs{\det D \phi(x)} > 0$ on $X$. For $f \in \L(Y \to [0, \infty])$:
 $$
-\int_X f(\phi(x)) dx = \int_{Y} \frac{f(y)}{\abs{\det D\phi(x)}} dy \iff \int_X f(\phi(x)) \abs{\det D\phi(x)} \dd x = \int_Y f(y) \dd y
+\int_X f(\phi(x)) \dd x = \int_{Y} \frac{f(y)}{\abs{\det D\phi(x)}} \dd y \iff \int_X f(\phi(x)) \abs{\det D\phi(x)} \dd x = \int_Y f(y) \dd y
 $$
 
 The theorem remains true for codomain $\R, \eR$ and $\C$.

@@ -1,12 +1,15 @@
+#### Linear IVP
+
 ##### Non-homogeneous constant coefficient first-order linear system
 
 Consider following IVP for $x(t) \in C^1(I \to \C^{n})$:
 $$
-x'(t) = A x(t) + g(t), \quad x(0) = x_0,\quad A \in \C^{n \times n}, \quad g \in C(I \to \C^{n})
+\boxed{x'(t) = A x(t) + g(t), \quad x(0) = x_0,\quad A \in \C^{n \times n}, \quad g \in C(I \to \C^{n})}
 $$
 
 where $I$ is a closed interval.
 
+- According to previous discussions, there exists a unique solution on $I$.
 - Multiply "integration factor" $\exp(-tA)$ on both sides and observe:
   - $\exp(-tA) x'(t) = \exp(-tA)A x(t) + \exp(-tA) g(t)$.
   - Therefore $(\exp(-tA)x(t))' = \exp(-tA) g(t)$.
@@ -20,13 +23,13 @@ where $I$ is a closed interval.
     $$
     it is the sum of the homogeneous solution and a part caused by $g(t)$.
 - Denote the homogeneous solution $x_h(t)$ as the solution assuming $g(t) = 0$.
-- Denote $x_p(t) = x(t) - x_h(t)$.
+- Denote the particular solution $x_p(t) = x(t) - x_h(t)$.
 
-##### Homogenous first-order planar constant linear system
+##### Example: Homogenous first-order planar constant linear system
 
 Consider following IVP for $x(t) \in C^1(\R \to \C^{2})$:
 $$
-x'(t) = A x(t), \quad x(0) = x_0 \in \R^2,\quad A \in \R^{2 \times 2}
+\boxed{x'(t) = A x(t), \quad x(0) = x_0 \in \R^2,\quad A \in \R^{2 \times 2}}
 $$
 
 - Recall the unique solution on $\R$ is $x(t) = e^{tA}x_0$.
@@ -56,7 +59,7 @@ $$
 
 Consider the IVP for $x \in C^n(\R \to \C)$,
 $$
-x^{(n)} + c_{n - 1} x^{(n - 1)} + \cdots + c_1 x' + c_0x = 0, \quad c_k \in \C, \quad x(0) = x_0, \cdots, x^{(n-1)} = x_{n-1}
+\boxed{x^{(n)} + c_{n - 1} x^{(n - 1)} + \cdots + c_1 x' + c_0x = 0, \quad c_k \in \C, \quad x(0) = x_0, \cdots, x^{(n-1)} = x_{n-1}}
 $$
 Define $y = (x, x^{(1)}, \ldots, x^{(n-1)}) \in C^n(\R \to \C^n)$ and equivalent IVP:
 $$
@@ -131,114 +134,147 @@ $$
 
 Consider following ODE for $x(t) \in C^1(I \subseteq \R \to \C^{n})$:
 $$
-x'(t) = A(t) x(t),\quad A \in C(I \to \C^{n \times n})
+\boxed{x'(t) = A(t) x(t),\quad A \in C(I \to \C^{n \times n})}
 $$
 
-where $I$ is a compact interval.
+where $I$ is a closed interval.
 
 - Improved Picard-Lindelof guarantees existence and uniqueness on $I$ given any initial $x(t_0)$ value.
+
+  - We could take $I = \R$, and the existence and uniqueness of solution apparently holds.
+
 - Let $\phi(t, t_0, x_0): I \times I \times \C^n \to \C^n$ be the unique general solution.
+
 - The space of all solutions is a $n$ dimensional subspace of $C^1(I \to \C^n)$.
   - Superposition: $\forall x_0, x_1 \in \C^n: \phi(t, t_0, x_0) + \phi(t, t_0, x_1) = \phi(t, t_0, x_0 + x_1)$.
   - Scaling: $\phi(t, t_0, cx_0) = c\phi(t, t_0, x_0)$.
-- Define $\Pi(t, t_0) = [\phi(t, t_0, e_1); \ldots; \phi(t, t_0, e_n)]: I \times I \to \C^{n \times n}$.
+
+- Define $\Pi(t, t_0) := [\phi(t, t_0, e_1); \ldots; \phi(t, t_0, e_n)]: I \times I \to \C^{n \times n}$.
   - $\phi(t, t_0, x_0) = \Pi(t, t_0) x_0 = \sum_{j = 1}^n \phi(t, t_0, e_j) x_{0, j}$.
     - This can be viewed as a linear isomorphism, from $\C^n$ to $C^1(I \to \C^n)$.
+    
   - For any $s, t \in I$, $\Pi(s, t) \in \C^{n \times n}$ is an invertible matrix.
     - Uniqueness of solution based on the initial value guarantees invertibility.
+    
   - For any $t_0 \in I$, $\Pi(t, t_0): I \to \C^{n \times n}$ is called the **principal matrix solution** at $t_0$.
-    - And we will call $\Pi(s, t): I \to \C^{n \times n}$ the **principal matrix**.
+    - And we will call $\Pi: I\times I \to \C^{n \times n}$ the **principal matrix**.
+    
   - For any $t_0 \in I$, $\Pi(t, t_0)$ is the unique solution of following matrix valued IVP.
     $$
     D_1\Pi(t, t_0) = A(t) \Pi(t, t_0), \quad \Pi(t_0, t_0) = \I
     $$
-  - Suppose $A(t) = A$ is a constant, $\Pi(s, t) = e^{(s - t)A}$.
-  - $\n{\Pi(t, s)} \le \exp{\abs{\int_{s}^t \n{A(s)} \dd s}}$.
-    - Following from Gronwall's inequality.
+    
+  - Suppose $A(t) = A$ is a constant, $\Pi(t, s) = e^{(t - s)A}$.
+
+    - Recall that the solution for $x'(t) = Ax(t)$ starting from $(0, x_0)$ is $\exp(tA)x_0$.
+    - Therefore $\Pi(t, s) = \exp({(t - s)A})$.
+    
+  - We have the bound $\n{\Pi(t, s)} \le \exp{{\int_{s}^t \n{A(\tau)} \dd \tau}}$.
+
+    - Since $\Pi(t, s) = \int_s^t A(\tau) \Pi(\tau, s) \dd \tau$.
+    - Therefore $\n{\Pi(t, s)} \le \int_s^t \n{A(\tau)} \n{\Pi(\tau,s)} \dd s$.
+    - Now apply Gronwall's inequality gives the result.
+    
   - $\forall s, t, u \in I: \Pi(s, t)\Pi(t, u) = \Pi(s, u)$.
-    - Therefore $\forall s, t \in I: \Pi(s, t) = \Pi(t, s)^{-1}$.
+    - Take $u = s$, then $\forall s, t \in I: \Pi(s, t) = \Pi(t, s)^{-1}$.
+    
   - Observe the following:
     - $D_1\Pi(t, s) = A(t) \Pi(t, s)$.
+    
     - $D_1(\Pi(t, s)^{-1}) = -\Pi(t, s)^{-1}D_1 \Pi(t, s) \Pi(t, s)^{-1} = - \Pi(t, s)^{-1}A(t)$.
-    - $D_2 \Pi(s, t) = -\Pi(s, t) A(t)$.
+      - For the derivative of matrix inverse, observe that
+        $$
+        (I)' = (\Pi \Pi^{-1})' = \Pi' \Pi^{-1} + \Pi (\Pi^{-1})' \implies (\Pi^{-1})' = -\Pi^{-1}\Pi' \Pi^{-1}
+        $$
+      
+    - Therefore $D_2 \Pi(s, t) = -\Pi(s, t) A(t)$.
+
 - Suppose $\phi_1, \ldots, \phi_n \in C^1(I \to \C^n)$ are $n$ solutions. Define $U(t) = [\phi_1(t); \ldots; \phi_n(t)]: I \to \C^{n \times n}$.
-  - The determinant of $U(t)$ is called Wronski determinant. $W(t)= \det(\phi_1, \ldots, \phi_n) := \det(U(t))$.
-  - $\exists t \in I: W(t) \neq 0 \implies \forall t \in I: W(t) \neq 0$.
+  - The determinant of $U(t)$ is called Wronski determinant. $W(t)= \det(\phi_1, \ldots, \phi_n) := \det U(t)$.
+  - Due to the linearity of solutions $\exists t \in I: W(t) \neq 0 \implies \forall t \in I: W(t) \neq 0$.
   - If $W(t) \neq 0$, $U(t)$ is called a **fundamental matrix solution**. 
-  - For any $t_0 \in I$, $\Pi(t, t_0)$ the **principal matrix solution** is a fundamental matrix solution.
-- Consider fundamental matrix solutions $U(t)$ and $V(t)$.
+  - For any $t_0 \in I$, $\Pi(t, t_0)$ is also a fundamental matrix solution.
+
+- A fundamental matrix solution $U(t)$ contains information about all solutions.
   - The columns of $U$ spans the entire solution space.
-  - For any $(t_0, x_0) \in I \times \C^n$, let $\lambda_0 = U(t_0)^{-1} x_0$ and $x(t) = U(t)\lambda_0$. Then $x(t) = \phi(t, t_0, x_0)$.
-    - $\forall s, t \in I: V(t)V^{-1}(s) = U(t) U(s)^{-1}$.
-    - $\forall s, t \in I: \Pi(t, s) = U(t)U(s)^{-1}$ or equivalently $U(t) = \Pi(t, s) U(s)$.
-- Abel's identity: The Wronski determinant of $n$ solutions satisfies:
-  $$
-  W(t) = W(t_0) \exp \int_{t_0}^t \tr(A(s)) \dd s
-  $$
+
+  - $\Pi(t, t_0)$ can be derived from $U(t)$.
+
+    - Let $X_0 = (x_0^{(1)}, \ldots, x_0^{(n)}) \in \C^{n \times n}$.
+    - Suppose $U(t) = \Pi(t, t_0) X_0$.
+    - Then $U(t) U(s)^{-1} = \Pi(t, t_0) \Pi(t_0, s) = \Pi(t, s)$.
+
+  - Therefore $\phi(t, t_0, x_0)$ can also be derived from $U(t)$.
+    $$
+    \phi(t, t_0, x_0) = \Pi(t, t_0) x_0 = U(t)U(t_0)^{-1} x_0
+    $$
+  
+- 
+
+##### Abel's identity ==TODO==
+
+Consider following IVP for $x(t) \in C^1(I \subseteq \R \to \C^{n})$:
+$$
+\boxed{x'(t) = A(t) x(t),\quad x(t_0) = x_0, \quad A(t) \in C(I \to \C^{n \times n}), \quad t_0 \in I}
+$$
+
+where $I$ is a closed interval. Suppose $U(t)$ is a fundamental matrix solution, and $W(t) = \det U(t)$.
+
+The Wronskian determinant of $n$ solutions satisfies:
+$$
+W(t) = W(t_0) \exp \int_{t_0}^t \tr(A(s)) \dd s
+$$
 
 ##### Linear first-order system
 
-Consider following ODE for $x(t) \in C^1(I \subseteq \R \to \C^{n})$:
+Consider following IVP for $x(t) \in C^1(I \subseteq \R \to \C^{n})$:
 $$
-x'(t) = A(t) x(t) + g(t),\quad A \in C(I \to \C^{n \times n}), g \in C(I \to \C^n)
+\boxed{x'(t) = A(t) x(t) + g(t),\quad x(t_0) = x_0, \quad A \in C(I \to \C^{n \times n}), \quad g \in C(I \to \C^n)}
 $$
 
 where $I$ is a compact interval.
 
-- Improved Picard-Lindelof guarantees existence and uniqueness on $I$ given any initial $x(t_0)$ value.
-- Let $\phi(t, t_0, x_0): I \times I \times \C^n \to \C^n$ be the unique general solution.
-- The space of all solutions is a shifted $n$ dimensional subset of $C^1(I \to \C^n)$.
-  - Difference of any two solution is a solution to the homogeneous linear ODE.
-  - A solution $x_p$ to the system of any initial condition is called a particular solution.
-  - $x_p$ plus the homogeneous solution space gives all the solutions.
-- **Variation of parameters** gives a method to find a particular solution:
-  - Recall that the solution of the homogeneous equation is $x(t) = \Pi(t, t_0)x_0$.
-  - Suppose $x(t) = \Pi(t, t_0) c(t)$ where $x(t_0) = x_0 = c(t_0)$ for some $c(t) \in C^1(I \to \C^n)$.
-  - $x'(t) = A(t)x(t) + \Pi(t, t_0)c'(t)$.
-  - Compare this with $x'(t) = A(t) x(t) + g(t)$ shows $g(t) = \Pi(t, t_0)c'(t)$.
-  - $c'(t) = \Pi(t_0, t) g(t)$.
-  - $c(t) = x_0 + \int_{t_0}^t \Pi(t_0, s) g(s) \dd s$.
-  - $x(t) = \Pi(t, t_0) x_0 + \int_{t_0}^t \Pi(t, s) g(s) \dd s$.
-- Integrating factor gives an equivalent method to find a particular solution:
-  - Suppose $\Psi(t) \in C^1(I \to \C^{n \times n})$ is an integrating factor.
-    - $\Psi(t) x'(t) = \Psi(t)A(t)x(t) + \Psi(t) g(t)$.
-    - We hope that $\Psi(t)x'(t) - \Psi(t)A(t) x(t) = (\Psi(t)x(t))'$.
-    - Therefore $\Psi'(t) = -\Psi(t)A(t)$.
+- Improved Picard-Lindelof guarantees existence and uniqueness of solution on $I$.
+- Let $\phi(t, t_0, x_0): I \times I \times \C^n \to \C^n$ be the unique general solution to the IVP.
 
-  - Since $D_2 \Pi(t_0, t) = -\Pi(t_0, t) A(t)$. $\Pi(t_0, t)$ is a integrating factor.
-    - $\Pi(t_0, t) x'(t) = \Pi(t_0, t)A(t) x(t) + \Pi(t_0, t)g(t)$.
-    - $D_t(\Pi(t_0, t) x(t)) = \Pi(t_0, t) g(t)$. Now integrate on both sides.
-    - $\Pi(t_0, t)x(t) - x_0 = \int_{t_0}^t \Pi(t_0, s)g(s) \dd s$.
-    - Again, $x(t) = \Pi(t, t_0) x_0 + \int_{t_0}^t \Pi(t, s) g(s) \dd s$.
+**Variation of parameters** gives a method to find a particular solution:
 
-##### Linear $n$-th order equations ==TODO==
+- Recall that the general solution of the homogeneous part is $x(t) = \Pi(t, t_0)x_0$.
 
-Consider the IVP for $x \in C^n(I \to \C)$,
-$$
-x^{(n)}(t) + c_{n - 1}(t) x^{(n - 1)}(t) + \cdots + c_1(t) x'(t) + c_0(t)x(t) = g(t), \quad g, c_k \in C(I \to \C), \quad x(0) = x_0, \cdots, x^{(n-1)} = x_{n-1}
-$$
-where $I$ is a closed interval.
+- Now assume the solution is of the following form where parameter $x_0$ is replaced with a unknown function $c(t)$.
+  $$
+  x(t) = \Pi(t, t_0) c(t),\quad c(t) \in C^1(I \to \C^n), \quad x(t_0) = x_0 = c(t_0)
+  $$
+  
+- Then we have
+  $$
+  x'(t) = D_1 \Pi(t, t_0) c(t) + \Pi(t, t_0) c'(t) = A(t) x(t) + \Pi(t, t_0) c'(t)
+  $$
+  
+- Compare this with $x'(t) = A(t) x(t) + g(t)$ shows we must have $g(t) = \Pi(t, t_0)c'(t)$.
 
-Define $y = (x, x^{(1)}, \ldots, x^{(n-1)}) \in C^n(I \to \C^n)$ and equivalent IVP:
-$$
-y'(t) = A(t) y(t) + G(t), \quad A(t)=\left(\begin{array}{ccccc}
-0 & 1 & & & \\
-& 0 & 1 & & \\
-& & \ddots & \ddots & \\
-& & & 0 & 1 \\
--c_{0}(t) & -c_{1}(t) & \cdots & \cdots & -c_{n-1}(t)
-\end{array}\right) \in C(I \to \C^{n \times n})\\
-y(0) = \left(\begin{array}{c}
-x_0\\
-x_1\\
-\vdots\\
-x_{n-2}\\
-x_{n-1}
-\end{array}\right), u_0 = \left(\begin{array}{c}
-0\\
-0\\
-\vdots\\
-0\\
-1
-\end{array}\right), G(t) = u_0 g(t)
-$$
+- Therefore $c'(t) = \Pi(t_0, t) g(t)$. This is a linear homogeneous IVP.
+
+- A solution for $c(t)$ would be $c(t) = x_0 + \int_{t_0}^t \Pi(t_0, s) g(s) \dd s$.
+
+- Therefore the full solution is given by
+  $$
+  x(t) = \Pi(t, t_0) x_0 + \int_{t_0}^t \Pi(t, s) g(s) \dd s
+  $$
+
+**The method of integrating factor** gives an equivalent method to find the solution:
+
+- Suppose $\Psi(t) \in C^1(I \to \C^{n \times n})$ is an integrating factor.
+  - $\Psi(t) x'(t) = \Psi(t)A(t)x(t) + \Psi(t) g(t)$.
+  - We hope that $\Psi(t)x'(t) - \Psi(t)A(t) x(t) = (\Psi(t)x(t))'$.
+  - Therefore $\Psi'(t) = -\Psi(t)A(t)$.
+
+- Since $D_2 \Pi(t_0, t) = -\Pi(t_0, t) A(t)$. $\Pi(t_0, t)$ is a integrating factor.
+  - $\Pi(t_0, t) x'(t) = \Pi(t_0, t)A(t) x(t) + \Pi(t_0, t)g(t)$.
+  - $D_t(\Pi(t_0, t) x(t)) = \Pi(t_0, t) g(t)$. Now integrate on both sides.
+  - $\Pi(t_0, t)x(t) - x_0 = \int_{t_0}^t \Pi(t_0, s)g(s) \dd s$.
+
+- Again, the full solution is given by
+  $$
+  x(t) = \Pi(t, t_0) x_0 + \int_{t_0}^t \Pi(t, s) g(s) \dd s
+  $$

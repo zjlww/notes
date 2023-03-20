@@ -11,6 +11,7 @@
   - (For Unix users) Run `source ./watch_and_preproces.sh` to watch the files. Any edit to `/notes` will trigger `python -m preprocess`.
   - Run `hugo serve` to launch a local server.
 - The theme is adapted from [hugo-book](https://github.com/alex-shpak/hugo-book).
+- TeX math expressions are rendered with `mathjax`.
 
 ---
 

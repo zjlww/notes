@@ -207,7 +207,7 @@ Suppose $(\Omega, \A, \mu)$ is a **$\sigma$-finite measure space**, $E$ is a **m
     - For $f, (f_n)_{n = 1}^\infty \in \L(\Omega \to E, \A)$, $f_n \to f$ in $\mu$ if and only if $\tilde d(f, f_n) \to 0$.
         - $\tilde d(f, f_n) \to 0$ if and only if $\forall N \ge 1: \tilde d_N(f, f_n) \to 0$.
         - $\tilde d_N(f, f_n) \to 0$ if and only if $\forall \epsilon > 0:\mu(\{d(f, f_n) > \epsilon\} \cap A_N) \to 0$.
-- (**Subsequence**) $f_n \to f$ in $\mu$ if and only if for any subsequence $(f_{k})$ of $(f_n)$, there is a subsequence $(f_m)$ such that $f_m \to f$ $\mu$-a.e. ^in-measure-subsequence
+- (**Subsequence**) $f_n \to f$ in $\mu$ if and only if for any subsequence $(f_{k})$ of $(f_n)$, there is a subsequence $(f_m)$ such that $f_m \to f$ $\mu$-a.e.
     - $\to$ direction: Pick $(f_l) \subset (f_m)$ such that $\mu(A_l \cap \{d(f, f_l) > 1/l\}) < 2^{-l}$.(**Fast I**).
     - $\leftarrow$ direction: Prove the contrapositive. Conside the metric space $(\L(\Omega \to E), \tilde d)$.
 - (**Cauchy**) $(f_n)$ is **Cauchy** in $\mu$ if $\forall A \in \A^<,\forall \epsilon > 0: \lim_{m, n \to \infty}\mu_A\{d(f_m, f_n) > \epsilon\} = 0$.

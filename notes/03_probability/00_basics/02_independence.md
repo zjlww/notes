@@ -45,9 +45,9 @@ Suppose $(\Omega_i, \F_i, P_i)_{i = 1}^n$ are probability spaces. Let $(\Omega, 
 
 Suppose $(\Omega, \F, P)$ is a probability space, and $X, Y, Z \in \L^1(\Omega \to \R)$ are **independent** real random variables.
 
-- Then $XY \in \L^1(\Omega \to \R)$, and $E[XY] = E[X] E[Y]$.
+- Then $XY \in \L^1(\Omega \to \R)$, and $E[XY] = E[X] E[Y]$ as a result of the Fubini theorem.
 - $\cov(X, Y) = E[(X - EX)(Y - EY)] = EXY - EX EY$.
-- $\var(X + Y) = \var(X) + \var(Y)$.
+- $\var(X + Y) = E[\abs{X + Y - EX - EY}^2] = \var(X) + \var(Y)$.
 
 #### Product of Probability Spaces
 

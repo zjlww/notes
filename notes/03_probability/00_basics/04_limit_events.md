@@ -212,4 +212,3 @@ Suppose $X, (X_n)_{n = 1}^\infty \in \L^1(\Omega \to \R, \F, P)$ are i.i.d. With
 Define $S_n = \sum_{i = 1}^n X_i$. Then $S_n / n \to m$ essentially pointwise.
 
 - If $E[X]$ is either $+\infty$ or $-\infty$, the result still holds.
-

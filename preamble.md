@@ -40,12 +40,15 @@ $$
 \newcommand{\bX}{\mathbf X}
 \newcommand{\bY}{\mathbf Y}
 \newcommand{\nz}{\mathcal Z}
+\newcommand{\bA}{\mathbb A}
 \newcommand{\bT}{\mathbb T}
 \newcommand{\bB}{\mathbb B}
 \newcommand{\bS}{\mathbb S}
 \newcommand{\bP}{\mathbf P}
 \newcommand{\bH}{\mathbb H}
 \newcommand{\dd}{\mathrm d}
+\newcommand{\bL}{\mathbb L}
+\newcommand{\bM}{\mathbb M}
 
 % Capital greek
 \newcommand{\Mu}{\mathup M}
@@ -57,6 +60,7 @@ $$
 \newcommand{\cov}{\operatorname{Cov}}
 \newcommand{\cl}{\operatorname{cl}}
 \newcommand{\cont}{\operatorname{cont}}
+\newcommand{\e}{\mathbb E}
 \newcommand{\pp}{\operatorname{primitive}}
 \newcommand{\dist}{\operatorname{dist}}
 \newcommand{\diam}{\operatorname{diam}}
@@ -109,7 +113,7 @@ $$
 \newcommand{\Exp}{\operatorname{Exp}}
 % Operators
 \newcommand{\abs}[1]{\left| {#1}\right|}
-\newcommand{\d}[2]{D_{\text{KL}}\left (#1\| #2\right)}
+\newcommand{\d}[2]{D_{\text{KL}}\left (#1\middle\| #2\right)}
 \newcommand{\n}[1]{\|#1\|}
 \newcommand{\norm}[1]{\left\|{#1}\right\|}
 \newcommand{\pd}[2]{\left \langle {#1},{#2} \right \rangle}

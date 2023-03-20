@@ -85,9 +85,7 @@ The main idea of variational inference is to **restrict** the family $\mathcal Q
 
 Suppose $p_\theta(z, x)$ is a parameterized latent variable model. And $p_*(x)$ is the data density.
 
-The **EM algorithm** provides a iterative solution to the **learning problem**.
-
-The algorithm is iterative, with the following coordinate ascent iteration:
+The **EM algorithm** provides a iterative solution to the **learning problem**, with the following coordinate ascent iteration:
 
 - Define density $q[x_*, \theta](z)$ as $q(x_*) := \max_{q \in \mathcal Q} \elbo(p_\theta, q, x_*)$.
 - Now update $\theta \to \theta'$ with $\theta' = \argmax{\theta' \in \Theta} E\s{\elbo(p_{\theta'}, q[X_*, \theta], X_*)}$.

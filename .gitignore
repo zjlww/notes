@@ -1,6 +1,11 @@
 # Created by https://www.toptal.com/developers/gitignore/api/hugo,python,linux,windows,macos,pycharm,visualstudiocode,jupyternotebooks
 # Edit at https://www.toptal.com/developers/gitignore?templates=hugo,python,linux,windows,macos,pycharm,visualstudiocode,jupyternotebooks
 
+.*
+/hidden_notes/
+!/.gitignore
+!/.github/
+
 # Hugo content is automatically generated
 /content/
 /test.ipynb

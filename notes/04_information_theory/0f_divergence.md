@@ -49,3 +49,13 @@ Suppose $p_*(x)$ is a **data density** on $\Omega$, and $p_\theta(x)$ is a densi
   \d{p_\theta}{p_*} = E\s{\log p_\theta(X)} + E [U(X)] + \log Z
   $$
     - Optimizing the backward KL can be done with unnormalized density $p_*$.
+
+##### Log-sum inequality
+
+Suppose $(a_k)_{k \in I}$ and $(b_k)_{k \in I}$ are nonnegative real numbers. Suppose $I$ is countable.
+
+Suppose $\sum_{k \in I} a_k = a \in (0, \infty)$ and $\sum_{k \in I} b_k = b \in (0, \infty)$. Then
+$$
+\sum_{k \in I} a_k \log \frac{a_k}{b_k} \ge a \log \frac{a} {b}
+$$
+Define $p_k = a_k / a$ and $q_k = b_k / b$. And its equivalent to $\d{p}{q} \ge 0$.

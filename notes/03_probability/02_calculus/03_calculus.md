@@ -4,22 +4,22 @@
 
 Suppose $(\Omega, \F, (\F_t), T = [0, T], P)$ is a filtered probability space.
 
-- Define $\L(T) = \L(\Omega \times [0, T]\to \R, \F \times \B[0, T])$.
-- Define $\P(T) < \L(T)$ as $\P(T) = \L^2(\Omega \times [0, T] \to \R, \F \times \B[0, T], P \times m)$.
-  - $\P(T)$ is a vector space over $\R$ with semi-norm $\|\cdot\|_2$. We will just denote this norm as $\|\cdot\|$.
-- Define $\S(T) < \P(T)$ containing **simple processes adapted to $(\F_t)$**.
+- Define $\L(0, T) = \L(\Omega \times [0, T]\to \R, \F \times \B[0, T])$.
+- Define $\L^2(0, T) < \L(0, T)$ as $\L^2(0, T) = \L^2(\Omega \times [0, T] \to \R, \F \times \B[0, T], P \times m)$.
+  - $\L^2(0, T)$ is a vector space over $\R$ with semi-norm $\|\cdot\|_2$. We will just denote this norm as $\|\cdot\|$.
+- Define $\S(T) < \L^2(0, T)$ containing **simple processes adapted to $(\F_t)$**.
   $$
   \S(T) := \left \{
   (X_t): X_t = \sum_{j = 0}^{n - 1} Y_j 1_{(t_j, t_{j + 1}]}(t), (t_j)_{j = 0}^n \in P[0, T], Y_j \in \L^2(\Omega \to \R, \F_{t_j},P)
   \right \}
   $$
   - $\S(T)$ contains adapted, square-integrable simple processes.
-- Define $\V(T) < \P(T)$ containing $(X_t) \in \P(T)$ **adapted** to $(\F_t)$.
+- Define $\V(T) < \L^2(0, T)$ containing $(X_t) \in \L^2(0, T)$ **adapted** to $(\F_t)$.
   - $\V(T)$ contains adapted, square-integrable processes.
-- Define $\W(T) < \L(T)$ containing $(X_t) \in \L(T)$ **adapted** to $(\F_t)$ and $\int_0^T X_t^2 dt < \infty$ pathwise.
+- Define $\W(T) < \L(0, T)$ containing $(X_t) \in \L(0, T)$ **adapted** to $(\F_t)$ and $\int_0^T X_t^2 dt < \infty$ pathwise.
   - $\W(T)$ contains adapted, pathwise square-integrable processes.
   - For $(X_t) \in \W(T)$, $\|(X_t)\|_2^2 = E[\int_0^T X_t^2 dt] = \int_0^T E[X_t^2] dt < \infty$ by (**Tonelli**).
-- Define $\A(T) < \L(T)$ containing $(X_t) \in \L(T)$ **adapted** to $(\F_t)$ and $\int_0^T |X_t| dt < \infty$ pathwise.
+- Define $\A(T) < \L(0, T)$ containing $(X_t) \in \L(0, T)$ **adapted** to $(\F_t)$ and $\int_0^T |X_t| dt < \infty$ pathwise.
   - $\A(T)$ contains adapted, pathwise integrable processes.
 - Define $\mathcal B(T) < \V(T)$ containing $(X_t) \in \V(T)$ with uniformly **bounded** values.
   - $\mathcal B(T)$ contains adapted, uniformly bounded processes.

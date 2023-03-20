@@ -1,4 +1,6 @@
-##### Functional Banach spaces: Review
+#### Initial Value Problems
+
+##### Review: Functional Banach spaces
 
 - $C(I \to \bF^m)$ with norm $\n{x} = \sup_{t \in I}\n{x(t)}$ is a Banach space for compact interval $I \subseteq \R$.
     - Since $I$ is compact, all continuous functions are uniformly continuous.
@@ -8,26 +10,16 @@
 - $C_b(I \to \bF^m)$ with norm $\n{x} = \sup_{t \in I}\n{x(t)}$ is a Banach space for any interval $I \subseteq \R$.
     - $C_b$ means bounded continuous functions. Boundedness is required to ensure a finite norm.
 
-##### Newton's method
+##### Review: Locally Lipschitz continuous
 
-Newton's method is a function $\mathcal I(f, x_0)$ that outputs a sequence following iteration $x_{n + 1} = K(x_n)$ where $K(x_n) := x_n - f(x_n) / f'(x_n)$.
-
-Suppose $f \in C^2(S \to \R)$ and $S \subseteq \R$ is open. For $\bar x \in S$ where $f(\bar x) = 0$, and $f'(\bar x) \neq 0$, there is a closed interval $I$ around $\bar x$ such that $K$ is a contractive mapping on $I$.
-- W.L.O.G. we can assume $\bar x = 0$. And only conside an open interval of $0$.
-- $K'(x) = f(x)\cdot f''(x) / f'(x)^2$ is continuous and $K'(0) = 0$.
-- Now solve for $\abs{K(x)} < \abs{x}$.
-    - Notice that $K(x) = \int_0^x K'(s) \dd s$. So $\abs{K(x)} < \int_{0}^{\abs{x}}\abs{K'(s)}\dd s$.
-    - Since $K'(x)$ is continuous, for some closed interval $[a, b]$ where $a < 0 < b$ we have $0 \le \abs{K'(x)} < c < 1$.
-    - Therefore $\abs{K(x)} < c\abs{x}$ in $[a, b]$.
-- $K(x)$ is a contractive mapping on $[a, b]$ therefore has unique fixed point $0$.
-    - The convergence is guaranteed to be exponential in $[a, b]$.
+$f: U \subseteq \R^n \to \R$ is **locally Lipschitz continuous** if it is Lipschitz on any compact subset of $U$.
 
 ##### IVP: Picard-Lindelof
 
 Consider the following **initial value problem** for $x \in C^1(J \subseteq \R \to \R^n)$: 
 
 $$
-x'(t) = f(t, x(t)), \quad x(t_0) = x_0, \quad f \in C(U \subseteq \R \times \R^{n} \to \R^n)
+\boxed{x'(t) = f(t, x(t)), \quad x(t_0) = x_0, \quad f \in C(U \subseteq \R \times \R^{n} \to \R^n)}
 $$
 where $U$ is open and $(t_0, x_0) \in U$.
 - Integrate from $t_0 \to t$ on both sides gives $x(t) = x_0 + \int_{t_0}^t f(s, x(s)) \dd s$.
@@ -35,111 +27,169 @@ where $U$ is open and $(t_0, x_0) \in U$.
 - Let **Picard iteration** on $C^1(I \subseteq \R \to \R^n)$ be $K(x(t)) = x_0 + \int_{t_0}^t f(s, x(s)) \dd s$.
     - A fixed point of the iteration is a solution to the ODE on $I$.
 
-Further assume $f$ is locally Lipschitz continuous in second argument, uniformly respect to the first. Then there is a unique local solution.
+We need more assumptions about $f$ for the following results:
 
-- There is a unique local solution to the right:
-  - Suppose $V = [t_0, t_0 + T] \times \overline{B(x_0, \delta)} \subset U$, for some $\delta > 0, T > 0$.
+- Assume $f$ is locally Lipschitz continuous in the second argument.
+- Assume $f$ is continuous in the first argument.
+- Notice that $f \in C^1(U \to \R^n)$ is a stronger condition implying both above.
+
+Then there **exists a unique solution** in some closed interval $[t_0 - T_1, t_0 + T_0]$.
+
+- Suppose $V = [t_0, t_0 + T] \times \overline{B(x_0, \delta)} \subset U$, for some $\delta > 0, T > 0$.
+- According to the added conditions, we have two bounds $L$ and $M$.
   - Let $M = \max_{(t, x) \in V} \n{f(t, x)}$.
-  - Let $L=\sup _{(t, x) \neq(t, y) \in V} {\n{f(t, x)-f(t, y)}}/{\n{x-y}}$. And $0 < L^{-1} - \epsilon < L^{-1}$.
-  - Let $T_0 = \min(T, \delta/ M, L^{-1} - \epsilon)$.
-  - Denote $V_0 = [t_0, t_0 + T_0] \times \overline{B(x_0, \delta)} \subseteq V$.
-  - Picard iteration $K$ on $C^1([t_0, t_0 + T_0] \to \R^n)$ has properties:
-    - Consider closed metric space $C = C^1([t_0, t_0 + T_0] \to \overline{B(x_0, \delta)})$.
-    - $K|_C$ is a contraction map on complete metric subspace $C$.
-      - Notice the following:
-      $$
-      \begin{aligned}
-      |K(x)(t)-K(y)(t)| &\leq \int_{0}^{t}|f(s, x(s))-f(s, y(s))| \dd s\\
-      &\leq L \int_{0}^{t}|x(s)-y(s)| \dd s\\
-      &\leq L t \sup _{0 \leq s \leq t}|x(s)-y(s)|
-      \end{aligned}
-      $$
-      - Therefore $\|K(x)-K(y)\| \leq L T_{0}\|x-y\|$ for all $x, y \in C$.
-    - There is a **unique (local) solution** to the IVP in $[t_0, t_0 + T_0]$.
-      - Any possible solution of the IVP must lie in $V_0$ during $[t_0, t_0 + T_0]$.
-        - Bad solution must hit the upper / lower wall before $t_0 + T_0$.
-        - Contradict by applying IVT between $(t_0, x_0)$ and $(t_0 + \Delta T, \pm \delta)$.
-      - There is only a unique solution on $[t_0, t_0 + T_0]$ by fixed point theorem.
-- Extend on the left and there is a unique local solution $x(t)$ on closed interval $I = [t_0 - \epsilon, t_0 + \epsilon]$.
-- $f \in C^1(U \to \R^n)$ implies the time-uniform Lipschitz condition on $f$.
-- When $f \in C^k(U \to \R^n)$, the local solution $x(t) \in C^{k + 1}(I \to \R^n)$.
-  - When $k = 1$, $x(t) \in C^1(I \to \R^n)$ according to above Theorem.
-  - Suppose the theorem is true for $k$, and $f \in C^{k + 1}(U \to \R^n)$.
-  - Since $x'(t) = f(t, x(t))$, $x'(t) \in C^{k + 1}(I \to \R^n)$. So $x(t) \in C^{k + 2}(I \to \R^n)$.
-  - Now apply induction.
+  - Let $L=\sup _{(t, x) \neq(t, y) \in V} {\n{f(t, x)-f(t, y)}}/{\n{x-y}}$.
+- Further restrict the interval $[t_0, t_0 + T]$ to $[t_0, t_0 + T_0]$.
+  - We need to take $T_0$ small enough s.t. $T_0 L < 1$ and $T_0 M \le \delta$.
+  - Take $T_0 = \min(T, \delta/ M, L^{-1} - \epsilon)$. Where $\epsilon > 0$ such that $0 < L^{-1} - \epsilon < L^{-1}$.
+- Denote the smaller closed box as $V_0 = [t_0, t_0 + T_0] \times \overline{B(x_0, \delta)} \subseteq V$.
+- All possible solutions to the IVP on $[t_0, t_0 + T_0]$ lay **inside** the box $V_0$.
+  - Suppose $x(t)$ is a solution. Then $x(t) = x_0 + \int_{t_0}^{t} f(\tau, x(\tau)) \dd \tau$.
+  - So $\abs{x(t) - x_0} \le (t - t_0) M \le T_0 M \le \delta$.
+- Picard iteration $K$ on $C^1([t_0, t_0 + T_0] \to \R^n)$ has the following properties:
+  - Consider metric space $C = C^1([t_0, t_0 + T_0] \to \overline{B(x_0, \delta)})$.
+  - $K|_C$ is a contraction map on complete metric space $C$.
+    - Notice the following:
+    $$
+    \begin{aligned}
+    |K(x)(t)-K(y)(t)| &\leq \int_{0}^{t}|f(s, x(s))-f(s, y(s))| \dd s\\
+    &\leq L \int_{0}^{t}|x(s)-y(s)| \dd s\\
+    &\leq L t \sup _{0 \leq s \leq t}|x(s)-y(s)|
+    \end{aligned}
+    $$
+    - Therefore $\boxed{\|K(x)-K(y)\| \leq L T_{0}\|x-y\|}$ for all $x, y \in C$.
+- By contraction point theorem, the fixed point of $K$ is the only solution.
+- Do the same analysis on the left on some interval $[t_0 - T_1, t_0]$.
+
+When $f \in C^k(U \to \R^n)$, we can guarantee a unique local solution in $C^{k + 1}(I \to \R^n)$.
+
+- When $k = 1$, $x(t) \in C^2(I \to \R^n)$ according to above Theorem.
+- Suppose the theorem is true for $k$, and $f \in C^{k + 1}(U \to \R^n)$.
+- Since $x'(t) = f(t, x(t))$, $x'(t) \in C^{k + 1}(I \to \R^n)$. So $x(t) \in C^{k + 2}(I \to \R^n)$.
+- Now apply induction.
 
 ##### Gronwall's inequality
 
-Suppose $\psi(t)$ satisfies
+Suppose $\psi(t):[0, T] \to \R$ satisfies
 $$
 \psi(t) \leq \alpha(t)+\int_{0}^{t} \beta(s) \psi(s) \dd s, \quad t \in[0, T]
 $$
 
-with $\alpha(t): [0, T] \to \R$ and $\beta(t): [0, T] \to [0, \infty)$. We have
+with $\alpha(t): [0, T] \to \R$ and $\beta(t): [0, T] \to [0, \infty)$.
+
+This inequality is recursively defined, our goal is to unravel the inequality about $\psi(t)$.
+
+First define the integrating factor
 $$
-\psi(t) \leq \alpha(t)+\int_{0}^{t} \alpha(s) \beta(s) \exp \left(\int_{s}^{t} \beta(r) d r\right) \dd s, \quad t\in [0, T]
+\phi(t) := \exp\p{-\int_0^t \beta(s) \dd s}
+$$
+Observe that
+$$
+\begin{aligned}
+D_t\s{\phi(t) \int_0^t \beta(s) \psi(s) \dd s} & = -\beta(t) \phi(t) \int_0^t \beta(s) \psi(s) \dd s + \phi(t) \beta(t) \psi(t)\\
+& = \beta(t) \phi(t) \s{\psi(t) - \int_0^t \beta(s) \psi(s) \dd s} \le \beta(t) \phi(t) \alpha(t)
+\end{aligned}
+$$
+Now integrate on both sides on $t$ and divide by $\phi(t)$ gives:
+$$
+\int_0^t \beta(s) \psi(s) \dd s \le \int_0^t \beta(s) \alpha(s) \frac{\phi(s)}{\phi(t)} \dd s
+$$
+Now add $\alpha(t)$ on both sides gives:
+$$
+\boxed{\psi(t) \le  \alpha(t)+\int_{0}^{t} \alpha(s) \beta(s) \exp \left(\int_{s}^{t} \beta(r) \dd r\right) \dd s, \quad t\in [0, T]}
 $$
 
-- Define $\phi(t) = \exp\left(-\int_0^t \beta(s) \dd s\right)$.
-- $\frac{\dd}{\dd t} \phi(t) \int_{0}^{t} \beta(s) \psi(s) \dd s=\beta(t) \phi(t)\left(\psi(t)-\int_{0}^{t} \beta(s) \psi(s) \dd s\right) \leq \alpha(t) \beta(t) \phi(t)$.
-- Integrate on both sides on $t$ gives: $\int_{0}^{t} \beta(s) \psi(s) \dd s \leq \int_{0}^{t} \alpha(s) \beta(s) \frac{\phi(s)}{\phi(t)} \dd s$.
-- Now add $\alpha(t)$ on both sides.
-
-Moreover, if in addition $\alpha(s) \leq \alpha(t)$ for $s \leq t$, then
+Moreover, if in $\alpha(t)$ is increasing, then
 $$
-\psi(t) \leq \alpha(t) \exp \left(\int_{0}^{t} \beta(s) \dd s\right), \quad t \in[0, T]
+\psi(t) \le \alpha(t) \s{1 + \int_0^t \beta(s) \exp\p{\int_s^t \beta(r) \dd r} \dd s}
 $$
-- Hint: enlarge the integrand, then compare by taking derivative.
-
+Notice that
+$$
+D_t \s{1 + \int_0^t \beta(s) \exp\p{\int_s^t \beta(r) \dd r} \dd s} = \beta(t) \le D_t \s{\exp\p{\int_0^t \beta(s) \dd s}}
+$$
+Therefore when $\alpha(t)$ is increasing, we have
+$$
+\boxed{\psi(t) \leq \alpha(t) \exp \left(\int_{0}^{t} \beta(s) \dd s\right), \quad t\in[0, T]}
+$$
 ##### Gronwall's inequality: linear case
 
 Suppose $\psi(t): [0, T] \to \R$ satisfies:
 $$
 \psi(t) \leq \alpha+\int_{0}^{t}(\beta \psi(s)+\gamma) \dd s, \quad t \in[0, T]
 $$
-where $\alpha \in \R$, $\beta > 0$ and $\gamma \in \R$. Then
+where $\alpha \in \R$, $\beta > 0$ and $\gamma \in \R$.
+
+There is a bias term $+\gamma$ inside integration, so Gronwall's inequality cannot be applied.
+
+Notice that
 $$
-\psi(t) \leq \alpha \exp (\beta t)+\frac{\gamma}{\beta}(\exp (\beta t)-1), \quad t \in[0, T]
+\p{\psi(t) + \frac{\gamma}{\beta}} \le \p{\alpha + \frac{\gamma}{\beta}} + \beta\int_0^t \p{\psi(s) + \frac{\gamma}{\beta}} \dd s
+$$
+Let $\theta(t) =\psi(t) + \gamma / \beta$ and $\delta = \alpha + \gamma / \beta$.
+$$
+\theta(t) \le \delta + \beta \int_0^t \theta(s) \dd s
+$$
+Now apply Gronwall's inequality. Take $\phi(t) = \exp(-\beta t)$.
+$$
+D_t\s{e^{-\beta t} \int_0^t \beta \theta(s) \dd s} = -\beta e^{-\beta t} \int_0^t \beta \theta(s) \dd s + \beta e^{-\beta t} \theta(t) \le \delta \beta e^{-\beta t}
+$$
+Integrating on both sides gives:
+$$
+\theta(t)  \le \delta + \int_0^t \beta \theta(s) \dd s \le \delta e^{\beta t}
+$$
+Or equivalently:
+$$
+\boxed{\psi(t) \leq \alpha \exp (\beta t)+\frac{\gamma}{\beta}(\exp (\beta t)-1), \quad t \in[0, T]}
 $$
 
-- Let $\theta(t) = \psi(t) + \gamma / \beta$. And $c = \alpha + \gamma / \beta$.
-    - Then $\theta(t) \le c + \int_0^t \beta \theta(s) \dd s$.
-    - $\frac{\partial }{\partial t}e^{-\beta  t} \int_0^t \beta \theta(t) \dd s = \beta  e^{\beta  (-t)} \theta (t)-\beta  e^{\beta  (-t)} \int_0^t \beta  \theta (s) \dd s \le \beta  e^{\beta  (-t)} c$. 
-- $\int_0^t \beta \theta(t) \dd s \le ce^{\beta t}-c$. Therefore $\theta(t) \le c e^{\beta t}$.
+##### IVP: The solution is continuous in initial condition and the function $f(t, x)$
 
-##### IVP: continuity
+Consider the following **initial value problem** for $x \in C^1(J \subseteq \R \to \R^n)$: 
 
-Suppose $U \subseteq \R \times \R^n$ is open, and $f, g \in C(U \to \R^n)$. Consider IVP $x'(t) = f(t, x)$ with $x(t_0) = x_0$ and $y' = g(t, y)$ with $y(t_0) = y_0$.
+$$
+\boxed{x'(t) = f(t, x(t)), \quad x(t_0) = x_0, \quad f \in C(U \subseteq \R \times \R^{n} \to \R^n)}
+$$
+where $U$ is open and $(t_0, x_0) \in U$.
 
-Let $f$ be locally Lipschitz continuous in the second argument, uniformly with respect to the first.
+- Let $f$ be Lipschitz continuous in position and continuous in time.
+- There is a unique solution in $[t_0, t_0 + T_0]$.
 
-- If $x(t)$ and $y(t)$ are respective solutions of the IVPs on some interval $[t_0, t_0 + T_0]$.
-- W.L.O.G. assume $t_0 = 0$ in the following.
-- For $V \subset U$ some set containing the graphs of $x(t)$ and $y(t)$.
+For $t \in [t_0, t_0 + T_0]$, $x(t)$ is continuous in $x_0$ and $f$.
+
+- Let $g \in C(U \to \R^n)$ also be Lipschitz continuous in position and continuous in time.
+
+- Let $y(t)$ be the unique solution to the IVP with $y(t_0) = y_0$ and $y'(t) = g(t, y(t))$.
+
+- Suppose $V \subset U$ is a closed box containing both the graphs of $x(t)$ and $g(t)$.
+
+- Define
   $$
   L=\sup _{(t, x) \neq(t, y) \in V} \frac{|f(t, x)-f(t, y)|}{|x-y|}, \quad M=\sup _{(t, x) \in V}|f(t, x)-g(t, x)|
   $$
-- We have following inequalities for $s, t \in [0, T_0]$:
-  - $|x(t)-y(t)| \leq\left|x_{0}-y_{0}\right|+\int_{0}^{t}|f(s, x(s))-g(s, y(s))| d s$.
+  
+- We have following inequalities for $s, t \in [t_0, t_0 + T_0]$:
+  
   - $|f(s, x(s))-g(s, y(s))|\leq|f(s, x(s))-f(s, y(s))|+|f(s, y(s))-g(s, y(s))|$
   - $|f(s, x(s))-g(s, y(s))|\leq L|x(s)-y(s)|+M$.
-- Now following Gornwell's inequality in linear case:
+  - $|x(t)-y(t)| \leq\left|x_{0}-y_{0}\right|+\int_{t_0}^{t_0 + T_0}|f(s, x(s))-g(s, y(s))| \dd s$.
+  
+- Now following Gronwall's inequality in linear case:
   $$
-  |x(t)-y(t)| \leq\left|x_{0}-y_{0}\right| e ^{Lt}+\frac{M}{L}\left( e ^{Lt}-1\right)
+  |x(t)-y(t)| \leq\left|x_{0}-y_{0}\right| e ^{L (t - t_0)}+\frac{M}{L}\left( e ^{L(t - t_0)}-1\right)
   $$
-- Therefore the solution $x(t)$ for $t \in [t_0, t_0 + T_0]$ is a continuous function of $x_0$ and $f$.
 
-##### IVP: existence of general solution
+##### IVP: Solution as a function of time and initial value
 
-Consider the following non-autonomous IVP for $x \in C^1(J \subseteq \R \to \R^n)$:
+Consider the following **initial value problem** for $x \in C^1(J \subseteq \R \to \R^n)$: 
 
 $$
-x'(t) = f(t, x(t)), \quad x(t_0) = x_0, \quad f \in C(U \subseteq \R \times \R^{n} \to \R^n), \quad (*)
+\boxed{x'(t) = f(t, x(t)), \quad x(t_0) = x_0, \quad f \in C(U \subseteq \R \times \R^{n} \to \R^n)}
 $$
-
 where $U$ is open and $(t_0, x_0) \in U$.
 
-Let $f$ be locally Lipschitz continuous in the second argument, uniformly with respect to the first.
+Let $f$ be Lipschitz continuous in position and continuous in time.
+
+There exists $I = [t_0 - \epsilon, t_0 + \epsilon]$ and $B = \overline{B(x_0, \delta)}$ and a Lipschitz continuous function $\phi(t, s, x): I \times I \times B \to \R^n$ where it is the unique solution of the IVP starting at $(s, x)$ on the interval $I$.
 
 - According to Picard-Lindelof there exists $\epsilon, \delta > 0$ where
   - $I_0 = [t_0 - 4 \epsilon, t_0 + 4 \epsilon]$ and $B_0 = \overline{B(x_0, 4\delta)}$ s.t. $V_0 = I_0 \times B_0 \subset U$.
@@ -149,14 +199,13 @@ Let $f$ be locally Lipschitz continuous in the second argument, uniformly with r
   - For any $(t_1, x_1) \in V$, denote $I_1 = [t_1 - 2\epsilon, t_1 + 2\epsilon]$ and $B_1 = \overline{B(x_1, 2\delta)}$.
   - The Picard iteration at $(t_1, x_1)$ is a contraction map on $C^1(I_1 \to B_1)$.
   - Therefore there is a unique solution on $I_1$ with codomain $B_1$.
-- Notice that $I_1$ completely covers interval $I$.
-  - Therefore there is a unique solution $\phi(t, s, x)$ on $I$ with codomain $B_1$ for any $(s, x) \in I \times B$.
-  - Define general solution $\phi(t, s, x): I \times I \times B \to B_1$. Where $[\phi]_{s,x}$ is the unique solution.
-    - We now know $\phi$ is continuous in $s, x$.
-    - $\phi$ is continuously differentiable in $t$ by definition.
+  - Notice that $I_1$ completely covers interval $I$.
+- Therefore there is a unique solution $\phi(t, s, x)$ for $t \in I$ with codomain $B_0$ for any initial time and value $(s, x) \in I \times B$.
+  - We now know $\phi$ is continuous in $s, x$.
+  - $\phi$ is continuously differentiable in $t$ by definition.
 
 We can show that $\phi(t, s, x)$ is Lipschitz continuous.
-- Let $V = I \times B_1 \subset U$. And
+- Let $V = I \times B_0 \subset U$. And
   $$
   L=\sup _{(t, x) \neq(t, y) \in V} \frac{|f(t, x)-f(t, y)|}{|x-y|}, \quad M=\sup _{(t, x) \in V}|f(t, x)|,
   $$
@@ -170,40 +219,44 @@ We can show that $\phi(t, s, x)$ is Lipschitz continuous.
 - $\left|\phi\left(t, s_{0}, y_{0}\right)-\phi\left(s, s_{0}, y_{0}\right)\right| = \abs{\int_{s}^{t} f\left(r, \phi\left(r, s_{0}, y_{0}\right)\right) \dd r} \le M\abs{t - s}$.
 - Therefore $\abs{\phi\left(t, t_{0}, x_{0}\right)-\phi\left(s, s_{0}, y_{0}\right)} \leq\abs{x_{0}-y_{0}} e ^{L\abs{t-t_{0}}}+M\left(\abs{t-s}+\abs{t_{0}-s_{0}} e ^{L\abs{t-s_{0}}}\right)$.
 
-##### IVP: forms of equations
+#### Various Forms of IVPs
 
-A non-autonomous IVP for $x \in C^1(J \subseteq \R \to \R^n)$ takes the form
-$$
-x'(t) = f(t, x(t)), \quad x(t_0) = x_0, \quad f \in C(U \subseteq \R \times \R^{n} \to \R^n)
-$$
+##### Variants of the initial value problem
 
+A **non-autonomous IVP** for $x \in C^1(J \subseteq \R \to \R^n)$ takes the form
+$$
+\boxed{x'(t) = f(t, x(t)), \quad x(t_0) = x_0, \quad f \in C(U \subseteq \R \times \R^{n} \to \R^n)}
+$$
 where $U$ is open and $(t_0, x_0) \in U$.
-- A general solution takes the form $\phi(t, t_0, x_0): I \times I \times B \to \R^n$ where $I \times I \times B \subset U$.
 
-An autonomous IVP for $x \in C^1(U \subseteq \R \to \R^{n})$ takes the form
+A general solution takes the form $\phi(t, t_0, x_0): I \times I \times B \to \R^n$ where $I \times I \times B \subset U$ is a closed box.
+
+An **autonomous IVP** for $x \in C^1(U \subseteq \R \to \R^{n})$ takes the form
 $$
-x'(t) = f(x(t)), \quad x(0) = x_0, \quad f \in C^1(U \subseteq \R^n \to \R^n)
+\boxed{x'(t) = f(x(t)), \quad x(0) = x_0, \quad f \in C(U \subseteq \R^n \to \R^n)}
 $$
 
 where $U$ is open and $x_0 \in U$. W.L.O.G. we usually assume $t_0 = 0$.
-- A general solution takes the form $\varphi(t, x_0): I \times B \to \R^n$ where $I \times B \subset U$.
-    - Due to time-shift invariance, $\varphi$ do not take $t_0$ as input.
 
-A parameterized non-autonomous IVP for $x \in C^1(J \subseteq \R \to \R^n)$:
+A general solution takes the form $\varphi(t, x_0): I \times B \to \R^n$ where $I \times B \subset U$.
+- Due to time-shift invariance, $\varphi$ do not take $t_0$ as input.
+
+A **parameterized non-autonomous IVP** for $x \in C^1(J \subseteq \R \to \R^n)$:
 $$
-x'(t) = f(t, x(t), \lambda), \quad x(t_0) = x_0, \quad f \in C(U \subseteq \R \times \R^{n} \times \R^{m} \to \R^n)
+\boxed{x'(t) = f(t, x(t), \lambda), \quad x_{\lambda_0}(t_0) = x_0, \quad f \in C(U \subseteq \R \times \R^{n} \times \R^{m} \to \R^n)}
 $$
 
 where $U$ is open and $(t_0, x_0, \lambda_0) \in U$.
-- A general solution takes the form $\Phi(t, t_0, x_0, \lambda_0): I \times I \times B \times \Lambda \to \R^n$ where $I \times I \times B \times \Lambda \subset U$.
 
-##### IVP: Autonomous Transform
+A general solution takes the form $\Phi(t, t_0, x_0, \lambda_0): I \times I \times B \times \Lambda \to \R^n$ where $I \times I \times B \times \Lambda \subset U$.
 
-A non-autonomous IVP can be translated into autonomous IVP with out loss of generality.
+##### IVP: Transform standard IVP to autonomous IVP
+
+A non-autonomous IVP can be translated into autonomous IVP without loss of generality.
 
 Consider the following non-autonomous IVP for $x \in C^1(J \subseteq \R \to \R^n)$:
 $$
-x'(t) = f(t, x(t)), \quad x(t_0) = x_0, \quad f \in C(U \subseteq \R \times \R^{n} \to \R^n), \quad (*)
+\boxed{x'(t) = f(t, x(t)), \quad x(t_0) = x_0, \quad f \in C(U \subseteq \R \times \R^{n} \to \R^n)}, \quad (*)
 $$
 where $U$ is open and $(t_0, x_0) \in U$.
 - Define $W = U - t_0$ as $U$ shifted along time axis.
@@ -212,7 +265,7 @@ where $U$ is open and $(t_0, x_0) \in U$.
 
 Now consider the following autonomous IVP for $y \in C^1(Q \subseteq \R \to \R^{n + 1})$:
 $$
-y'(s) = g(y(s)), \quad y(0) = (t_0, x_0), \quad g \in C(W \subseteq \R^{n + 1} \to \R^{n + 1}), \quad(**)
+\boxed{y'(s) = g(y(s)), \quad y(0) = (t_0, x_0), \quad g \in C(W \subseteq \R^{n + 1} \to \R^{n + 1})}, \quad(**)
 $$
 We can translate particular solutions between two systems:
 - For $x(t)$ solving $(*)$ on interval $I$.
@@ -234,23 +287,23 @@ We can translate general solutions between two systems:
     - Split $[t, \phi(t, t_0, x_0)] := \varphi(t - t_0, (t_0, x_0))$. $\phi: I \times I \times B \to \R^{n}$.
 
 Continuity conditions on $f$ can be translated to conditions on $g$.
-- $f(t, x): U \to \R^n$ is Lipschitz in $x$ uniformly in $t$ implies $g(y): W \to \R^{n + 1}$ is Lipschitz continuous.
+- $f(t, x): U \to \R^n$ is Lipschitz in $x$ and continuous in $t$ implies $g(y): W \to \R^{n + 1}$ is Lipschitz continuous.
 - $f(t, x) \in C^k(U \to \R^n)$ implies $g(y) \in C^k(W \to \R^{n + 1})$.
 
-##### IVP: Parameter Transform
+##### IVP: Transform parameterized non-autonomous IVP into standard IVP
 
 A parameterized non-autonomous IVP can be translated into a non-autonomous IVP with out loss of generality.
 
 Consider the following parameterized IVP for $x \in C^1(J \subseteq \R \to \R^n)$:
 $$
-x'(t) = f(t, x(t), \lambda), \quad x(t_0) = x_0, \quad f \in C(U \subseteq \R \times \R^{n} \times \R^{m} \to \R^n), \quad(*)
+\boxed{x'(t) = f(t, x(t), \lambda), \quad x_{\lambda_0}(t_0) = x_0, \quad f \in C(U \subseteq \R \times \R^{n} \times \R^{m} \to \R^n)}, \quad(*)
 $$
 where $U$ is open and $(t_0, x_0, \lambda_0) \in U$.
 - We can create a new IVP by viewing parameters as constant dimensions in solution.
 - Denote $y(t) = [x(t); \lambda]$. Then $y'(t) = [x'(t); 0]$.
 - Denote $g(t, y=[x;\lambda]) := f(t, x, \lambda)$ where $(t, y) \in \R \times \R^{n + m}$.
 
-Now consider the following non-Aut. IVP for $y \in C^{1}(J \subseteq \R \to \R^{n + m})$.
+Now consider the following standard IVP for $y \in C^{1}(J \subseteq \R \to \R^{n + m})$.
 $$
 y'(t) = g(t, y(t)), \quad y(t_0) = (x_0, \lambda_0), \quad g \in C(U \subseteq \R \times \R^n \times \R^m \to \R^n), \quad(**)
 $$
@@ -268,5 +321,5 @@ We can translate general solutions between two systems.
     - Define $\phi(t, t_0, (x_0, \lambda_0)):=[\Phi(\cdots), \lambda_0]$.
 - The converse works similarly.
 
-Continuity conditions on $f$ can be translated to conditions on $g$.
-- This part works similarly with **Parameter Transform**.
+Continuity conditions on $f$ can also be translated to conditions on $g$.
+

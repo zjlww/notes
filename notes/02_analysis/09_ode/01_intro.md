@@ -1,38 +1,21 @@
-##### Implicit ODE
+#### Introduction to ODEs
 
-Equation of $x \in C^k(J \subseteq \R \to \R)$ of the form
-$$
-F(t, x, x^{(1)}, \ldots, x^{(k)}) = 0, \quad F: U \subseteq\ \R^{k+2} \to \R, \quad (*)
-$$
-where $U$ is some open set is called an **implicit ODE** of order $k$.
-
-$\phi \in C^k(I)$ where $I \subseteq J$ is an interval is a **solution** of the ODE if $\forall t \in I^\circ: (t, \phi(t), \ldots, \phi^{(k)}(t)) \in U$ and $\forall t \in I^\circ: F(t, \phi(t), \ldots, \phi^{(k)}(t)) = 0$.
-
-Sometimes the **implicit ODE** $(*)$ can be transformed into **standard ODE**:
-$$
-x^{(k)}(t) = f(t, x, x^{(1)}, \ldots, x^{(k-1)}) , \quad f: V \subseteq \R^{k + 1} \to \R, \quad (**)
-$$
-
-##### Systems of ODE
+##### Systems of ODEs
 
 Equations of $x \in C^k(J \subseteq \R \to \R^n)$ of the form 
 $$
-x_i^{(k)}(t) = f_i(t, x, x^{(1)}, \ldots, x^{(k - 1)}), \quad f_i: V_i \subseteq \R^{k + 1} \to \R 
+x_i^{(k)}(t) = f_i(t, x, x^{(1)}, \ldots, x^{(k - 1)}), \quad f_i: V_i \subseteq \R^{nk + 1} \to \R
 $$
 is called an ODE system of order $k$.
-- It is said to be **linear** if it is of the form
+- It is said to be **linear** if it is of the following form
 $$
 x_i^{(k)}(t) = g_i(t) + \sum_{l=1}^n \sum_{j=0}^{k-1}f_{i,j,l} x_l^{(j)}(t)
 $$
-- It is said to be **autonomous** if all $f_i$ only depends on $x(t)$.
+- It is said to be **autonomous** if all $f_i$ do not depend on time $t$.
     - Suppose $\phi(t)$ is a solution, the time-shift $\phi(t - t_0)$ remains a solution.
     - W.L.O.G. for initial conditions, we can always assume $t_0 = 0$.
-- A standard ODE of order $k$ e.g. $(**)$ can be reduced into a system of ODEs.
-    - Define $y(t) = (x, x^{(1)}, \ldots, x^{(k - 1)}) \in C^1(J \subseteq \R \to \R^k)$.
-    - For $n = 1, \ldots, k - 1$ let $y_n'(t) = y_{n + 1}$.
-    - For $k = k$, let $y'_k(t) = f(t, y(t))$.
 
-##### First-order 1D autonomous equations
+##### First-order 1D autonomous ODE
 
 Consider the following ODE for $x \in C^1(J \subseteq \R \to \R)$.
 $$
@@ -123,3 +106,4 @@ $$
 - $\mu(t) x'(t) - \mu(t) a(t) x(t) - \mu(t) g(t) = 0$.
 - We would require $\mu'(t) = -\mu(t) a(t)$. $\mu(t) = -\exp \int a(t)$ is a solution.
 - Therefore $(\mu x)'(t) = (\mu g)(t)$. $\mu x = \int \mu g \dd t + c$.
+
