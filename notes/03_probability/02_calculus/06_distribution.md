@@ -1,198 +1,168 @@
-#### Kolmogorov's Equations and Fokker-Planck Equation of SDEs
+#### Distributions and Stochastic Differential Equations
+
+> Särkkä, S., & Solin, A. (2019). Applied Stochastic Differential Equations.
+>
+> "The solutions of SDEs are stochastic processes, and therefore their solutions have certain probability distributions and statistics."
 
 ##### Strong assumptions
 
-Consider the SDE $dX_t = b(t, X_t) dt + \sigma(t, X_t)d B_t$. $(B_t)$ and $(X_t)$ are $\R^d$ valued.
+We will be working under following assumptions in this section.
 
-Further given initial value $X_0 = Z$. And assume (**Strong condition**) is satisfied.
+Suppose $(\Omega, \F, (\F_t), [0, T], P)$ is a complete filtered probability space. Let $(\mathbf B_t)$ be a **$m$-dimensional standard Brownian motion**.
 
-- A unique strong solution $(X_t)$ exists adapted to $(\F_t)$. Where $\F_t = \sigma(Z, B_{\le t})$.
-- $(X_t) \in \V_c(T)$.
-- $(X_t)$ is Markov with respect to $(\F_t)$.
-- All weakly solutions are weakly unique.
+Consider an Itô stochastic differential equation (SDE) is of the form
 
-We make the following definitions:
+$$
+\dd \mathbf X_t = \mathbf b(\mathbf X_t, t) \dd t + \mathbf A(\mathbf X_t, t) \dd \mathbf B_t,\quad \mathbf X_0 = \mathbf Z, \quad t \in [0, T]
+\label{equ:forward_sde}
+$$
 
-- Define the **matrix** $a(t, x) = \sigma(t, x) \sigma^T(t, x)/2$.
-- Define the tensor product $a:b = \sum_{ij} a_{ij}b_{ij}$, for matrix function $a, b$.
-- Define the **generator** $\L$ of the diffusion process $(X_t)$.
-  - For $f(t, x): I \times \R^d \to \R$, $\L f(t, x) := \nabla f(t, x) \cdot b(t, x) + \nabla^2 f(t, x) : a(t, x)$.
-  - For $f(x): \R^d \to \R$, $\L f(x) := \nabla f(x) \cdot b(x) + \nabla^2 f(x): a(x)$ for autonomous SDE.
-- Define $\L^* g(t, x) := - \nabla \cdot (g(t, x)b(t, x)) + \nabla^2 :(g(t, x)a(t, x))$.
+- For $R=(r_{ij}), S = (s_{ij}) \in \R^{n \times n}$, define $R:S := \sum_{ij} r_{ij} s_{ij}$.
+- Define $\mathbf C(\mathbf x, t): \R^n \times [0, T] \to \R^{n \times n}$ as
+  $$
+  \mathbf C(\mathbf x, t) := \frac{1}{2}\mathbf A(\mathbf x, t) \mathbf A^T(\mathbf x, t)
+  $$
 
-Suppose $f \in C^{2}([0, T] \times \R^d)$ then by Ito formula:
+We will make the following **strong assumptions** in the following derivations.
+
+- $\mathbf b \in C(\R^n \times [0, T] \to \R^n)$ and $\mathbf A \in C(\R^n \times [0, T] \to \R^{n \times m})$ satisfies the strong conditions.
+- Existence and uniqueness of the strong solution. Weak uniqueness of weak solutions.
+- The strong solution $(\mathbf X_t)$ is **Markov** with respect to $(\F_t)$.
+- Existence of $C^2$ Markov transition densities.
+  - For $t > s$, we have $C^2(\R^n \times [0, T] \to [0, \infty))$ conditional density $p_{t, s}(\mathbf x_t|\mathbf x_s)$.
+  - Denote $E^{\mathbf x, s}$ for $E[\cdot | \mathbf X_{s} = \mathbf x]$ and $P^{\mathbf x, s}$ for $P(\cdot | \mathbf X_s = \mathbf x)$.
+- Consistent of the transition density with an local SDE IVP for all constant $(\mathbf x, s) \in \R^n \times [0, T]$.
+  $$
+  \dd \mathbf X_{t + s} = \mathbf b(\mathbf X_{t + s}, t + s) \dd s + \mathbf A(\mathbf X_{t + s}, t + s) \dd \mathbf B_s,\quad \mathbf X_s = \mathbf x, \quad t \in [s, T]
+  $$
+
+##### Generalized generators of Itô SDEs
+
+The **generalized generator** $\A$ of the Itô SDE is an operator on $\D :=C_c^\infty(\R^n \times [0, T] \to \R)$.
+
+Consider $f(\mathbf x, t) \in \D$.
+
+- Define $\nabla f(\mathbf x, t) := (D_{x_i} f(\mathbf x, t))_{i = 1}^n$, and $\nabla^2 f(\mathbf x, t) := (D_{x_i, x_j} f (\mathbf x, t))_{1 \le i, j \le n}$.
+- Define $f'(\mathbf x, t) := D_t f(\mathbf x, t)$. We will keep using prime for time derivatives in the following.
+- For convenient, we abbreviate the arguments $(\mathbf X_t, t)$ in most functions.
+
 $$
 \begin{aligned}
-df(t, X_t)  = & \part_0 f(t, X_t) dt + \nabla f(t, X_t) dX_t + \frac{1}{2} dX_t^T \nabla ^2 f(t, X_t) dX_t = \cdots \\
-= & (\part_0 f+ \L f)(t, X_t) dt + \nabla ^T f(t, X_t) \sigma(t, X_t) dB_t
+\dd f(\mathbf X_t, t) & = f' \dd t + \nabla f \cdot\dd \mathbf X_t + \nabla^2 f : \mathbf C\, \dd t\\
+& = f' \dd t + \nabla f \cdot \p{\mathbf b \, \dd t + \mathbf A \, \dd \mathbf B_t} + \nabla^2 f: \mathbf C \dd t\\
+& = \p{f' + \nabla f \cdot \mathbf b + \nabla^2 f : \mathbf C} \dd t + \nabla f \cdot \mathbf A \dd \mathbf B_t
 \end{aligned}
 $$
-Suppose $f \in C^2(\R^d)$ then by Ito formula, as expected:
+
+Therefore we have:
+
 $$
 \begin{aligned}
-df(X_t) & = \nabla f(X_t)^T dX_t + \frac{1}{2} dX_t^T \nabla^2 f(X_t) dX_t = \cdots\\
-& = \L f(t, X_t) dt + \nabla^T f(t, X_t) \sigma(t, X_t dB_t)
+\A f(\mathbf x, t) & := \lim_{\tau \downarrow 0}\frac{E^{\mathbf x, t}[f(\mathbf X_{t + \tau}, t + \tau)] - f(\mathbf x, t)}{\tau}\\
+& = \lim_{\tau \downarrow 0} \int_{\Omega} \frac{f(\mathbf X_{t + \tau},t + \tau) - f(\mathbf X_{t}, t)}{\tau} \dd P^{\mathbf x, t}(\omega)\\
+& = \lim_{\tau \downarrow 0} \int_{\Omega}\frac{1}{\tau}\s{\int_t^{t + \tau} \p{f'(\mathbf X_{t + \tau}, t + \tau) + \nabla^T f(\cdot) \, \mathbf b(\cdot) + \nabla^2 f(\cdot) : \mathbf C(\cdot)} \dd \tau} \dd P^{\mathbf x, t}(\omega)\\
+& = {f'(\mathbf x, t) + \nabla^T f(\mathbf x, t) \, \mathbf b(\mathbf x, t) + \nabla^2 f(\mathbf x, t) : \mathbf C(\mathbf x, t)}
 \end{aligned}
 $$
-##### Fokker-Planck-Kolmogorov equation
 
-Suppose the strong assumptions are true. Consider SDE in $\R^d$ on $I = [0, T]$.
+##### Generators of Itô SDEs
+
+The generator also dented by $\A_t$ of the Itô SDE is an operator on $\mathcal D := C_c^\infty(\R^n \to \R)$.
+
+Consider $f(\mathbf x) \in \D$. And we adopt previous conventions.
 $$
-dX_t = b(t, X_t) dt + \sigma(t, X_t)d B_t, \quad b(t, x) \in C(I \times \R^d \to \R^d), \quad \sigma(t, x) \in C(I \times \R^d \to \R^{d \times m})
+\dd f(\mathbf X_t)  = \p{\nabla^T f \, \mathbf b + \nabla^2 f : \mathbf C} \dd t + \nabla^T f \mathbf A \,\dd \mathbf B_t
+\label{generator}
 $$
-Suppose $X_t$ has density $p(t, x) \in C^2(I \times \R^d \to [0, \infty))$. And $p_0(x)$ is the density of $X_0$.
+Therefore we have,
+$$
+\A_t f(\mathbf x) := \lim_{\tau \downarrow 0}\frac{E^{\mathbf x, t}[f(\mathbf X_{t + \tau})] - f(\mathbf x)}{\tau} = \nabla^T f(\mathbf x) \, \mathbf b(\mathbf x, t) + \nabla^2 f(\mathbf x) : \mathbf C(\mathbf x, t)
+$$
 
-- For any $f \in C_c^2(\R^d \to \R)$, we have $d f(X_t) = \L f(X_t) dt + \nabla^T f(X_t) \sigma(t, X_t) dB_t$. Or
-  $$
-  f(X_{t + s}) - f(X_{t}) = \int_{t}^{t + s} \L f(X_\tau)d\tau + \int_{t}^{t + s}\nabla^T f(X_\tau) \sigma(\tau, X_\tau) dB_\tau
-  $$
-- Take expectation on both sides, and assume the last part is Martingale and swapping integral is fine.
-  $$
-  E[f(X_{t + s}) - f(X_{t})] = E \left [\int_{t}^{t + s} \L f(X_\tau)d\tau\right ] = \int_t^{t + s} E[\L f(X_\tau)] d\tau
-  $$
-- Take limit $s \downarrow 0$ on both sides, and assuming swapping limit and integral is fine.
-  $$
-  \begin{aligned}
-  \frac{\part E[f(X_t)]}{\part t} & = E[\L f(X_t)] = E[\nabla f(X_t) \cdot b(t, X_t) + \nabla^2 f(X_t) : a(t, X_t)]
-  \end{aligned}
-  $$
-  - Consider $E[\nabla f(X_t) \cdot b(t, X_t)]$.
-    $$
-    E[\nabla f(X_t) \cdot b(t, X_t)] = \int_{\R^d} \nabla f(x) \cdot b(t, x) p(t, x) dx = - \int_{\R^d} f(x) \cdot \nabla (b(t, x)p(t, x)) dx
-    $$
-  - Consider $E[\nabla^2 f(X_t):a(t, X_t)]$.
-    $$
-    E[\nabla^2 f(X_t):a(t, X_t)] = \int_{\R^d} \nabla^2 f(x):(a(t, x)p(t, x)) dx = \int_{\R^d} f(x) : \nabla^2(a(t, x)p(t, x))dx
-    $$
-- Since $E[f(X_t)] = \int_{\R^d} f(x) p(t, x) dx$, assuming swapping differential and integral is fine:
-  $$
-  \frac{\part E[f(X_t)]}{\part t} = \int_{\R^d} f(x) \frac{\part p(t, x)}{ \part t} dx
-  $$
-- Now combine what we have for any testing function $f(x) \in C^2_c(\R^d \to \R)$.
-  $$
-  \int_{\R^d} f(x) \frac{\part p(t, x)}{\part t} dx = \int_{\R^d} f(x) \L^* p(t, x) dx
-  $$
-- Therefore $p(t, x)$ satisfies the following **FPK** PDE:
-  $$
-  \part_t p(t, x) = \L^* p(t, x) = - \nabla \cdot (p(t, x)b(t, x)) + \nabla^2 :(p(t, x)a(t, x))
-   , \quad t \in [0, T], \quad p(0, x) = p_0(x)
-  $$
-  where $a(t, x) = \sigma(t, x) \sigma^T(t, x)/2$.
+Define the dual operator of $\mathcal A_t$ as $\mathcal A_t^*$ on $\mathcal D'$.
+$$
+\mathcal A^*_t p(\mathbf x) := \mathbf \nabla \cdot \p{b(\mathbf x, t) p(\mathbf x)} + \nabla^2 : \p{\mathbf C(\mathbf x, t) p(\mathbf x)}
+$$
 
-##### Kolmogorov backward equation
+##### Fokker-Planck Kolmogorov equation of Itô SDEs
 
-Suppose the strong assumptions are true. Consider SDE in $\R^d$ on $[0, T]$.
+Suppose that for $t \in [0, T]$, we have $C^2(\R^n \times [0, T] \to [0, \infty))$ density $p_{t}(\mathbf x_t)$.
 
-Let $(X_t)$ be the unique strong solution of the SDE. And $s < t$.
+For any $f \in \D = C_c^\infty(\R^n \to \R)$ we have equation $\ref{generator}$ therefore
+$$
+f(\mathbf X_{t + \tau}) - f(\mathbf X_{t}) = \int_t^{t + \tau} \p{\nabla f(\mathbf X_{u}, u) \cdot \mathbf b(\cdot) + \nabla^2 f(\cdot): \mathbf C(\cdot)} \dd t +\nabla f(\cdot) \cdot \mathbf A(\cdot) \dd \mathbf B_u
+$$
+Following assumptions $\nabla^T f(\mathbf X_t, t) \mathbf A(\mathbf X_t, t) \dd \mathbf B_t$ is a martingale with zero expectation. So
 
-- **Assume** $f \in C_c^2(\R^d)$. The expectation $E[f(X_t) | X_s = y]$ is given by **backward PDE**.
-  - Define $u(s, y) = E^{s, y}f(X_t) = E[f(X_t) | X_s = y]$. Ito formula gives:
-  $$
-  du(t, X_t) = (\part_0 u+ \L u)(t, X_t) dt + \nabla ^T u(t, X_t) \sigma(t, X_t) dB_t
-  $$
-  - Integrate from $s$ to $t$ gives:
-  $$
-  u(t, X_t) - u(s, X_s) = \int_s^t (\part_0 u + \L u)(r, X_r) dr + \int_s^t \nabla ^T u(r, X_r) \sigma(r, X_r) dB_r
-  $$
-  As $u(s, y) = E^{s, y} f(X_t)$, $u(t, X_t) = f(X_t)$. Then $E^{s, y} u(t, X_t) = E^{s, y}f(X_t) = u(s, y)$.
-  - Take expectation on $X_s = y$. **Assume** the ito integral part has zero mean.
-  $$
-  E^{s, y} u(t, X_t) - u(s, y) = 0 = E^{s, y}\int_s^t (\part_0 u + \L u)(r, X_r) dr
-  $$
-  - **Assume** swapping integral is legal. Divide by $(t - s)$ and take limit $t \downarrow s$ gives:
-  $$
-  0 = \lim_{t \to s} \frac{1}{t - s}\int_s^t E^{s, y}(\part_0 u + \L u)(r, X_r) dr =^* (\part_0 u + \L u)(s, y)
-  $$
-  - where $*$ follows from integral MVT. Therefore $u$ is the solution of following **backward PDE**.
-  $$
-  (\part_0 u + \L u)(s, y) = 0, \quad s < t, \quad u(t, y) = f(y)
-  $$
-- **Assume** $f \in C_c^2(\R^d)$. The solution of **backward PDE** is $u(s, y) = E[f(X_t) | X_s = y]$.
-  - Suppose $u(s, y)$ is the solution of the following differential equation:
-  $$
-  (\part_0 u + \L u)(s, y) = 0, \quad s < t, \quad u(t, y) = f(y)
-  $$
-  - **Assume** $u \in C^{1, 2}([0, T] \times \R^d)$, now apply (**Ito formula**):
-  $$
-  d u(t, X_t) = (\part_0 u + \L u)(t, X_t) dt + \nabla^T u(t, X_t) \sigma(t, X_t) dB_t
-  $$
-  - Integrate from $0$ to $t$ gives:
-  $$
-  \Delta u(t, X_t) = u(t, X_t) - u(0, X_0) = \int_0^t \nabla ^T u(r, X_r) \sigma(r, X_r) dB_r
-  $$
-  - **Assume** the ito integral part is $(\F_t)$-martingale.
-  - $\Delta u(s, X_s) = E[u(t, X_t) | X_s] - u(0, X_0) = E[f(X_t) | X_s] - u(0, X_0)$
-  - $u(s, X_s) = E[f(X_t) | X_s]$. So $u(s, y) = E[f(X_t) | X_s = y]$ a.s.
+$$
+\begin{aligned}
+E\s{f(\mathbf X_{t + \tau}) - f(\mathbf X_{t})} & = E\s{\int_t^{t + \tau} \p{\nabla f(\mathbf X_{u}) \cdot \mathbf b(\mathbf X_u, u) + \nabla^2 f(\mathbf X_u): \mathbf C(\mathbf X_u, u)} \dd u}\\
+& = \int_t^{t + \tau} E\s{\nabla f(\mathbf X_{u})\cdot \mathbf b(\mathbf X_u, u)} + E\s{\nabla^2 f(\mathbf X_u): \mathbf C(\mathbf X_u, u)} \dd u
+\end{aligned}
+\label{equ:expectation_difference}
+$$
+Consider the first term, apply Fubini's theorem + integral by parts.
+$$
+\begin{aligned}
+E\s{\nabla^T f(\mathbf X_{u}) \mathbf b(\mathbf X_u, u)} & = \int_{\R^n} \nabla f(\mathbf x)\cdot \mathbf b(\mathbf x, u) p_u(\mathbf x) \dd \mathbf x\\
+& = \int_{\R^n} f(\mathbf x) \nabla\cdot(\mathbf b(\mathbf x, u) p_u(\mathbf x)) \dd \mathbf x
+\end{aligned}
+$$
+Similarly for the second term, apply Fubini's theorem + integral by part twice.
+$$
+\begin{aligned}
+E\s{\nabla^2 f(\mathbf X_u): \mathbf C(\mathbf X_u, u)} & = \int_{\R^n} \nabla^2 f(\mathbf x):(\mathbf C(\mathbf x, u)p_u(\mathbf x)) d\mathbf x\\
+& = \int_{\R^n} f(\mathbf x) \nabla^2:(\mathbf C(\mathbf x, u)p_u(\mathbf x))\dd \mathbf x
+\end{aligned}
+$$
+Now consider equation $\ref{equ:expectation_difference}$, the expectations are continuous in $u$, therefore
+$$
+\begin{aligned}
+\lim_{\tau \downarrow 0} E\s{\frac{f(\mathbf X_{t + \tau}) - f(\mathbf X_{t})}{\tau}} & = E\s{\nabla f(\mathbf X_{t})\cdot \mathbf b(\mathbf X_t, t)} + E\s{\nabla^2 f(\mathbf X_t): \mathbf C(\mathbf X_t, t)}\\
+& = \int_{\R^n} f(\mathbf x) \c{ \nabla\cdot(\mathbf b(\mathbf x, t) p_t(\mathbf x)) + \nabla^2:(\mathbf C(\mathbf x, t)p_t(\mathbf x))} \dd \mathbf x
+\end{aligned}
+$$
+By assumptions, it is legal to swap the differential and integral here:
+$$
+D_t E[f(\mathbf X_t)] = E[D_t f(\mathbf X_t)] = D_t\int_{\R^n} f(\mathbf x) p_t(\mathbf x) \dd \mathbf x = \int_{\R^n} f(\mathbf x) p'_t(\mathbf x) \dd \mathbf x
+$$
+Therefore we have
+$$
+\forall f(\mathbf x) \in \D: \int_{\R^n} f(\mathbf x) p'_t(\mathbf x) \dd \mathbf x = \int_{\R^n} f(\mathbf x) \A^* p(\mathbf x) \dd \mathbf x
+$$
+Therefore $p_t(\mathbf x)$ satisfies the following **FPK PDE**:
+$$
+p'_t(\mathbf x) = \A^* p(\mathbf x),\quad  t \in [0, T]
+$$
 
-Suppose $(X_t)$ has transition density $p(t, x | s, y)$ for $0 \le s \le t \le T$.
+##### Weak-sense time reversal of SDEs
 
-- Suppose for some test function $f(x) \in C^2(\R^d)$.
-- Define $u(s, y) = E[f(X_t) | X_s = y] = \int f(x) p(t, x | s, y) dx$.
-- From above, with some assumptions, $u(s, y)$ satisfies the **backward PDE**:
-  $$
-  (\part_0 u + \L u)(s, y) = 0, \quad s < t, \quad u(t, y) = f(y)
-  $$
-- **Assume** the following operation makes sense at all:
-  $$
-  \part_0 u(s, y) = \int f(x) \part_s p(t, x | s, y) dx; \quad \L u(s, y) = \int f(x) \L_y p(t, x | s, y) dx\\
-  (\part_0 u + \L u)(s, y) = \int f(x) (\part_s p + \L_y p)(t, x | s, y) dx = 0, \quad s < t, \quad p(x, t | y, t) = \delta(x - y)
-  $$
-- Then the transition density $p(t, x | s, y)$ satisfies the following **backward PDE** in the **weak sense**.
-  $$
-  \part_s p(t, x | s, y) + \L_y p(t, x | s, y) = 0, \quad s < t, \quad p(t, x|t, y) = \delta(x - y)
-  $$
+> I do not have enough weapons to prove the more general result proved in the following paper.
+>
+> Castañón, D.A. (1982). Reverse-time diffusion processes. *IEEE Trans. Inf. Theory, 28*, 953-956.
+>
+> For now, I can demonstrate a weaker result with restricted generality.
 
-Suppose the SDE is of the form $dX_t = b(X_t) dt + \sigma(X_t) dB_t$, i.e. it is autonomous.
+Suppose $(\wbar\Omega, \wbar\F, (\wbar\F_t), T = [T, 0], P)$ is a complete filtered probability space. Let $(\mathbf B_t)$ be a **$m$-dimensional standard Brownian motion**.
 
-- Assume $f \in C_c^2(\R^d)$. The expectation $E[f(X_t) | X_0 = x]$ is a solution of **backward PDE**.
-  - Define $u(t, y) = E^{t, y}f(X_T) = E[f(X_T) | X_t = y]$.
-  - From above discussion, $u$ is the solution to the backward PDE:
-    $$
-    (\part_0 u + \L u)(t, y) = 0, \quad t < T, \quad u(T, y) = f(y)
-    $$
-  - Define $v(t, x) = u(T - t, x) = E^{T - t, x} f(X_T) = E^{0, x} f(X_{t})$.
-  - Then $v$ is the solution to the backward PDE:
-  $$
-  (\part_0 v - \L v)(t, x) = 0, \quad s \in (0, T), \quad v(0, x) = f(x)
-  $$
-- Assume $f \in C_c^2(\R^d)$. A solution of **backward PDE** $v(t, x) = E[f(X_t) |X_0 = x]$. (**TODO**)
+Consider the following class of reverse-time SDE. We would like to find $\mathbf {\wbar b}(\mathbf x, t)$ that gives an appropriate time reversal SDE.
+$$
+\dd \mathbf {\wbar X}_t = \mathbf {\wbar b}(\mathbf {\wbar X}_t, t) \dd t + \lambda \mathbf {{A}}(\mathbf {\wbar X}_t, t) \dd \mathbf {\wbar {B}}_t,\quad \mathbf{\wbar X}_T = \mathbf X_T, \quad t \in [T, 0]
+$$
+Recall that the forward SDE has FPK equation.
+$$
+p'_t(\mathbf x) = D_i \p{\mathbf b^{(i)}(\mathbf x, t) p_t(\mathbf x)} + D_{ij} \p{\mathbf C^{(i,j)}(\mathbf x, t) p_t(\mathbf x)}, \quad t \in [0, T]
+$$
+Notice that the backward SDE has FPK equation, the sign is **flipped** due to time reversal.
+$$
+p_t'(\mathbf x) = -D_i \p{{\mathbf {\wbar b}}^{(i)}(\mathbf x, t) p_t(\mathbf x)} - \lambda^2 D_{ij} \p{\mathbf C^{(i, j)}(\mathbf x, t) p_t(\mathbf x)}, \quad t \in [0, T]
+$$
+To achieve weak-sense time reversal, we need the two FPK equations to be equal. Assuming that $p_t(\mathbf x) > 0$ on $\R^n$,
+$$
+\begin{aligned}
+{{\mathbf {\wbar b}}^{(i)}(\mathbf x, t)} & = -{\mathbf b^{(i)}(\mathbf x, t)} - \frac{(1 + \lambda^2)}{p_t(\mathbf x)} D_{j}\p{\mathbf C^{(i,j)}(\mathbf x, t) p_t(\mathbf x)}\\
+& = -{\mathbf b^{(i)}(\mathbf x, t)} - (1 + \lambda^2) \p{D_j \mathbf C^{(i, j)}(\mathbf x, t) + \mathbf C^{(i, j)}(\mathbf x, t)D_j \log p_t(\mathbf x)}
+\end{aligned}
+$$
+Notice that for $\lambda = 0$, this gives the reverse **probability flow ODE**.
 
-##### Heat equation
-
-Suppose $b(t, x) = 0$ and $\sigma(t, x) = 1$, that is $(X_t)$ is a $\R^d$ standard BM.
-
-- The generator of $(X_t)$ is $\L f(t, x) = \Delta f(t, x)/2$.
-- The initial-value backward equation is $\part_0 u(t, x) = \Delta u(t, x) / 2$. Which is the **heat equation**.
-- For $f \in C_c^2(\R^d)$, $u(t, x) = E[f(X_t) | X_0 = x]$ solves the heat equation with $u(0, x) = f(x)$.
-
-##### Kolmogorov forward equation
-
-Suppose the strong assumptions are true. Consider SDE in $\R^d$ on $[0, T]$.
-
-Let $(X_t)$ be a **weak solution**.
-
-- Let $p(t, x | s, y)$ be the transition density of $(X_t)$. **Assume** $\part_t p(t, x | s, y)$ is continuous in $t$.
-  - Consider some test function $f(x) \in C_c^2(\R^d)$. Ito formula gives:
-  $$
-  df(X_t)  = \nabla f(X_t) dX_t + \frac{1}{2} dX_t^T \nabla ^2 f(X_t) dX_t =  \L f(t, X_t) dt + \nabla ^T f(X_t) \sigma(t, X_t) dB_t
-  $$
-  - Integrate from $s$ to $t$ gives:
-  $$
-  f(X_t) - f(X_s) = \int_s^t \L f(r, X_r) dr + \int_s^t \nabla^T f(X_r) \sigma(r, X_r) dB_r
-  $$
-  - Take expectation on $X_s = y$. **Assume** the Ito integral part has zero mean.
-  $$
-  E^{s, y} f(X_t) - f(y) = E^{s, y} \int_s^t \L f(r, X_r) dr
-  $$
-  - **Assume** swapping expectation and integral is legal. Then
-  $$
-  \int_{\R^d} f(x) p(t, x | s, y) dx - f(y) = \int_s^t \int_{\R^d} \L f(r, x) p(r, x | s, y) dx dr
-  $$
-  - **Assume** swapping derivative and integral is legal. Then
-  $$
-  \int_{\R^d} f(x) \part_t p(t, x | s, y) dx = \int_{\R^d} \L f(t, x) p(t, x | s, y)dx = \int_{\R^d} f(x) \L^*_x p(t, x | s, y) dx
-  $$
-  - Then the transition probability is a **weak solution** to the **forward PDE**:
-  $$
-  \part_t p(t, x | s, y) - \L_x^* p(t, x | s, y) = 0, \quad t > s, \quad p(s, x | s, y) = \delta(x - y)
-  $$

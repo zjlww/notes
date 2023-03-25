@@ -29,15 +29,12 @@ Suppose $X \sim \mu$ and $Y = AX + a$ where $A \in \R^{n \times m}$ and $a \in \
 - Denote the distribution of $X$ as $\mathcal N(0, I_m)$ and $Y$ as $\mathcal N(a, \Sigma)$. These are called multivariate Normal distributions.
 
 We have the following results for multivariate Normals:
+
 - $\mathcal N(a, \Sigma) * \mathcal N(b, \Lambda) = \mathcal N(a + b, \Sigma + \Lambda)$.
-
 - Suppose $X \sim \mathcal N(a, \Sigma)$, then $Y = AX + b \sim \mathcal N(Aa + b, A\Sigma A^*)$.
-
 - Suppose $X \sim \mathcal N(a, \Sigma)$, then $X_k \sim \mathcal N(a_k, \Sigma_{kk})$.
-
 - Suppose $X \sim \mathcal N(a, \Sigma)$. $\Sigma$ is diagonal if and only if $(X_k)$ are independent.
     - $\Sigma$ is diagonal iff $\varphi_X(\theta) = \times_i \varphi_{X_i}(\theta_i)$ iff $(X_k)$ are independent.
-    
 - Suppose $X \in \L(\Omega \to \R^d)$. $X \sim \mathcal N(a, \Sigma)$ iff for all $\Gamma \in \R^d$, $\Gamma^T X$ is Gaussian.
     - The $\to$ direction is apparent. For the other direction...
     - Coordinates $X_k$ are clearly all Gaussian.
@@ -45,22 +42,17 @@ We have the following results for multivariate Normals:
     - $a = E[\pd \gamma X] = \gamma^T E[X] = \pd \gamma z$.
     - $\sigma^2 = E[\pd{\gamma}{X}^2] - a^2 = \gamma^T \Gamma \gamma$.
     - Therefore $E[e^{i \pd {\gamma}{X}}] = e^{i \pd \gamma z} e^{-\pd{\Gamma \gamma}{\gamma}/2}$. So $X \sim \mathcal N(a, \Gamma)$.
-    
 - Suppose $X \sim \mathcal N(a, \Sigma)$ and $\Sigma$ is not invertible. The distribution is called **degenerate**.
     - $X$ is degenerate if and only if the coordinates $(X_k)$ are linearly dependent (with probability one).
         - Suppose $X_k = +_{i \neq k}c_i X_i$ then $\cov(X_k, X_j) = +_{i \neq k} \cov(X_i, X_j)$. So $\Sigma$ is not invertible.
         - Suppose $\Sigma$ is not invertible, then suppose $\Sigma\theta = 0$. The projection $\pd \theta X$ is a Gaussian with $E[\pd \theta X] = \theta^T E[X]$ and zero variance. So with probability one, $(X_k)$ are linearly dependent.
-    
 - Consider $\mu = \mathcal N(a, \Sigma)$ where $\Sigma$ is invertible, then $\mu$ has density function $g(x): \R^n \to [0, \infty)$:
   $$
   g(y)=\frac{1}{(2 \pi)^{m / 2}(\operatorname{det} \Sigma)^{1 / 2}} \exp\left[{-\frac{1}{2}{(y-a)}^T{\Sigma^{-1}(y-a)}}\right]
   $$
-  
     - Define quadratic form $\Delta^2 = (y-a)^T \Sigma^{-1}(y-a)$.
-
-- (**Convergence in law: TODO**) Suppose $(X_n), X \in \L(\Omega \to \R^d)$ where $X_n$ are Gaussians and $X_n \to X$ in law. Then $X$ is Gaussian.
-
-- (**Convergence in L2: TODO**) Suppose $(X_n), X \in \L(\Omega \to \R^d)$ where $X_n$ are Gaussians and $X_n \to X$ in $\L_2$. Then $X$ is Gaussian.
+- (**Convergence in law**) Suppose $(X_n), X \in \L(\Omega \to \R^d)$ where $X_n$ are Gaussians and $X_n \to X$ in law. Then $X$ is Gaussian. ==TODO==
+- (**Convergence in L2**) Suppose $(X_n), X \in \L(\Omega \to \R^d)$ where $X_n$ are Gaussians and $X_n \to X$ in $\L_2$. Then $X$ is Gaussian. ==TODO==
 
 ##### Gaussian family
 
@@ -91,5 +83,5 @@ Suppose $X \sim \mathcal N(\mu, \sigma^2)$. Define $Y = \exp X$. Then
 
 ##### Chi-square distribution
 
- Suppose $X \sim \mathcal N(0, 1)$. Then $Y = X^2 \sim \chi^2(1)$.
+Suppose $X \sim \mathcal N(0, 1)$. Then $Y = X^2 \sim \chi^2(1)$.
 

@@ -106,8 +106,6 @@ Then $\sum f_k$ converges uniformly on $S$. If
 
 ##### Dirichlet's Test for Series
 
- 
-
 - Suppose $f_n: S \subseteq \R \to \C$, suppose $F_n(x) = \sum_{k=1}^n f_k(x)$.
 - Suppose $F_n$ is uniformly bounded on $S$.
 - Suppose $g_n : S \to [0, \infty)$. $g_{n+1}(x) \le g_n(x)$.
@@ -152,8 +150,10 @@ Suppose $(\Omega, \A, \mu)$ is a **measure space**. And $f, (f_n)_{n = 1}^\infty
 Suppose $f, g, (f_n)_{n = 1}^\infty \in \L^p(\Omega \to \mathbf F, \mu)$ where $p \in (0, \infty]$.
 
 8. (**In $\L_p$ norm**) $f_n \to f$ in $\L_p$ if $\|f_n - f\|_p \to 0$.
-   - $f_n \to f$ in $\L_p$ then $\mu f_n \to \mu f$.
-     - Since $|\mu f_n - \mu f| \le \mu |f_n - f| \to 0$.
+   - For $p \ge 1$, $f_n \to f$ in $\L_p$ implies $\mu f_n \to \mu f$.
+     - $\n{f_n - f}_1 \le \n{f_n - f}_p \n{1}_{q}$ by Hölder's inequality.
+     - Therefore $f_n \to f$ in $\L_1$ norm.
+     - Notice that $|\mu f_n - \mu f| \le \mu |f_n - f| \to 0$.
    - $f_n \to f$ in $\L_\infty$ **iff** $f_n \rightrightarrows f$ $\mu$-a.e.
    - $f_n \to f$ in $\L_p$ then $f_n \to f$ in $\mu$ globally.
      - For $p < \infty$, by (**Markov**) $\mu\{|f_n - f| \ge \epsilon\} \le \epsilon^{-p}\|f_n - f\|_p^p \to 0$.
@@ -221,6 +221,14 @@ Let $(E, d)$ be a metric sapce. And $(\Omega, \A, \mu)$ is a measure space. Supp
   - If $f_n \to f$ in $\mu$ then $(f_n)$ is Cauchy in $\mu$.
 - (**Subsequence**) ==TODO== $f_n \to f$ in $\mu$ globally, then there exists $(f_k) \subset (f_n)$ where $f_k \rightrightarrows f$ in $\mu$.
   - See Ash. pp.97 for the proof.
+
+##### Product and convergence in measure ==TODO==
+
+> See this stackexchange [page](https://math.stackexchange.com/questions/456393/convergence-in-measure-of-products).
+
+Suppose $f, (f_n)_{n = 1}^\infty, g, (g_n)_{n = 1}^\infty \in \L(\Omega \to \R, \mu)$. Where $f_n \to f$ and $g_n \to g$ in $\mu$, and $\mu$ is a finite measure.
+
+Then $f_n g_n \to fg$ in measure.
 
 #### Convergence in Norm
 

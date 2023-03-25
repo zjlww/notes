@@ -140,76 +140,54 @@ $$
 where $I$ is a closed interval.
 
 - Improved Picard-Lindelof guarantees existence and uniqueness on $I$ given any initial $x(t_0)$ value.
-
   - We could take $I = \R$, and the existence and uniqueness of solution apparently holds.
-
 - Let $\phi(t, t_0, x_0): I \times I \times \C^n \to \C^n$ be the unique general solution.
-
 - The space of all solutions is a $n$ dimensional subspace of $C^1(I \to \C^n)$.
   - Superposition: $\forall x_0, x_1 \in \C^n: \phi(t, t_0, x_0) + \phi(t, t_0, x_1) = \phi(t, t_0, x_0 + x_1)$.
   - Scaling: $\phi(t, t_0, cx_0) = c\phi(t, t_0, x_0)$.
-
 - Define $\Pi(t, t_0) := [\phi(t, t_0, e_1); \ldots; \phi(t, t_0, e_n)]: I \times I \to \C^{n \times n}$.
   - $\phi(t, t_0, x_0) = \Pi(t, t_0) x_0 = \sum_{j = 1}^n \phi(t, t_0, e_j) x_{0, j}$.
     - This can be viewed as a linear isomorphism, from $\C^n$ to $C^1(I \to \C^n)$.
-    
   - For any $s, t \in I$, $\Pi(s, t) \in \C^{n \times n}$ is an invertible matrix.
     - Uniqueness of solution based on the initial value guarantees invertibility.
-    
   - For any $t_0 \in I$, $\Pi(t, t_0): I \to \C^{n \times n}$ is called the **principal matrix solution** at $t_0$.
     - And we will call $\Pi: I\times I \to \C^{n \times n}$ the **principal matrix**.
-    
   - For any $t_0 \in I$, $\Pi(t, t_0)$ is the unique solution of following matrix valued IVP.
     $$
     D_1\Pi(t, t_0) = A(t) \Pi(t, t_0), \quad \Pi(t_0, t_0) = \I
     $$
-    
   - Suppose $A(t) = A$ is a constant, $\Pi(t, s) = e^{(t - s)A}$.
-
     - Recall that the solution for $x'(t) = Ax(t)$ starting from $(0, x_0)$ is $\exp(tA)x_0$.
     - Therefore $\Pi(t, s) = \exp({(t - s)A})$.
-    
   - We have the bound $\n{\Pi(t, s)} \le \exp{{\int_{s}^t \n{A(\tau)} \dd \tau}}$.
-
     - Since $\Pi(t, s) = \int_s^t A(\tau) \Pi(\tau, s) \dd \tau$.
     - Therefore $\n{\Pi(t, s)} \le \int_s^t \n{A(\tau)} \n{\Pi(\tau,s)} \dd s$.
-    - Now apply Gronwall's inequality gives the result.
-    
+    - Now apply Gronwall's inequality gives the result
   - $\forall s, t, u \in I: \Pi(s, t)\Pi(t, u) = \Pi(s, u)$.
     - Take $u = s$, then $\forall s, t \in I: \Pi(s, t) = \Pi(t, s)^{-1}$.
-    
   - Observe the following:
     - $D_1\Pi(t, s) = A(t) \Pi(t, s)$.
-    
     - $D_1(\Pi(t, s)^{-1}) = -\Pi(t, s)^{-1}D_1 \Pi(t, s) \Pi(t, s)^{-1} = - \Pi(t, s)^{-1}A(t)$.
       - For the derivative of matrix inverse, observe that
         $$
         (I)' = (\Pi \Pi^{-1})' = \Pi' \Pi^{-1} + \Pi (\Pi^{-1})' \implies (\Pi^{-1})' = -\Pi^{-1}\Pi' \Pi^{-1}
         $$
-      
     - Therefore $D_2 \Pi(s, t) = -\Pi(s, t) A(t)$.
-
 - Suppose $\phi_1, \ldots, \phi_n \in C^1(I \to \C^n)$ are $n$ solutions. Define $U(t) = [\phi_1(t); \ldots; \phi_n(t)]: I \to \C^{n \times n}$.
   - The determinant of $U(t)$ is called Wronski determinant. $W(t)= \det(\phi_1, \ldots, \phi_n) := \det U(t)$.
   - Due to the linearity of solutions $\exists t \in I: W(t) \neq 0 \implies \forall t \in I: W(t) \neq 0$.
   - If $W(t) \neq 0$, $U(t)$ is called a **fundamental matrix solution**. 
   - For any $t_0 \in I$, $\Pi(t, t_0)$ is also a fundamental matrix solution.
-
 - A fundamental matrix solution $U(t)$ contains information about all solutions.
   - The columns of $U$ spans the entire solution space.
-
   - $\Pi(t, t_0)$ can be derived from $U(t)$.
-
     - Let $X_0 = (x_0^{(1)}, \ldots, x_0^{(n)}) \in \C^{n \times n}$.
     - Suppose $U(t) = \Pi(t, t_0) X_0$.
     - Then $U(t) U(s)^{-1} = \Pi(t, t_0) \Pi(t_0, s) = \Pi(t, s)$.
-
   - Therefore $\phi(t, t_0, x_0)$ can also be derived from $U(t)$.
     $$
     \phi(t, t_0, x_0) = \Pi(t, t_0) x_0 = U(t)U(t_0)^{-1} x_0
     $$
-  
-- 
 
 ##### Abel's identity ==TODO==
 
@@ -240,23 +218,17 @@ where $I$ is a compact interval.
 **Variation of parameters** gives a method to find a particular solution:
 
 - Recall that the general solution of the homogeneous part is $x(t) = \Pi(t, t_0)x_0$.
-
 - Now assume the solution is of the following form where parameter $x_0$ is replaced with a unknown function $c(t)$.
   $$
   x(t) = \Pi(t, t_0) c(t),\quad c(t) \in C^1(I \to \C^n), \quad x(t_0) = x_0 = c(t_0)
   $$
-  
 - Then we have
   $$
   x'(t) = D_1 \Pi(t, t_0) c(t) + \Pi(t, t_0) c'(t) = A(t) x(t) + \Pi(t, t_0) c'(t)
   $$
-  
 - Compare this with $x'(t) = A(t) x(t) + g(t)$ shows we must have $g(t) = \Pi(t, t_0)c'(t)$.
-
 - Therefore $c'(t) = \Pi(t_0, t) g(t)$. This is a linear homogeneous IVP.
-
 - A solution for $c(t)$ would be $c(t) = x_0 + \int_{t_0}^t \Pi(t_0, s) g(s) \dd s$.
-
 - Therefore the full solution is given by
   $$
   x(t) = \Pi(t, t_0) x_0 + \int_{t_0}^t \Pi(t, s) g(s) \dd s
@@ -268,12 +240,10 @@ where $I$ is a compact interval.
   - $\Psi(t) x'(t) = \Psi(t)A(t)x(t) + \Psi(t) g(t)$.
   - We hope that $\Psi(t)x'(t) - \Psi(t)A(t) x(t) = (\Psi(t)x(t))'$.
   - Therefore $\Psi'(t) = -\Psi(t)A(t)$.
-
 - Since $D_2 \Pi(t_0, t) = -\Pi(t_0, t) A(t)$. $\Pi(t_0, t)$ is a integrating factor.
   - $\Pi(t_0, t) x'(t) = \Pi(t_0, t)A(t) x(t) + \Pi(t_0, t)g(t)$.
   - $D_t(\Pi(t_0, t) x(t)) = \Pi(t_0, t) g(t)$. Now integrate on both sides.
   - $\Pi(t_0, t)x(t) - x_0 = \int_{t_0}^t \Pi(t_0, s)g(s) \dd s$.
-
 - Again, the full solution is given by
   $$
   x(t) = \Pi(t, t_0) x_0 + \int_{t_0}^t \Pi(t, s) g(s) \dd s

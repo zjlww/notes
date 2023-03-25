@@ -146,10 +146,14 @@ Suppose $\G < \F$ is a $\sigma$-algebra.
     \end{aligned}
     $$
 
-- (**Projection in L2**) Suppose $V= L^2(\Omega \to \eR, \F, P)$ a Hilbert space.
+- (**Projection in L2**) Notice that $V= L^2(\Omega \to \eR, \F, P)$ a Hilbert space, with inner product $\pd{X}{Y} = E[XY]$.
 
-  - $U = L^2(\Omega\to \eR, \G, P)$ is a closed subspace of $V$.
-  - Suppose $Y \in V$ then $E[Y|\G] = P_U Y$.
+  - Note that $U = L^2(\Omega\to \eR, \G, P)$ is a closed subspace of $V$.
+
+  - Suppose $Y \in V$ then $E[Y|\G] = P_U Y$. Since
+    $$
+    \forall A \in \G: \int_{A} Y(\omega) \dd P(\omega) = E[1_A Y] = E[1_A P_UY] = \int_A P_UY(\omega) \dd P(\omega)
+    $$
 
 - (**Jensen**) Suppose $I \subseteq \R$ is a open interval and $g: I \to \R$ is convex. And $Y(\omega) \in I$. Suppose $E[Y]$ is finite. If $\H \le \F$, then $E[g(Y) | \H] \ge g \circ E[Y | \H]$.
 

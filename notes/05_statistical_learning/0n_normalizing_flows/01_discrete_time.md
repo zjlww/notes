@@ -6,7 +6,7 @@
 
 Suppose $f: \R^d \to \R^d$ is a non-degenerate $C^1$-diffeomorphism (or just **smooth** in this section).
 
-- $f$ is a bijection with inverse $\phi^{-1}$.
+- $f$ is a bijection with inverse $f^{-1}$.
 - $f \in C^1(\R^d \to \R^d)$ and $f^{-1} \in C^1(\R^d \to \R^d)$.
 - $\forall x \in \R^d: \abs{\det f'(x)} > 0$.
 

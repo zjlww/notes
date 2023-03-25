@@ -13,15 +13,15 @@ A real-valued stochastic process $(B_t)_{t \in [0, T]}$ on $(\Omega, \F, P)$ is 
 Immediately following this definition:
 
 - $(B_t)$ has a **continuous** modification by (**Kolmogorov's continuity theorem**).
-
 - $(B_t)$ is a **centered** process since $\forall t\in [0, T]: E[B_t] = 0$.
-
 - $(B_t)$ is a **Gaussian process** with $\cov(B_s, B_t) = \min(s, t) = s\land t$.
   $$
   s \le t \implies E[B_sB_t] = E\s{(B_s + B_t - B_s) B_s} = E\s{B_s^2} + E\s{(B_t - B_s) B_s} = s
   $$
 
 A Brownian motion with **continuous path** is called a **standard Brownian motion**.
+
+For $s \ge 0$. Define $X_t = B_{s + t} - B_s$. Then $(X_t)$ is a standard BM.
 
 ##### Construction of Brownian motion ==TODO==
 
@@ -121,6 +121,7 @@ Suppose $X_t(\omega)$ is a real valued random processes on $t \in [a, b]$. We ex
 - $\sum_{i = 1}^{n_r} (\Delta_{r, i} X(\omega))^2$ is now a sequence of random variables.
 - The limit is considered to be in various **modes of convergence** on $\L(\Omega \to \R)$.
 - When stating the quadratic variation of a random process, we also state the mode of convergence.
+- The same need of stating the mode of convergence also crop up in the definition of stochastic integral with limit of sums.
 
 ##### Covariation of functions
 
@@ -161,11 +162,8 @@ For all $T > 0$, $[B_t(\omega)]_T = T$ essentially pointwise on $\Omega$. ==TODO
 For all $T > 0$, $[B_t(\omega)]_T = T$ in $\L_2$ (by Arguin).
 
 - Consider a fixed partition $P = (t_i)_{i = 0}^n \in P[0, T]$.
-
 - Define $S = \sum_{j = 0}^{n - 1}(B_{t_{j + 1}}-B_{t_j})^2$.
-
 - Define $X_j = (B_{t_{j+1}} - B_{t_j})^2 - (t_{j + 1} - t_j)$ for $j \in \c{0, \ldots n - 1}$.
-
 - Then observe
   $$
   \norm{S - t}_2^2= E\left[\sum_{j = 0}^{n - 1}X_j\right]^2 =\sum_{i = 0}^{n - 1}E[X_i^2]= \sum_{i = 0}^{n - 1}2(t_{i + 1} - t_i)^2 \le \|P\| \cdot t \to 0
@@ -181,35 +179,12 @@ The following properties of the Brownian path $B_t(\omega)$ immediately follows:
 - For any $l > 0$, $B_t(\omega)$ is **not** of bounded variation on any interval with length $l$ for probability one.
 - For any $l > 0$, $B_t(\omega)$ is **not** monotone on any interval with length $l$ for probability one.
 
-#### Transformations of Brownian Motion
+##### Covariation of independent Brownian motions
 
-##### Brownian Bridge
+Suppose $(X_t)$ and $(Y_t)$ are independent standard Brownian motions. Then $[X, Y]_t = 0$ in $\L_2$.
 
-A real valued **Gaussian process** $(B_t)_{t \in [0, T]}$ on $(\Omega, \F, P)$ with zero mean and covariance function $\cov(B_s, B_t) = s(T - t)/T$ if $s \le t$ is called a **Brownian Bridge**.
-
-- $(B_t)$ has a **continuous** modification.
-- $P(B_0 = 0) = 1$ and $P(B_T = 0) = 1$.
-- When $T = 1$, the process is called a standard Brownian Bridge.
-
-##### Transformation of standard BM
-
-Suppose $(B_t)$ is a standard BM on $(\Omega, \F, P)$. Then
-
-- (**Time shift**) Suppose $s \ge 0$. Define $X_t = B_{s + t} - B_s$. Then $(X_t)$ is a standard BM.
-- (**Scale**) Suppose $\sigma > 0$. Define $X_t = \sigma B_t$.
-    - Then $(X_t)$ is a **scaled standard BM** where $\cov(X_s, X_t) = \sigma^2 s\land t$.
-- (**Bridge**) Define $Z_t = B_t - tB_1$ on $t \in [0, 1]$.
-    - Then $Z_t$ is a **standard Brownian Bridge**.
-    - Random variable families $\{Z_t: t \in [0, 1]\} \perp \{B_t: t \ge 1\}$.
-        - As for $s \le 1 \le t$, $E[Z_sB_t] = E[(B_s - s B_1)B_t] = 0$.
-- (**Time reversal**) Define $Z_t = B_1 - B_{1 - t}$ on $t \in [0, 1]$. Then $Z_t$ is a natural BM.
-- (**Weak reflection**) Suppose $s \ge 0$. Define $X_t = B_t 1_{t \le s} + (2B_s - B_t) 1_{t> s}$.
-    - Then $(X_t)$ is a standard BM.
-    - Suppose $(B_t)$ is adapted to $(\F_t)$, clearly $(X_t)$ is also adapted to $(\F_t)$.
-- (**Time inverse**) Let $Z_t = t B_{1 / t}$ when $t > 0$ and $Z_t = 0$ when $t = 0$.
-    - Then $(Z_t)$ is a Brownian motion.
-        - When $0 < s \le t$, $\cov(Z_s, Z_t) = \cov(sB_{1/s}, t B_{1/t}) = st/t = s$.
-    - When $(B_t)$ is continuous, $(Z_t)$ is continuous on $(0, \infty)$, and a.s. continuous at $0$.
-        - Continuous at $0$ is derived via distribution argument.
-- (**OU process**) Let $X_t = e^{-2t} B_{e^{4t}}/\sqrt 2$ for $t \in \R$. Then $X_t$ is an **OU process**.
+Consider any sequence of shrinking partitions. And suppose one of the partitions is $(t_i)_{i = 0}^n \in P[0, t]$.
+$$
+E\s{\sum_{i = 0}^{n - 1} \Delta X_i \Delta Y_i - 0}^2 = \sum_{i = 0}^{n - 1} E \Delta X_i^2 E\Delta Y_i^2 = \sum_{i = 0}^{n - 1} \Delta t_i^2 \to 0
+$$
 
