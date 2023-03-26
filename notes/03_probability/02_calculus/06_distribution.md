@@ -79,7 +79,7 @@ $$
 \A_t f(\mathbf x) := \lim_{\tau \downarrow 0}\frac{E^{\mathbf x, t}[f(\mathbf X_{t + \tau})] - f(\mathbf x)}{\tau} = \nabla^T f(\mathbf x) \, \mathbf b(\mathbf x, t) + \nabla^2 f(\mathbf x) : \mathbf C(\mathbf x, t)
 $$
 
-Define the dual operator of $\mathcal A_t$ as $\mathcal A_t^*$ on $\mathcal D'$.
+Define the adjoint operator of $\mathcal A_t$ as $\mathcal A_t^*$ on $\mathcal D'$.
 $$
 \mathcal A^*_t p(\mathbf x) := \mathbf \nabla \cdot \p{\mathbf b(\mathbf x, t) p(\mathbf x)} + \nabla^2 : \p{\mathbf C(\mathbf x, t) p(\mathbf x)}
 $$
