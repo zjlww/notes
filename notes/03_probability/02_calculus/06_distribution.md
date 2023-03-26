@@ -81,7 +81,7 @@ $$
 
 Define the dual operator of $\mathcal A_t$ as $\mathcal A_t^*$ on $\mathcal D'$.
 $$
-\mathcal A^*_t p(\mathbf x) := \mathbf \nabla \cdot \p{b(\mathbf x, t) p(\mathbf x)} + \nabla^2 : \p{\mathbf C(\mathbf x, t) p(\mathbf x)}
+\mathcal A^*_t p(\mathbf x) := \mathbf \nabla \cdot \p{\mathbf b(\mathbf x, t) p(\mathbf x)} + \nabla^2 : \p{\mathbf C(\mathbf x, t) p(\mathbf x)}
 $$
 
 ##### Fokker-Planck Kolmogorov equation of Itô SDEs

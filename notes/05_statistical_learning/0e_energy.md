@@ -47,36 +47,6 @@ Continue from (**EBMs**). Let $p(x): \R^d \to (0, \infty)$ be the target density
   \nabla_\theta E_{X \sim p(x)} \s{\log p_\theta(X)} = E_{X \sim p(x)} \s{\nabla_\theta E_\theta(X)} - E_{X \sim p_\theta(x)} \s{\nabla_\theta E_\theta(X)}, \quad (*)
   $$
 
-##### Langevin dynamics
-
-Continue from (**SBMs**). This method is for sampling from a SBM.
-
-- The SDE $dX_t = - \nabla U(X_t) dt + \sigma dB_t$ for $t \in [0, \infty)$.
-  - Also consider the following **discretization** for step $\Delta t$.
-    $$
-    X_{t + \Delta t} - X_t = -\nabla U(X_t) \Delta t + \sigma \sqrt{\Delta t} Z, \quad Z \sim N(0, I)
-    $$
-  - The forward PDE for density on $t \in (0, \infty)$ is given by:
-    $$
-    \begin{aligned}
-    \part_t p(t, x) & = \L^* p(t, x) = - \nabla \cdot (\nabla U(x) p(t, x)) + \nabla^2 :(\sigma^2 p(t, x))\\
-    & = \nabla_x p(t, x)^T \nabla U(x) + \operatorname{div} \nabla U(x) p(t, x) + \frac{1}{2} \sigma^2 \Delta p(t, x)
-    \end{aligned}
-    $$
-- (**TODO**) For $T = \sigma^2 / 2$ and $p_G(x) = \exp(-U(x) / T) / Z$ is a stable distribution.
-  - Let $p(0, x) = p_G(x)$, then $p(t, x) = p_G(x)$ is a solution to the forward SDE.
-- Given **energy-based** model $U(x): \R^d \to \R$ leading to density $p(x) = \exp(-U(x)) / Z$.
-  - To sample from $p(x)$, set $T = 1$ and $\sigma = \sqrt{2}$ and run the Langevin SDE.
-- Given **score-based** model $s(x) \approx \nabla \log p(x)$.
-  - Define $U(x) = -\log p(x)$. This is the corresponding energy function.
-  - Notice that $-\nabla U(x) = \nabla \log p(x) \approx s(x)$.
-  - To sample from $p(x)$, we can run Langevin SDE $dX_t = s(x) dt + \sqrt 2 dB_t$.
-- Typically in the literature, the Langevin SDE is **discretized** into  
-  $$
-  x_{n + 1} = x_n - \frac{\epsilon}{2} \nabla U(x_t) + \sqrt{\epsilon} Z; \quad Z \sim N(0, I)
-  $$
-  The discretization is not necessarily reasonable, there are some theoretical analyses of it.
-
 ##### Metropolis-Hastings Markov chain Monte Carlo ==TODO==
 
 Continue from (**EBMs**).
