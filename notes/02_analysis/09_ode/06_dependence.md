@@ -21,13 +21,12 @@ where $U$ is open and $x_0 \in U$.
   - $\varphi$ is Lipschitz continuous on $I \times B$.
   - $D_1\varphi(t, x) \in C^1$ since $D_1 \varphi(t, x) = f(\varphi(t, x))$.
   
-- If $D_2 \varphi (t, x)$ exists for all $(t, x) \in I \times B$, $D_2 \varphi(t, x)$ is the solution to the first variational equation
+- If $D_2 \varphi (t, x)$ exists for all $(t, x) \in I \times B$, $D_2 \varphi(t, x)$ is the solution to the **first variational equation**
   $$
   \boxed{\psi'(t, x) = f'(\varphi(t, x)) \psi(t, x), \quad \psi(0, x) = \I, \quad f'(\varphi(\cdot, x)) \in C(I \to \R^{n \times n})}
   $$
   - $D_1 D_2 \varphi(t, x) = D_2 D_1 \varphi(t, x) = f'(\varphi(t, x)) D_2 \varphi(t, x)$.
     - The first equality depends on swapping partial derivatives. This is indeed true when $f \in C^1$.
-  - The IVP is called the **first variational equation**. It is a matrix valued **linear homogenous ODE**.
   
 - Let $\psi(t, x)$ the solution of the first variational equation on $I$ given $x \in B$ as a constant.
 
@@ -145,17 +144,78 @@ $$
 $$
 where $U$ is open and $(t_0, x_0, \lambda_0) \in U$.
 
-Due to the equivalence of parameterized IVP and homogeneous IVP, we have following results:
-
-- There exists open box $I \times B \times \Lambda \subset U$ with center $(t_0, x_0, \lambda_0)$ where the unique general solution $\Phi(t, (s, x, \lambda)): I \times (I \times B \times \Lambda) \to \R^n$ exists.
+- There exists open box $I \times B \times \Lambda \subset U$ with center $(t_0, x_0, \lambda_0)$ where the unique general solution $\Phi(t, (s, x, \lambda)): I \times (I \times B \times \Lambda) \to \R^a$ exists.
 - $D_1 \Phi(t, (s, x, \lambda)) \in C^k$ and $\Phi(t, (s, x, \lambda)) \in C^k$.
   - $D_1 D_2 \Phi(t, (s, x, \lambda)) = D_2 D_1 \Phi(t, (s, x, \lambda))$.
   - $D_1 D_2 \Phi(t, (s, x, \lambda)) = D_2 D_1 \Phi(t, (s, x, \lambda)) = D_2 f(t, \Phi(t, (s, x, \lambda)), \lambda) D_2 \Phi(t, (s, x, \lambda))$.
-- $D_2\Phi(t, (s, x, \lambda))$ is the solution of the **first variational equation**:
 
-$$
-\psi'(t, (s, x, \lambda)) = A(t, (s, x, \lambda)) \psi(t, (s, x, \lambda)), \quad A(t, (s, x, \lambda)) = D_2 f(t, \Phi(t, (s, x, \lambda)), \lambda), \quad \psi(s, (s, x, \lambda)) = \mathbb I
-$$
+Due to the equivalence of parameterized IVP and homogeneous IVP, we could derive the generalized first variational equation. But the notation may be a little tricky. Denote $a := n + m + 1$.
 
-  - Matrix function $A(t, s, x, \lambda)$ is uniformly continuous on $\overline{I \times I \times B \times \Lambda}$.
-  - Since the first variational equation is linear, it has unique solution on $I$ for any $(s, x, \lambda)$.
+- Define $\Psi(t, (s, x, \lambda)) := (t, \Phi(t, (s, x, \lambda)), \lambda): J \times\R^{a} \to \R^a$.
+
+- Define $F(t, x, \lambda):= (t, f(t, x(t), \lambda), \lambda): \R^a \to \R^a$.
+
+- Then $D_2\Psi(t, (s, x, \lambda))$ is the solution of the **first variational equation**:
+  $$
+  \boxed{
+  \begin{aligned}
+  \psi'(t, (s, x, \lambda)) & = A(t, (s, x, \lambda)) \psi(t, (s, x, \lambda))\\
+  A(t, (s, x, \lambda)) &:= J_F(t, \Phi(t, (s, x, \lambda)), \lambda), \quad \psi(s, (s, x, \lambda)) = \I_{a}
+  \end{aligned}
+  }
+  $$
+
+- $A(t, (s, x, \lambda))$ has the following blocked structure by definition of $F$:
+  $$
+  A(t,(s, x, \lambda))=
+  \s{
+  \begin{array}{ccc}
+  1 & 0 & 0 \\
+  D_1 f(t, \Phi(t,(s, x, \lambda)), \lambda) & D_2 f(t, \Phi(t,(s, x, \lambda)), \lambda) & D_3 f(t, \Phi(t,(s, x, \lambda)), \lambda) \\
+  0 & 0 & \I_{m}
+  \end{array}
+  }
+  $$
+
+- $D_2 \Psi(t, (s, x, \lambda))$ or the solution $\psi(t, (s, x, \lambda))$ has the following structure:
+  $$
+  \psi(t, (s, x, \lambda)) =D_2 \Psi(t, (s, x, \lambda)) =
+  \s{
+  \begin{array}{ccc}
+  0 & 0 & 0 \\
+  \frac{\part \Phi(t, (s, x, \lambda))}{\part s} & \frac{\part \Phi(t, (s, x, \lambda))}{\part x} & \frac{\part \Phi(t, (s, x, \lambda))}{\part \lambda} \\
+  0 & 0 & \I_{m}
+  \end{array}
+  }
+  $$
+
+Now the original variational equation can be split into three equations through blocked matrix product:
+
+- Matrix function $A(t, s, x, \lambda)$ is uniformly continuous on $\overline{I \times I \times B \times \Lambda}$.
+
+- Since the first variational equation is linear, it has unique solution on $I$ for any $(s, x, \lambda)$.
+
+- The first equation is related to the sensitivity with respect to the initial time $s$:
+  $$
+  \begin{aligned}
+  \frac{\dd}{\dd t} \frac{\partial \Phi(t,(s, x, \lambda))}{\partial s} & = D_2 f(t, \Phi(t,(s, x, \lambda)), \lambda) \frac{\partial \Phi(t,(s, x, \lambda))}{\partial s}\\
+  \frac{\partial \Phi(s,(s, x, \lambda))}{\partial s} & = 0 \in \R^{n\times 1}
+  \end{aligned}
+  $$
+
+- The second equation is related to the sensitivity with respect to the initial state $x$:
+  $$
+  \begin{aligned}
+  \frac{\dd}{\dd t} \frac{\partial \Phi(t,(s, x, \lambda))}{\partial x} & = D_2 f(t, \Phi(t,(s, x, \lambda)), \lambda) \frac{\partial \Phi(t,(s, x, \lambda))}{\partial x}\\
+  \frac{\partial \Phi(s,(s, x, \lambda))}{\partial x} & = \I_n \in \R^{n\times n}
+  \end{aligned}
+  $$
+
+- The third equation is related to the sensitivity with respect to the parameter $\lambda$:
+  $$
+  \begin{aligned}
+  \frac{\dd}{\dd t} \frac{\partial \Phi(t,(s, x, \lambda))}{\partial \lambda} & = D_2 f(t, \Phi(t,(s, x, \lambda)), \lambda) \frac{\partial \Phi(t,(s, x, \lambda))}{\partial \lambda} + D_3 f(t, \Phi(t,(s, x, \lambda)), \lambda)\\
+  \frac{\partial \Phi(s,(s, x, \lambda))}{\partial \lambda} & = 0 \in \R^{n\times m}
+  \end{aligned}
+  $$
+

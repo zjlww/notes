@@ -189,20 +189,6 @@ where $I$ is a closed interval.
     \phi(t, t_0, x_0) = \Pi(t, t_0) x_0 = U(t)U(t_0)^{-1} x_0
     $$
 
-##### Abel's identity ==TODO==
-
-Consider following IVP for $x(t) \in C^1(I \subseteq \R \to \C^{n})$:
-$$
-\boxed{x'(t) = A(t) x(t),\quad x(t_0) = x_0, \quad A(t) \in C(I \to \C^{n \times n}), \quad t_0 \in I}
-$$
-
-where $I$ is a closed interval. Suppose $U(t)$ is a fundamental matrix solution, and $W(t) = \det U(t)$.
-
-The Wronskian determinant of $n$ solutions satisfies:
-$$
-W(t) = W(t_0) \exp \int_{t_0}^t \tr(A(s)) \dd s
-$$
-
 ##### Linear first-order system
 
 Consider following IVP for $x(t) \in C^1(I \subseteq \R \to \C^{n})$:

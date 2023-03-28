@@ -107,7 +107,7 @@ Suppose $A = (A_{ij}) \in \bF^{n \times n}$.
 
 - The $(i, j)$ **cofactor** $C_{ij} = (-1)^{i + j}M_{ij}$.
 
-- $\newcommand{adj}{\operatorname{adj}}\adj A = (C_{ij})$ is called the **adjugate matrix** of $A$.
+- $(\newcommand{adj}{\operatorname{adj}}\adj A)_{ji} = (C_{ij})$ is called the **adjugate matrix** of $A$.
 
 ##### Laplace expansion
 
@@ -152,7 +152,7 @@ A_{n 1} & A_{n 2} & \cdots & A_{n n}
 $$
 As a immediate corollary:
 
-- $\sum_{k = 1}^{n} A_{jk} C_{ik} = 0$ for $i \neq j$.
+- $\sum_{k = 1}^{n} A_{jk} C_{ik} = (A \adj A)_{ij} = 0$ for $i \neq j$.
   - Since this is equivalent to finding the determinant of a matrix with two identical row.
 - $A \adj A = (\adj A)A = |A|I$. Thus $A^{-1} = \adj A / |A|$.
 

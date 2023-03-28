@@ -81,7 +81,7 @@ $$
 
 Define the adjoint operator of $\mathcal A_t$ as $\mathcal A_t^*$ on $\mathcal D'$.
 $$
-\mathcal A^*_t p(\mathbf x) := \mathbf \nabla \cdot \p{\mathbf b(\mathbf x, t) p(\mathbf x)} + \nabla^2 : \p{\mathbf C(\mathbf x, t) p(\mathbf x)}
+\mathcal A^*_t p(\mathbf x) := -\mathbf \nabla \cdot \p{\mathbf b(\mathbf x, t) p(\mathbf x)} + \nabla^2 : \p{\mathbf C(\mathbf x, t) p(\mathbf x)}
 $$
 
 ##### Fokker-Planck Kolmogorov equation of Itô SDEs
@@ -105,7 +105,7 @@ Consider the first term, apply Fubini's theorem + integral by parts.
 $$
 \begin{aligned}
 E\s{\nabla^T f(\mathbf X_{u}) \mathbf b(\mathbf X_u, u)} & = \int_{\R^n} \nabla f(\mathbf x)\cdot \mathbf b(\mathbf x, u) p_u(\mathbf x) \dd \mathbf x\\
-& = \int_{\R^n} f(\mathbf x) \nabla\cdot(\mathbf b(\mathbf x, u) p_u(\mathbf x)) \dd \mathbf x
+& = -\int_{\R^n} f(\mathbf x) \nabla\cdot(\mathbf b(\mathbf x, u) p_u(\mathbf x)) \dd \mathbf x
 \end{aligned}
 $$
 Similarly for the second term, apply Fubini's theorem + integral by part twice.
@@ -119,7 +119,7 @@ Now consider equation $\ref{equ:expectation_difference}$, the expectations are c
 $$
 \begin{aligned}
 \lim_{\tau \downarrow 0} E\s{\frac{f(\mathbf X_{t + \tau}) - f(\mathbf X_{t})}{\tau}} & = E\s{\nabla f(\mathbf X_{t})\cdot \mathbf b(\mathbf X_t, t)} + E\s{\nabla^2 f(\mathbf X_t): \mathbf C(\mathbf X_t, t)}\\
-& = \int_{\R^n} f(\mathbf x) \c{ \nabla\cdot(\mathbf b(\mathbf x, t) p_t(\mathbf x)) + \nabla^2:(\mathbf C(\mathbf x, t)p_t(\mathbf x))} \dd \mathbf x
+& = \int_{\R^n} f(\mathbf x) \c{-\nabla\cdot(\mathbf b(\mathbf x, t) p_t(\mathbf x)) + \nabla^2:(\mathbf C(\mathbf x, t)p_t(\mathbf x))} \dd \mathbf x
 \end{aligned}
 $$
 By assumptions, it is legal to swap the differential and integral here:
@@ -151,17 +151,17 @@ $$
 $$
 Recall that the forward SDE has FPK equation.
 $$
-p'_t(\mathbf x) = D_i \p{\mathbf b^{(i)}(\mathbf x, t) p_t(\mathbf x)} + D_{ij} \p{\mathbf C^{(i,j)}(\mathbf x, t) p_t(\mathbf x)}, \quad t \in [0, T]
+p'_t(\mathbf x) = -D_i \p{\mathbf b^{(i)}(\mathbf x, t) p_t(\mathbf x)} + D_{ij} \p{\mathbf C^{(i,j)}(\mathbf x, t) p_t(\mathbf x)}, \quad t \in [0, T]
 $$
 Notice that the backward SDE has FPK equation, the sign is **flipped** due to time reversal.
 $$
-p_t'(\mathbf x) = -D_i \p{{\mathbf {\wbar b}}^{(i)}(\mathbf x, t) p_t(\mathbf x)} - \lambda^2 D_{ij} \p{\mathbf C^{(i, j)}(\mathbf x, t) p_t(\mathbf x)}, \quad t \in [0, T]
+p_t'(\mathbf x) = D_i \p{{\mathbf {\wbar b}}^{(i)}(\mathbf x, t) p_t(\mathbf x)} - \lambda^2 D_{ij} \p{\mathbf C^{(i, j)}(\mathbf x, t) p_t(\mathbf x)}, \quad t \in [0, T]
 $$
 To achieve weak-sense time reversal, we need the two FPK equations to be equal. Assuming that $p_t(\mathbf x) > 0$ on $\R^n$,
 $$
 \begin{aligned}
-{{\mathbf {\wbar b}}^{(i)}(\mathbf x, t)} & = -{\mathbf b^{(i)}(\mathbf x, t)} - \frac{(1 + \lambda^2)}{p_t(\mathbf x)} D_{j}\p{\mathbf C^{(i,j)}(\mathbf x, t) p_t(\mathbf x)}\\
-& = -{\mathbf b^{(i)}(\mathbf x, t)} - (1 + \lambda^2) \p{D_j \mathbf C^{(i, j)}(\mathbf x, t) + \mathbf C^{(i, j)}(\mathbf x, t)D_j \log p_t(\mathbf x)}
+{{\mathbf {\wbar b}}^{(i)}(\mathbf x, t)} & = -{\mathbf b^{(i)}(\mathbf x, t)} + \frac{(1 + \lambda^2)}{p_t(\mathbf x)} D_{j}\p{\mathbf C^{(i,j)}(\mathbf x, t) p_t(\mathbf x)}\\
+& = -{\mathbf b^{(i)}(\mathbf x, t)} + (1 + \lambda^2) \p{D_j \mathbf C^{(i, j)}(\mathbf x, t) + \mathbf C^{(i, j)}(\mathbf x, t)D_j \log p_t(\mathbf x)}
 \end{aligned}
 $$
 Notice that for $\lambda = 0$, this gives the reverse **probability flow ODE**.
