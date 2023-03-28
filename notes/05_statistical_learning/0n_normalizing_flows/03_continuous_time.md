@@ -100,3 +100,24 @@ $$
 \frac{\dd}{\dd t}\left[\begin{array}{c} x (t) \\ \log p( x (t), t)\end{array}\right]=\left[\begin{array}{c}f(t, x (t), \lambda) \\ -\tr D_2 f(t, x(t), \lambda)\end{array}\right]
 $$
 
+Here directly finding $\tr D_2 f(t, x, \lambda)$ is computationally intractable. One solution is to use stochastic trace estimators, which only requires availability of vector-Jacobian product $v D_2 f(t, x, \lambda)$ where $v \in \R^n$.
+
+> More on stochastic trace estimation can be found [here](https://www.ethanepperly.com/index.php/2023/01/26/stochastic-trace-estimation/).
+>
+> Hutchinson, M.F. (1989). A stochastic estimator of the trace of the influence matrix for laplacian smoothing splines. *Communications in Statistics - Simulation and Computation, 18*, 1059-1076.
+>
+> Meyer, R.A., Musco, C., Musco, C., & Woodruff, D.P. (2020). Hutch++: Optimal Stochastic Trace Estimation. *Proceedings of the SIAM Symposium on Simplicity in Algorithms, 2021*, 142-155 .
+
+Suppose we want to compute $\tr A$, which is not directly accessible. Suppose $X \sim p(x)$ in $\R^n$ where $E[X] = 0$, and $E[XX^T] = \I_n$. We have the Hutchinson trace estimator described as following:
+
+- $E[X^T A X] = E[\tr(X^T A X)] = E[\tr(A X X^T)] = \tr(A E[XX^T]) = \tr (A)$.
+
+- Now suppose we have $m$ i.i.d. random variables $(X_1, \ldots, X_m)$.
+  $$
+  \what \tr := \frac{1}{m} \sum_{i = 1}^m X_{i} ^T A X_i, \quad E[\what \tr] = \tr A, \quad \var(\what \tr) = \frac{\var(X^T A X)}{m}
+  $$
+
+- There are better unbiased estimators with faster convergence than the naïve estimator.
+
+
+
