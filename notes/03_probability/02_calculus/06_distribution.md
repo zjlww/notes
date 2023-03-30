@@ -147,7 +147,7 @@ Suppose $(\wbar\Omega, \wbar\F, (\wbar\F_t), T = [T, 0], P)$ is a complete filte
 
 Consider the following class of reverse-time SDE. We would like to find $\mathbf {\wbar b}(\mathbf x, t)$ that gives an appropriate time reversal SDE.
 $$
-\dd \mathbf {\wbar X}_t = \mathbf {\wbar b}(\mathbf {\wbar X}_t, t) \dd t + \lambda \mathbf {{A}}(\mathbf {\wbar X}_t, t) \dd \mathbf {\wbar {B}}_t,\quad \mathbf{\wbar X}_T = \mathbf X_T, \quad t \in [T, 0]
+\dd \mathbf {\wbar X}_t = \mathbf {\wbar b}(\mathbf {\wbar X}_t, t) (-\dd t) + \sqrt{\lambda(t)} \mathbf {{A}}(\mathbf {\wbar X}_t, t) \dd \mathbf {\wbar {B}}_t,\quad \mathbf{\wbar X}_T = \mathbf X_T, \quad t \in [T, 0]
 $$
 Recall that the forward SDE has FPK equation.
 $$
@@ -155,14 +155,14 @@ p'_t(\mathbf x) = -D_i \p{\mathbf b^{(i)}(\mathbf x, t) p_t(\mathbf x)} + D_{ij}
 $$
 Notice that the backward SDE has FPK equation, the sign is **flipped** due to time reversal.
 $$
-p_t'(\mathbf x) = D_i \p{{\mathbf {\wbar b}}^{(i)}(\mathbf x, t) p_t(\mathbf x)} - \lambda^2 D_{ij} \p{\mathbf C^{(i, j)}(\mathbf x, t) p_t(\mathbf x)}, \quad t \in [0, T]
+p_t'(\mathbf x) = D_i \p{-{\mathbf {\wbar b}}^{(i)}(\mathbf x, t) p_t(\mathbf x)} - \lambda(t) D_{ij} \p{\mathbf C^{(i, j)}(\mathbf x, t) p_t(\mathbf x)}, \quad t \in [0, T]
 $$
 To achieve weak-sense time reversal, we need the two FPK equations to be equal. Assuming that $p_t(\mathbf x) > 0$ on $\R^n$,
 $$
 \begin{aligned}
-{{\mathbf {\wbar b}}^{(i)}(\mathbf x, t)} & = -{\mathbf b^{(i)}(\mathbf x, t)} + \frac{(1 + \lambda^2)}{p_t(\mathbf x)} D_{j}\p{\mathbf C^{(i,j)}(\mathbf x, t) p_t(\mathbf x)}\\
-& = -{\mathbf b^{(i)}(\mathbf x, t)} + (1 + \lambda^2) \p{D_j \mathbf C^{(i, j)}(\mathbf x, t) + \mathbf C^{(i, j)}(\mathbf x, t)D_j \log p_t(\mathbf x)}
+{{\mathbf {\wbar b}}^{(i)}(\mathbf x, t)} & = {\mathbf b^{(i)}(\mathbf x, t)} - \frac{(1 + \lambda(t))}{p_t(\mathbf x)} D_{j}\p{\mathbf C^{(i,j)}(\mathbf x, t) p_t(\mathbf x)}\\
+& = {\mathbf b^{(i)}(\mathbf x, t)} - (1 + \lambda(t)) \p{D_j \mathbf C^{(i, j)}(\mathbf x, t) + \mathbf C^{(i, j)}(\mathbf x, t)D_j \log p_t(\mathbf x)}
 \end{aligned}
 $$
-Notice that for $\lambda = 0$, this gives the reverse **probability flow ODE**.
+Notice that for $\lambda(t) = 0$, this gives the reverse **probability flow ODE**.
 

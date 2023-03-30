@@ -28,7 +28,7 @@ $$
 
 ##### Tweedie's formula nD
 
-Suppose $X, Y, Z$ are $\R^n$ random variables. Where $X$ has density $p(x)$ respect to the Lebesgue measure. $Z \sim \mathcal N(0, \sigma^2 I_n)$, $X \perp Z$. And $Y = X + Z$. Then we have **tweedie's formula**
+Suppose $\mathbf X, \mathbf Y, \mathbf Z$ are $\R^n$ random variables. Where $\mathbf X$ has density $p(\mathbf x)$ respect to the Lebesgue measure. $\mathbf Z \sim \mathcal N(0, \sigma^2 I_n)$, $\mathbf X \perp \mathbf Z$. And $\mathbf Y = \mathbf X + \mathbf Z$. Then we have **tweedie's formula**
 $$
-E[X | Y = y] = y - \sigma^2 \nabla_y \log p(y)
+E[\mathbf X | \mathbf Y = \mathbf y] = \mathbf y - \sigma^2 \nabla \log p(\mathbf y)
 $$

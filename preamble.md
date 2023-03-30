@@ -55,6 +55,7 @@ $$
 
 % Operator names
 \newcommand{\ae}{\operatorname{a.e.}}
+\newcommand{\adj}{\operatorname{adj}}
 \newcommand{\aut}{\operatorname{aut}}
 \newcommand{\char}{\operatorname{char}}
 \newcommand{\cov}{\operatorname{Cov}}

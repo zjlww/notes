@@ -1,3 +1,15 @@
+##### Probabilistic models
+
+A family of distributions $\mathcal Q$ on some measurable space $(\Omega, \F)$ is a **probabilistic model**.
+
+$\mathcal Q$ can be parameterized by parameter $\theta$ in some parameter space $\Theta$. In this case, we often denote the distribution as $Q_\theta$, and the density as $q_\theta$. And the model is called a parametric probability model.
+
+We may have different ways of constructing $\mathcal Q$, leading to different properties of $q \in \mathcal Q$.
+
+- Whether sampling from $q$ is tractable.
+- Whether computing $\log q(x)$ is tractable.
+- Whether computing the gradient $\part \log q_\theta(x) / \part \theta$ is tractable.
+
 ##### Latent variable models
 
 Consider measurable space $(\Omega, \F)$ and following random variables.
@@ -9,7 +21,7 @@ Consider measurable space $(\Omega, \F)$ and following random variables.
   - They are usually the Lebesgue measure for Euclidean spaces.
   - In the following we will only write $\dd z$ and $\dd x$ in the integral. We actually mean $\dd \nu(z)$ and $\dd \mu(x)$.
 
-A **latent variable model** is the joint distribution of $(Z, X)$ on $(E \times O, \E \otimes \O)$.
+A **latent variable model** is the joint distribution of $(Z, X)$ on measurable space $(E \times O, \E \otimes \O)$.
 
 - Such a distribution may have parameter $\theta \in \Theta$.
 - We often write $\mathcal Z = Z[\Omega]$, and similarly $\X = X[\Omega]$.

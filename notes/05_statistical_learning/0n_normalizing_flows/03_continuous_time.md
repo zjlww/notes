@@ -108,7 +108,7 @@ Here directly finding $\tr D_2 f(t, x, \lambda)$ is computationally intractable.
 >
 > Meyer, R.A., Musco, C., Musco, C., & Woodruff, D.P. (2020). Hutch++: Optimal Stochastic Trace Estimation. *Proceedings of the SIAM Symposium on Simplicity in Algorithms, 2021*, 142-155 .
 
-Suppose we want to compute $\tr A$, which is not directly accessible. Suppose $X \sim p(x)$ in $\R^n$ where $E[X] = 0$, and $E[XX^T] = \I_n$. We have the Hutchinson trace estimator described as following:
+Suppose we want to compute $\tr A$, which is not directly accessible. Suppose $X \sim p(x)$ in $\R^n$ where $E[X] = 0$, and $E[XX^T] = \bI_n$. We have the Hutchinson trace estimator described as following:
 
 - $E[X^T A X] = E[\tr(X^T A X)] = E[\tr(A X X^T)] = \tr(A E[XX^T]) = \tr (A)$.
 

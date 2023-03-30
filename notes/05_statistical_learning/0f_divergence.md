@@ -1,8 +1,23 @@
+#### Divergences
+
+##### Integral probability metrics
+
+> Sriperumbudur, B.K., Fukumizu, K., Gretton, A., Scholkopf, B., & Lanckriet, G.R. (2009). On integral probability metrics, φ-divergences and binary classification. *arXiv: Information Theory*.
+
+Suppose on measurable space $(\Omega, \F)$ there are two probability measures $P, Q$.
+
+Suppose $\F \subseteq \L(\Omega \to \R)$ is a set of real-valued bounded measurable functions on $\Omega$.
+
+Define the **integral probability metric** (IPM) $D_\F(P \Vert Q)$ between $P, Q$ as
+$$
+D_\F (P \Vert Q) := \sup_{f \in \F} \abs{\int_{\Omega} f(\omega) \dd P(\omega) - \int_{\Omega} f(\omega) \dd Q(\omega)}
+$$
+
 ##### f-divergence
 
 > https://en.wikipedia.org/wiki/F-divergence
 
-Suppose on measurable space $(\Omega, \F)$ there are two probability **measures** $P, Q$. And that $P \ll Q$.
+Suppose on measurable space $(\Omega, \F)$ there are two probability measures $P, Q$. And that $P \ll Q$.
 
 By **Radon-Nikodym theorem**, there exists a unique $\dd P / \dd Q \in L(\Omega \to [0, \infty])$ derivative density.
 
@@ -59,3 +74,6 @@ $$
 \sum_{k \in I} a_k \log \frac{a_k}{b_k} \ge a \log \frac{a} {b}
 $$
 Define $p_k = a_k / a$ and $q_k = b_k / b$. And its equivalent to $\d{p}{q} \ge 0$.
+
+
+
