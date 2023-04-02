@@ -33,7 +33,7 @@ We sometimes consider the "observed data" as a random variable $X_* \in \L(\Omeg
 - The density $p_\theta(z, x)$ fully describes a latent variable model.
 - $p_*(x_*)$ is called the data density.
 
-The **learning problem** is to minimize the following KL divergence:
+The **learning problem** is to minimize some divergence between the data distribution and the model marginal distribution. For example we could minimize the KL divergence:
 $$
 \hat \theta = \argmin{\theta \in \Theta}\d{X_*}{X} = \argmin{\theta \in \Theta} \int_{\O} p_* (x) \log \frac{p_*(x)}{p_\theta(x)} \dd x
 $$

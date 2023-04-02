@@ -1,5 +1,7 @@
 #### Generative Adversarial Networks
 
+> GAN is about minimizing divergence while only sampling is efficient and differentiable.
+>
 > Nowozin, S., Cseke, B., & Tomioka, R. (2016). f-GAN: Training Generative Neural Samplers using Variational Divergence Minimization. *NIPS*.
 
 ##### Fenchel conjugate function ==TODO==
@@ -35,7 +37,7 @@ $$
 
 ##### Generator functions
 
-Suppose $Z \in \L(\Omega \to \R^h, \F)$ is a random variable on probability space $(\Omega, \F, P)$.
+Suppose $Z \in \L(\Omega \to \R^h)$ is a random variable.
 
 Then $f_\theta \in \L(\R^h \to \R^d)$ with parameter $\theta \in \Theta \subseteq \R^m$ is called a **generator function**.
 

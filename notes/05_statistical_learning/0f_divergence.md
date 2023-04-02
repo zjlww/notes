@@ -1,25 +1,27 @@
 #### Divergences
 
+Suppose on measurable space $(\Omega, \F)$ there are two probability measures $P, Q$.
+
 ##### Integral probability metrics
 
 > Sriperumbudur, B.K., Fukumizu, K., Gretton, A., Scholkopf, B., & Lanckriet, G.R. (2009). On integral probability metrics, φ-divergences and binary classification. *arXiv: Information Theory*.
 
-Suppose on measurable space $(\Omega, \F)$ there are two probability measures $P, Q$.
-
 Suppose $\F \subseteq \L(\Omega \to \R)$ is a set of real-valued bounded measurable functions on $\Omega$.
 
-Define the **integral probability metric** (IPM) $D_\F(P \Vert Q)$ between $P, Q$ as
+Define the **integral probability metric** (IPM) $D_\F(P \Vert Q)$ between $P, Q$ defined by $\F$ is
 $$
 D_\F (P \Vert Q) := \sup_{f \in \F} \abs{\int_{\Omega} f(\omega) \dd P(\omega) - \int_{\Omega} f(\omega) \dd Q(\omega)}
 $$
+
+##### Total variation distance
+
+Let $\F \subseteq \L(\Omega \to \R)$ be the set of all indicator functions. The integral probability metric is called 
 
 ##### f-divergence
 
 > https://en.wikipedia.org/wiki/F-divergence
 
-Suppose on measurable space $(\Omega, \F)$ there are two probability measures $P, Q$. And that $P \ll Q$.
-
-By **Radon-Nikodym theorem**, there exists a unique $\dd P / \dd Q \in L(\Omega \to [0, \infty])$ derivative density.
+To compute $f$-divergence, we require $P \ll Q$. By **Radon-Nikodym theorem**, there exists a unique $\dd P / \dd Q \in L(\Omega \to [0, \infty])$ derivative density.
 
 Suppose $f: [0, \infty] \to (-\infty, +\infty]$ is a convex (smile) function. $f(0, \infty) \subset \R$. And $f(1) = 0$.
 

@@ -1,6 +1,10 @@
+#### Variational Autoencoders
+
+> Doersch, C. (2016). Tutorial on Variational Autoencoders. *ArXiv, abs/1606.05908*.
+
 ##### Amortized variational inference
 
-In traditional VI, we optimize the variational parameters for each data point independently, which can be computationally expensive for large datasets. 
+In traditional variational inference, we optimize the variational parameters for each data point independently, which can be computationally expensive for large datasets.
 
 Amortized variational inference, on the other hand, aims to share the computational cost across data points by learning a function that maps the observed data to the variational parameters. This function, often parameterized by a neural network, effectively "amortizes" the cost of inference over the dataset, making it more scalable and efficient.
 
@@ -18,17 +22,21 @@ This leads to the following properties:
 - Integration of $p_\theta(x) = \int p_\theta(z, x) \dd z$ is intractable.
 - Computing $p_\theta(z|x)$ is intractable, so we cannot directly apply EM algorithm here.
 
-Introduce a **estimated posterior** $q_\phi(z|x)$ to estimate $p_\theta(z | x)$. Let $\what Z \sim q_\phi(z|x)$.
+Introduce a **estimated posterior** $q_\phi(z|x)$ to estimate $p_\theta(z | x)$. Let $$.
 $$
 \newcommand{\elbo}{\operatorname{ELBO}}
 \begin{aligned}
-\elbo(p_\theta, q_\phi, x) & := E\s{\log \frac{p_\theta(x | \what Z) p_\theta(\what Z)}{q_\phi(\what Z | x)}} = \log p_\theta(x) - \d{q_\phi(z|x)}{p_\theta(z | x)}\\
-& = E\s{\log p_\theta(x | \what Z)}-\d{q_\phi(z|x)}{p_\theta(z)}
+\elbo(p_\theta, q_\phi, x) & := E_{\what Z \sim q_\phi(z|x)}\s{\log \frac{p_\theta(x | \what Z) p_\theta(\what Z)}{q_\phi(\what Z | x)}}\\
+& = \log p_\theta(x) - \d{q_\phi(z|x)}{p_\theta(z | x)}\\
+& = E_{\what Z \sim q_\phi(z|x)}\s{\log p_\theta(x | \what Z)}-\d{q_\phi(z|x)}{p_\theta(z)}
 \end{aligned}
 $$
 The training loss of the Variational autoencoder is:
 $$
-\L_{\theta, \phi} := E\s{\elbo({p_\theta, q_\phi, X_*})} = E\s{\log \frac{p_\theta(\what Z, X_*)}{q_\phi(\what Z | X_*)}} = -\d{p_*(x) q_{\phi}(z|x)}{p_{\theta}(z, x)}
+\begin{aligned}
+\L_{\theta, \phi} & := E\s{\elbo({p_\theta, q_\phi, X_*})} = E_{\what Z \sim q_{\phi}(z | X_*)}\s{\log \frac{p_\theta(\what Z, X_*)}{q_\phi(\what Z | X_*)}} \\
+& = -\d{p_*(x) q_{\phi}(z|x)}{p_{\theta}(z, x)}
+\end{aligned}
 $$
 We have some special names for the densities here:
 

@@ -198,5 +198,5 @@ When $q_0(\mathbf{x}_0) = \mathcal N(\mathbf{x}_0; \mathbf{0}, \mathbf{I})$, the
 - $q(\mathbf{x}_{n-1} | \mathbf{x}_n) = {q(\mathbf{x}_{n-1}) q(\mathbf{x}_n | \mathbf{x}_{n - 1})} /{q(\mathbf{x}_n)}$.
   - $q(\mathbf{x}_n) = \mathcal N(\mathbf{x}_n; \mathbf{0}, \mathbf{I})$, $q(\mathbf{x}_{n-1}) = \mathcal N(\mathbf{x}_{n-1}; \mathbf{0}, \mathbf{I})$.
   - $q(\mathbf{x}_n | \mathbf{x}_{n - 1}) = \mathcal N(\mathbf{x}_n; \sqrt {1-\beta_n} \mathbf{x}_{n-1}, \beta_n \mathbf{I})$.
-- Therefore $q(\mathbf{x}_{n - 1} | \mathbf{x}_n) = \mathcal N(\mathbf{x}_{n-1}; \sqrt{1 - \beta_n} \mathbf{x}_n, \beta_n \mathbf{I})$, which is **quite symmetric**.
+- Therefore $q(\mathbf{x}_{n - 1} | \mathbf{x}_n) = \mathcal N(\mathbf{x}_{n-1}; \sqrt{1 - \beta_n} \mathbf{x}_n, \beta_n \mathbf{I})$.
 - Clearly $\sigma_n := \beta_n$ is the optimal choice here.

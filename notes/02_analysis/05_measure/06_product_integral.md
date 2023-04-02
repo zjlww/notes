@@ -336,9 +336,7 @@ $\sigma(\E) = \sigma(\mathcal B) = \F^T$. $(\Omega^T, \F^T)$ is a measurable spa
 - The projection of $P^\tau$ on $\rho$ is $\pi_\rho P^\tau$, defined by $[\pi_\rho P^\tau](B) = P^\tau\{y \in \Omega^\tau:y_\rho \in B\}$.
 - Suppose $P^T$ is a probability measure on $\F^T$, projection of $P^T$ is similarly defined.
 
-##### Kolmogorov extension theorem
-
- ==TODO==
+##### Kolmogorov extension theorem ==TODO==
 
 Suppose $(\Omega_t, \F_t)_{t \in T}$ are measurable spaces where $\Omega_t$ are complete separable metric spaces. And $\F_t$ are corresponding Borel $\sigma$-algebras.
 
