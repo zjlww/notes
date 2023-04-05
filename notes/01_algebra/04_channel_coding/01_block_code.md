@@ -176,9 +176,9 @@ $$
 
 For block code on $Q^n$, we often assume the following channel.
 
-- Let $\mathbf X = (X_1, \ldots, X_n)$ be $Q$-valued random variables representing the sent block.
+- Let $\symbf X = (X_1, \ldots, X_n)$ be $Q$-valued random variables representing the sent block.
 
-- Let $\mathbf Y = (Y_1, \ldots, Y_n)$ be $Q$-valued random variables representing the received block.
+- Let $\symbf Y = (Y_1, \ldots, Y_n)$ be $Q$-valued random variables representing the received block.
 
 - The channel add noise to each bit independently:
   $$

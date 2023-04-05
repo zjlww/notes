@@ -22,7 +22,7 @@ The **BCH bound** says $d(C) = w(C) \ge \delta(C)$. Here is a proof by contradic
 
 - Suppose $R \supseteq \c{\omega^{b}, \omega^{b + 1}, \ldots, \omega^{b + \delta - 2}} = Z$ for some $b \in \Z$ and $\delta = \delta(C)$.
 
-- Suppose there exists $\mathbf c \in C$ and $c(x) = c_0 + c_1 x + \cdots + c_{n - 1} x^{n - 1}$. Where $w = w(\mathbf c) < \delta$.
+- Suppose there exists $\symbf c \in C$ and $c(x) = c_0 + c_1 x + \cdots + c_{n - 1} x^{n - 1}$. Where $w = w(\symbf c) < \delta$.
   $$
   c(x) = \sum_{j = 1}^{w} c_{i_j} x^{i_j},\quad 0 \le i_j \le n - 1, \quad c_{i_j} \neq 0
   $$
@@ -39,7 +39,7 @@ The **BCH bound** says $d(C) = w(C) \ge \delta(C)$. Here is a proof by contradic
   c_{i_2} \\
   \vdots \\
   c_{i_w}
-  \end{array}\right]= \mathbf 0
+  \end{array}\right]= \symbf 0
   $$
 
 - Since $w \le \delta - 1$, we have:
@@ -54,7 +54,7 @@ The **BCH bound** says $d(C) = w(C) \ge \delta(C)$. Here is a proof by contradic
   c_{i_2} \\
   \vdots \\
   c_{i_w}
-  \end{array}\right]}_{\mathbf c \in \bF^{w}}= \mathbf 0
+  \end{array}\right]}_{\symbf c \in \bF^{w}}= \symbf 0
   $$
 
 - Since $M$ has linearly dependent columns, $\det(M) = 0$. But note the following fact:

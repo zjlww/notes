@@ -22,7 +22,7 @@ This leads to the following properties:
 - Integration of $p_\theta(x) = \int p_\theta(z, x) \dd z$ is intractable.
 - Computing $p_\theta(z|x)$ is intractable, so we cannot directly apply EM algorithm here.
 
-Introduce a **estimated posterior** $q_\phi(z|x)$ to estimate $p_\theta(z | x)$. Let $$.
+Introduce a **estimated posterior** $q_\phi(z|x)$ to estimate $p_\theta(z | x)$.
 $$
 \newcommand{\elbo}{\operatorname{ELBO}}
 \begin{aligned}

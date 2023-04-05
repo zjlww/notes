@@ -4,10 +4,10 @@ Assume $\bF = \R, \C$ in this chapter.
 
 ##### Norm
 
-A **norm on a vector space** $U$ over $\mathbf F$ is a function $\|\cdot\| \in U \rightarrow[0, \infty)$ such that 
+A **norm on a vector space** $U$ over $\symbf F$ is a function $\|\cdot\| \in U \rightarrow[0, \infty)$ such that 
 
 1. $\|u\|=0$ if and only if $u=0$.
-2. $\|\alpha u\|=|\alpha|\|u\|$ for all $\alpha \in \mathbf{F}$ and all $u \in U$.
+2. $\|\alpha u\|=|\alpha|\|u\|$ for all $\alpha \in \symbf{F}$ and all $u \in U$.
 3. $\|u+v\| \leq\|u\|+\|v\|$ for all $u, v \in U$.
     - This implies $\abs{\n u - \n v}\le \n{u - v}$.
 

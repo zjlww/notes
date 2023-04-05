@@ -15,7 +15,7 @@ $$
 - Notice that $(X_t)$ has continuous paths almost surely.
 - $(G_t) \in \bA^2(0, T)$ guarantees that $\p{\int_0^t G_s \dd B_s} \in \bL_{c, [2], m}^2(0, T)$.
 - $(F_t) \in \bA^1(0, T)$ guarantees that $\p{\int_0^t F_s \dd s} \in \bL_{c, [1]}^1(0, T)$.
-- When $X_0 = 0$ is deterministic, the process is said to have a **zero start**.
+- When $P(X_0 = 0) = 1$ the process is said to have a **zero start**.
 - $(G_t)$ is called the **local volatility**, $(F_t)$ is called the **local drift**.
 
 ##### Basic transforms of the Brownian motion
@@ -73,9 +73,9 @@ Suppose $(\Omega, \F, (\F_t), [0, T], P)$ is a complete filtered probability spa
 $$
 \forall i \in \c{1, \ldots, n}:\dd X_t^{(i)} = F_t^{(i)} \dd t + G_t^{(i)} \dd B_t, \quad t \in [0, T]
 $$
-Suppose $u \in C^{1, 2}(\R^n \times [0, T] \to \R)$. Then let $u_t := D_t u(\mathbf X_t, t)$, $u_i:= D_{x_i} u(\mathbf X_t, t)$ and so on.
+Suppose $u \in C^{1, 2}(\R^n \times [0, T] \to \R)$. Then let $u_t := D_t u(\symbf X_t, t)$, $u_i:= D_{x_i} u(\symbf X_t, t)$ and so on.
 $$
-\dd u(\mathbf X_t, t) = u_t \dd t + \sum_{i = 1}^{n} u_{i} \dd X^{(i)}_t + \frac{1}{2} \sum_{i, j = 1}^n u_{ij} G_t^{(i)} G_t^{(j)} \dd t,\quad t \in [0, T]
+\dd u(\symbf X_t, t) = u_t \dd t + \sum_{i = 1}^{n} u_{i} \dd X^{(i)}_t + \frac{1}{2} \sum_{i, j = 1}^n u_{ij} G_t^{(i)} G_t^{(j)} \dd t,\quad t \in [0, T]
 $$
 
 ##### Itô's product rule

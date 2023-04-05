@@ -33,18 +33,18 @@ $$
 \newcommand{\Y}{\mathcal Y}
 
 % Bold math symbols that are defined as caligraphical already
-\newcommand{\bE}{\mathbf E}
-\newcommand{\bF}{\mathbf F}
-\newcommand{\bD}{\mathbf D}
-\newcommand{\bI}{\mathbf I}
-\newcommand{\bX}{\mathbf X}
-\newcommand{\bY}{\mathbf Y}
+\newcommand{\bE}{\symbf E}
+\newcommand{\bF}{\symbf F}
+\newcommand{\bD}{\symbf D}
+\newcommand{\bI}{\symbf I}
+\newcommand{\bX}{\symbf X}
+\newcommand{\bY}{\symbf Y}
 \newcommand{\nz}{\mathcal Z}
 \newcommand{\bA}{\mathbb A}
 \newcommand{\bT}{\mathbb T}
 \newcommand{\bB}{\mathbb B}
 \newcommand{\bS}{\mathbb S}
-\newcommand{\bP}{\mathbf P}
+\newcommand{\bP}{\symbf P}
 \newcommand{\bH}{\mathbb H}
 \newcommand{\dd}{\mathrm d}
 \newcommand{\bL}{\mathbb L}

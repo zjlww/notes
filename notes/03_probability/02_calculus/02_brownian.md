@@ -166,7 +166,7 @@ For all $T > 0$, $[B_t(\omega)]_T = T$ in $\L_2$ (by Arguin).
 - Define $X_j = (B_{t_{j+1}} - B_{t_j})^2 - (t_{j + 1} - t_j)$ for $j \in \c{0, \ldots n - 1}$.
 - Then observe
   $$
-  \norm{S - t}_2^2= E\left[\sum_{j = 0}^{n - 1}X_j\right]^2 =\sum_{i = 0}^{n - 1}E[X_i^2]= \sum_{i = 0}^{n - 1}2(t_{i + 1} - t_i)^2 \le \|P\| \cdot t \to 0
+  \norm{S - t}_2^2= E\s{\sum_{j = 0}^{n - 1}X_j}^2 =\sum_{i = 0}^{n - 1}E[X_i^2]= \sum_{i = 0}^{n - 1}2(t_{i + 1} - t_i)^2 \le \|P\| \cdot t \to 0
   $$
 
 For all $T > 0$, $[B_t(\omega)]_T = T$ essentially pointwise for fast shrinking partition sequences $(P_r) \in P[0, T]$ where $\sum_r\|P_r\| < \infty$. (For example the dyadic sequence).

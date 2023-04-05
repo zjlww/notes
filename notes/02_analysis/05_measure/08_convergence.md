@@ -147,7 +147,7 @@ Suppose $(\Omega, \A, \mu)$ is a **measure space**. And $f, (f_n)_{n = 1}^\infty
    - $f_n \to f$ in $\mu$ globally then $f_n \to f$ in $\mu$ locally.
    - Suppose $\mu$ is finite, then $f_n \to f$ in $\mu$ **globally iff locally**.
 
-Suppose $f, g, (f_n)_{n = 1}^\infty \in \L^p(\Omega \to \mathbf F, \mu)$ where $p \in (0, \infty]$.
+Suppose $f, g, (f_n)_{n = 1}^\infty \in \L^p(\Omega \to \symbf F, \mu)$ where $p \in (0, \infty]$.
 
 8. (**In $\L_p$ norm**) $f_n \to f$ in $\L_p$ if $\|f_n - f\|_p \to 0$.
    - For $p \ge 1$, $f_n \to f$ in $\L_p$ implies $\mu f_n \to \mu f$.
@@ -269,7 +269,7 @@ Suppose $p = \infty$. $\L^\infty$ is a **Banach space**.
 
 ##### Implication diagram
 
-Notice that L-finite and L-infinity are only defined for codomain $\mathbf F$ is $\R$ or $\C$.
+Notice that L-finite and L-infinity are only defined for codomain $\symbf F$ is $\R$ or $\C$.
 
 ```mermaid
 graph
@@ -300,11 +300,11 @@ F -.-> C
 G -.->E
 ```
 
-##### Convergence in $\mathbf F$
+##### Convergence in $\symbf F$
 
-Suppose $(\Omega, \A, \mu)$ is a measure space. And $\mathbf F = \R, \C$, $c \in \bF$.
+Suppose $(\Omega, \A, \mu)$ is a measure space. And $\symbf F = \R, \C$, $c \in \bF$.
 
-Suppose $(f_n)_{n = 1}^\infty, (g_n)_{n = 1}^\infty, f, g \in \L(\Omega \to \mathbf F)$. All convergence modes are well defined. Then
+Suppose $(f_n)_{n = 1}^\infty, (g_n)_{n = 1}^\infty, f, g \in \L(\Omega \to \symbf F)$. All convergence modes are well defined. Then
 
 - $f_n \to f$ in any mode if and only if $|f_n - f| \to 0$ in any mode.
 - $f_n \to f$ and $g_n \to g$ in some mode then $f_n + g_n \to f + g$ and $cf_n \to cf$ in the same mode.

@@ -77,11 +77,11 @@ $$
 $$
 We could redefine the states space as $S^{k}$, and define $Y_{n} = (X_{n-k+1}, \cdots, X_{n})$. Now notice:
 $$
-\forall n \ge k, \forall \mathbf s \in S^{k}: P[Y_n = \mathbf s \mid Y_{n-1}, \cdots, Y_{0}] = P[Y_n = \mathbf s\mid Y_{n-1}]
+\forall n \ge k, \forall \symbf s \in S^{k}: P[Y_n = \symbf s \mid Y_{n-1}, \cdots, Y_{0}] = P[Y_n = \symbf s\mid Y_{n-1}]
 $$
 
 - Now the initial state is $Y_{k-1} = (X_0, \cdots, X_{k-1})$. We may shift time to start with $Y_0$.
-- Suppose $S$ is finite, each $\mathbf s \in S^k$ now only transition to $|S|$ other states. So the transition matrix is quite sparse.
+- Suppose $S$ is finite, each $\symbf s \in S^k$ now only transition to $|S|$ other states. So the transition matrix is quite sparse.
 
 #### Connectedness of States
 

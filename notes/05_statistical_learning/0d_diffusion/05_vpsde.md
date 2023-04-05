@@ -8,7 +8,7 @@
 
 Let's try to take $N \to \infty$ in the discrete forward diffusion in DDPM.
 
-Suppose $(\mathbf X_{i/N})_{i = 1}^N$ and $(\mathbf Z_{i/N})_{n = 1}^N$ are defined as in DDPM. Suppose $(\mathbf B_t)$ is a standard $\R^d$ BM.
+Suppose $(\symbf X_{i/N})_{i = 1}^N$ and $(\symbf Z_{i/N})_{n = 1}^N$ are defined as in DDPM. Suppose $(\symbf B_t)$ is a standard $\R^d$ BM.
 
 Take a continuous function $\beta(t): [0, 1] \to \R^+$ where $\beta(i / N) = \beta_i$ in DDPM.
 
@@ -32,30 +32,30 @@ $$
 Let $\Delta t := 1 / N$ and $t = i / N$. Then notice
 $$
 \begin{aligned}
-\mathbf X_{t + \Delta t} & = \sqrt{1 - \beta\p{t + \Delta t} \Delta t} \mathbf X_{t} + \sqrt{\beta(t)\Delta t} \mathbf Z_{t} \approx \mathbf X_t - \frac{1}{2} \beta(t) \Delta t \mathbf X_t + \sqrt{\beta (t)} \mathbf Z_t \sqrt{\Delta t}\\
-& \approx \mathbf X_t - \frac{1}{2} \beta(t) \Delta t \mathbf X_t + \sqrt{\beta(t)} \p{\mathbf B_{t + \Delta t} - \mathbf B_{t}}\\
+\symbf X_{t + \Delta t} & = \sqrt{1 - \beta\p{t + \Delta t} \Delta t} \symbf X_{t} + \sqrt{\beta(t)\Delta t} \symbf Z_{t} \approx \symbf X_t - \frac{1}{2} \beta(t) \Delta t \symbf X_t + \sqrt{\beta (t)} \symbf Z_t \sqrt{\Delta t}\\
+& \approx \symbf X_t - \frac{1}{2} \beta(t) \Delta t \symbf X_t + \sqrt{\beta(t)} \p{\symbf B_{t + \Delta t} - \symbf B_{t}}\\
 \end{aligned}
 $$
 Now, formally take the limit $N \to \infty$ hints as the following diffusion
 $$
-\dd \mathbf X_t = - \frac{1}{2} \beta(t) \dd \mathbf X_t + \sqrt{\beta(t)}\dd \mathbf B_t, \quad t \in [0, 1]
+\dd \symbf X_t = - \frac{1}{2} \beta(t) \dd \symbf X_t + \sqrt{\beta(t)}\dd \symbf B_t, \quad t \in [0, 1]
 $$
 It is called the Variance Preserving SDE (VPSDE) in Song's paper.
 
 This is a linear SDE with density
 $$
-p_{t|0}(\mathbf x_t | \mathbf x_0) = \mathcal N(\mathbf x_t \mid \mathbf x_0 \sqrt{\bar \alpha(t)}, \p{1 - \bar \alpha(t)} \bI)
+p_{t|0}(\symbf x_t | \symbf x_0) = \mathcal N(\symbf x_t \mid \symbf x_0 \sqrt{\bar \alpha(t)}, \p{1 - \bar \alpha(t)} \bI)
 $$
 For $\lambda \ge 0$ it has a family of reverse diffusion given by:
 $$
-d\mathbf X_t = \p{-\frac{1}{2} \beta(t) \mathbf X_t - (1 + \lambda)\beta(t) \nabla \log p(\mathbf X_t, t)} \dd t + \sqrt{\lambda\beta(t)} \dd \bar {\mathbf B}_t, \quad t \in [1, 0]
+d\symbf X_t = \p{-\frac{1}{2} \beta(t) \symbf X_t - (1 + \lambda)\beta(t) \nabla \log p(\symbf X_t, t)} \dd t + \sqrt{\lambda\beta(t)} \dd \bar {\symbf B}_t, \quad t \in [1, 0]
 $$
 
 ##### VPSDE in EDM framework
 
 Recall that a scaled driftless diffusion has differential
 $$
-\dd \mathbf {\what X}_t =\frac{\dot s(t)}{s(t)} \mathbf {\what X}_t \dd t + s(t) \sqrt{2 \dot \sigma(t) \sigma(t)} \dd \mathbf B_t, \quad \mathbf {\what X}_0 =  \mathbf {X}_0, \quad t \in [0, 1]
+\dd \symbf {\what X}_t =\frac{\dot s(t)}{s(t)} \symbf {\what X}_t \dd t + s(t) \sqrt{2 \dot \sigma(t) \sigma(t)} \dd \symbf B_t, \quad \symbf {\what X}_0 =  \symbf {X}_0, \quad t \in [0, 1]
 $$
 Now compare the unknowns and try to solve for $s(t)$ and $\sigma(t)$.
 

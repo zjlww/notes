@@ -1,6 +1,6 @@
 #### Divergences
 
-Suppose on measurable space $(\Omega, \F)$ there are two probability measures $P, Q$.
+Suppose on measurable space $(\Omega, \mathcal A)$ there are two probability measures $P, Q$.
 
 ##### Integral probability metrics
 
@@ -15,7 +15,7 @@ $$
 
 ##### Total variation distance
 
-Let $\F \subseteq \L(\Omega \to \R)$ be the set of all indicator functions. The integral probability metric is called 
+Let $\F \subseteq \L(\Omega \to \R)$ be the set of all indicator functions. The integral probability metric defined by $\F$ is called total variation distance.
 
 ##### f-divergence
 
@@ -76,6 +76,5 @@ $$
 \sum_{k \in I} a_k \log \frac{a_k}{b_k} \ge a \log \frac{a} {b}
 $$
 Define $p_k = a_k / a$ and $q_k = b_k / b$. And its equivalent to $\d{p}{q} \ge 0$.
-
 
 

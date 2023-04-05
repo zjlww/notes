@@ -183,7 +183,7 @@ Suppose $\mathcal X$ is countable and **linearly ordered**. Suppose $p(x) \in \m
 
 - For $x \in \mathcal X$. Choose code length $l(x) = \lceil -\log_D p(x)\rceil + 1$. 
 - The **code** $C(x) = \lfloor \overline F(x) \rfloor_{l(x)}$ is the $l(x)$ most significant bits in the binary decimal expansion of $\overline F(x)$.
-  - The **short code**: choose $l(x)$ to be as small as possible so that $F(\mathbf x^-) \le \lfloor \overline F( x) \rfloor_{l( x)} \le F( x^+)$.
+  - The **short code**: choose $l(x)$ to be as small as possible so that $F(\symbf x^-) \le \lfloor \overline F( x) \rfloor_{l( x)} \le F( x^+)$.
   - The **guaranteed code**: choose $l(x) = \lceil -\log_2 p( x)\rceil + 1$.
 
 The properties of the algorithm. Denote $R(x) = C(x) + D^{-l(x)}$:
@@ -196,23 +196,23 @@ The properties of the algorithm. Denote $R(x) = C(x) + D^{-l(x)}$:
 
 ##### Arithemetic code
 
- Suppose $\mathbf x = (x_1, x_2, \cdots, x_n) \in \mathcal X^n$. Define **lexicographic** linear order on $\mathcal X^n$.
+ Suppose $\symbf x = (x_1, x_2, \cdots, x_n) \in \mathcal X^n$. Define **lexicographic** linear order on $\mathcal X^n$.
 
 <img src="images/Arithmetic_encoding.svg" alt="Arithmetic_encoding" style="zoom:30%;" />
 
 The encoding algorithm defines $C: \mathcal X^n \to \{0, \cdots, D-  1\}^*$:
 
-- $[F(\mathbf x^-), F(\mathbf x^+))$ is defined same as in Shannon-Fano-Elias Code.
-- We **may** choose **tag** $\overline F(\mathbf x) = (F(\mathbf x^-) + F(\mathbf x^+))/2 \in [0, 1)$.
+- $[F(\symbf x^-), F(\symbf x^+))$ is defined same as in Shannon-Fano-Elias Code.
+- We **may** choose **tag** $\overline F(\symbf x) = (F(\symbf x^-) + F(\symbf x^+))/2 \in [0, 1)$.
   - But there may be better choices. Which may leads to better codes.
-- The **code** $C(\mathbf x) = \lfloor \overline F(\mathbf x) \rfloor_{l(\mathbf x)}$ is the $l(\mathbf x)$ most significant bits in the binary decimal expansion of $\overline F(\mathbf x)$.
-  - The **short code**: choose $l(\mathbf x)$ to be as small as possible so that $F(\mathbf x^-) \le \lfloor \overline F(\mathbf x) \rfloor_{l(\mathbf x)} \le F(\mathbf x^+)$.
-  - The **guaranteed code**: choose $l(\mathbf x) = \lceil -\log_2 p(\mathbf x)\rceil + 1$.
+- The **code** $C(\symbf x) = \lfloor \overline F(\symbf x) \rfloor_{l(\symbf x)}$ is the $l(\symbf x)$ most significant bits in the binary decimal expansion of $\overline F(\symbf x)$.
+  - The **short code**: choose $l(\symbf x)$ to be as small as possible so that $F(\symbf x^-) \le \lfloor \overline F(\symbf x) \rfloor_{l(\symbf x)} \le F(\symbf x^+)$.
+  - The **guaranteed code**: choose $l(\symbf x) = \lceil -\log_2 p(\symbf x)\rceil + 1$.
 
 Notice that when using center tag, and guaranteed code, the properties are exactly the same as the SFE code:
 
 - The code $C: \mathcal X^n \to \{0, \cdots, D-1\}^*$ is a prefix code.
-- Average code length $H_D(p(\mathbf x)) + 1\le L_C(p(\mathbf x)) < H_D(p(\mathbf x)) + 2$.
+- Average code length $H_D(p(\symbf x)) + 1\le L_C(p(\symbf x)) < H_D(p(\symbf x)) + 2$.
 
 Decoding / storing the code is not yet discussed here.
 

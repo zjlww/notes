@@ -5,7 +5,7 @@
 Suppose $V$ and $W$ are vector spaces over $\bF$. $T: V \to W$ is called a **linear map** if $\forall v \in V, \forall \alpha \in \bF: T(\alpha v) = \alpha Tv$ and $\forall u, v \in V: T(u + v) = Tu + Tv$.
 
 - The set of all linear maps from $V$ to $W$ is denoted $\mathcal{L}(V, W)$.
-- $\L(V, W)$ is a vector space over $\mathbf F$.
+- $\L(V, W)$ is a vector space over $\symbf F$.
     - with addition $(S+T)(v)=S v+T v$.
     - with scalar multiplication $(\lambda T)(v)=\lambda(T v)$.
 - Linear maps are also called **vector space homomorphisms**. Denoted by $\hom_{\bF}(V, W)$.
@@ -18,7 +18,7 @@ Suppose $V$ and $W$ are vector spaces over $\bF$. $T: V \to W$ is called a **lin
     - $T^{-1} \in \L(W, V)$. $TT^{-1} = I_V$ and $T^{-1}T = I_W$.
     - Invertible linear maps are also called **vector space isomorphisms**.
     - In this case $V \simeq W$ are called **isomorphic**.
-- Two finite-dimensional vector spaces over the same field $\mathbf{F}$ are isomorphic if and only if they have the same dimension.
+- Two finite-dimensional vector spaces over the same field $\symbf{F}$ are isomorphic if and only if they have the same dimension.
 - $\dim \L(V, W) = \dim V \times \dim W$.
 - $T \in \L(V, V) = \L(V)$ is called a **linear opertor**.
 
@@ -78,7 +78,7 @@ Suppose $V$ is a vector space over $\bF$. Let $v \in V$ and $U$ a subspace of $V
 - Since $U$ is a normal subgroup, define quotient space $V / U$ with addition.
 - Additionally define scalar multiplication $\lambda(v + U) = \lambda v + U$.
   - Scalar multiplication is well defined.
-- $(V / U, +, \cdot)$ is a vector space over $\mathbf F$.
+- $(V / U, +, \cdot)$ is a vector space over $\symbf F$.
 - $v + U \in V/  U$ are called **affine subsets**. $v + U$ is said to be **parallel** to $U$.
 
 We could construct a special basis of $V$ as following:

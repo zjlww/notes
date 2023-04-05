@@ -10,7 +10,7 @@ $(v_{i})_{i = 1}^n \subseteq V$ is a finite list. Similarly we can define infini
 
 ##### Linear combination
 
-A linear combination of a list $(v_i)_{i = 1}^m \subseteq V$ is of the form $a_{1} v_{1}+\cdots+a_{m} v_{m}$ where $a_{1}, \ldots, a_{m} \in \mathbf{F}$.
+A linear combination of a list $(v_i)_{i = 1}^m \subseteq V$ is of the form $a_{1} v_{1}+\cdots+a_{m} v_{m}$ where $a_{1}, \ldots, a_{m} \in \symbf{F}$.
 - Linear combinations of the empty list $()$ is $\c{0}$.
 - When all $a_k = 0$, or the list is empty, the linear combination is **trivial**.
 

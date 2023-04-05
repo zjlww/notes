@@ -33,17 +33,17 @@ Suppose $f_\theta: \R^d \to \R^d$ is a parameterized non-degenerate $C^1$-diffeo
 To sample from $p_X(x)$:
 
 - First sample $z$ from $p_Z(z)$.
-- Then apply transform $x = f(z) \sim p_X(x)$.
+- Then apply transform $x = f_\theta(z) \sim p_X(x)$.
 
 To evaluate $\log p_X(x)$:
 
-- First compute $z = f^{-1}(x)$.
-- Then compute $\log\abs{\det f'(z)}$ and $\log p_Z(z)$. Since $\log p_X(x) = \log p_Z(z) - \log \abs{\det f'(z)}$.
+- First compute $z = f_\theta^{-1}(x)$.
+- Then compute $\log\abs{\det f_\theta'(z)}$ and $\log p_Z(z)$. Since $\log p_X(x) = \log p_Z(z) - \log \abs{\det f_\theta'(z)}$.
 
 Notice that **efficient** sampling, and log probability evaluation have different requirements.
 
 - Efficient sampling requires fast sampling from $p_Z$ and fast transform $f_\theta$.
-- Efficient evaluation requires fast inverse $f^{-1}$ , fast evaluation of $\log p_Z(z)$, and fast evaluation of $\log \abs{\det f'(z)}$.
+- Efficient evaluation requires fast inverse $f_\theta^{-1}$ , fast evaluation of $\log p_Z(z)$, and fast evaluation of $\log \abs{\det f_\theta'(z)}$.
 
 Suppose $X_* \sim p_*(x)$ is a **data density** on $\R^d$. Training with the forward KL is
 $$
@@ -52,7 +52,7 @@ $$
 
 ##### Flows for generative modeling: a normalizing transformation
 
-Continue the discussion above. Let $Z_* = \phi^{-1}(X_*) \sim p_{Z_*}(f(z)) \abs{\det f'(z)}$. Note that $Z \sim p_Z(z) = p_X(f(z)) \abs{\det f'(z)}$.
+Continue the discussion above. Let $Z_* = f_\theta^{-1}(X_*) \sim p_{Z_*}(f_\theta(z)) \abs{\det f_\theta'(z)}$. Note that $Z \sim p_Z(z) = p_X(f_\theta(z)) \abs{\det f_\theta'(z)}$.
 $$
 \begin{aligned}
 \d{p_*}{p_X} & = \int_{\R^d} p_*(x) \log \frac{p_*(x)}{p_X(x)} \dd x\\
@@ -60,6 +60,17 @@ $$
 \end{aligned}
 $$
 In the context of generative models, a flow model can be interpreted as normalizing the data distribution, and transform it into the tractable prior distribution $p_Z$.
+
+##### Flow transform of $f$-divergence
+
+Suppose $g: \R^d \to \R^d$ is a smooth function. Suppose $X_1 \sim p_1(x)$ and $X_2 \sim p_2(x)$ on $\R^d$. Suppose $Y_1 = g(X_1) \sim q_1(y)$, and $Y_2 = g(X_2) \sim q_2(y)$. Now observe the following:
+$$
+\begin{aligned}
+D_f(p_1 \Vert p_2) & = \int_{\R^d} f\p{\frac{p_1(x)}{p_2(x)}} p_2(x) \dd x\\
+& = \int_{\R^d} f \p{\frac{q_1(g(x))\abs{\det g'(x)}}{q_2(g(x))\abs{\det g'(x)}}} q_2(g(x)) \abs{\det g'(x)} \dd x\\
+& = \int_{\R^d} f \p{\frac{q_1(y)}{q_2(y)}} q_2(y) \dd y = D_f(q_1 \Vert q_2)
+\end{aligned}
+$$
 
 ##### Flows for variational inference
 
@@ -94,9 +105,8 @@ Suppose $f_\eta: \R^d \to \R^d$ is smooth. And $\what Z = f_\eta(\wtilde Z) \sim
 
 $$
 \begin{aligned}
-\elbo(p_\theta, q_{\phi, \eta}, x) & := E\s{\log \frac{p_\theta(x | \what Z) p_\theta(\what Z)}{q_{\phi, \eta}(\what Z | x)}} = \int \log \frac{p_\theta(x, \what z)}{q_{\phi, \eta}(\what z | x)} q_{\phi, \eta} (\what z | x) \dd \what z\\
-& = \int \log \frac{p_\theta(x, f_\eta(\wtilde z))}{q_{\phi}(\wtilde z | x) \abs{\det f_\eta'(\wtilde z)}} q_\phi(\wtilde z | x) \dd \wtilde z\\
-& = \log p_\theta(x) - \boxed{\d{q_\phi(\wtilde z | x)}{\frac{p_\theta(f_\eta(\wtilde z) | x))}{\abs{\det f'_\eta(\wtilde z)}}}}\\
+\elbo(p_\theta, q_{\phi, \eta}, x) & = E\s{\log \frac{p_\theta(x | \what Z) p_\theta(\what Z)}{q_{\phi, \eta}(\what Z | x)}}\\
+& = \log p_\theta(x) - \boxed{\d{q_{\phi, \eta}(z | x)}{p_\theta(z | x)}}\\
 & = E\s{\log p_\theta(x, f_\eta(\wtilde Z))} + H(\wtilde Z) - E\s{\log \abs{\det f'_\eta(\wtilde Z)}}
 \end{aligned}
 $$
@@ -106,8 +116,4 @@ For efficiently doing stochastic gradient variational Bayes (SGVB) with the flow
 - efficient evaluation of $f_\eta(\wtilde z)$ and
 - efficient evaluation of $\log \abs{\det f_\eta'(\wtilde z)}$.
 
-The $\boxed{\text{boxed}}$ KL-divergence in the above equation gives another view of the ELBO.
-
-- Suppose $\wbar Z \sim p_\theta(z | x)$ is the true posterior given $x$. Let $Z' = f_{\eta}^{-1}(\wbar Z)$.
-- Then $Z' \sim p_\theta(f_\eta(z) | x) / \abs{\det f_\eta '(z)}$.
-- Therefore the KL-divergence can be interpreted as normalizing the true posterior to make it simpler.
+By transforming the KL-divergence with $f_\eta^{-1}$, the KL-divergence can be interpreted as normalizing the true posterior to make it simpler.

@@ -2,8 +2,8 @@
 
 ##### Dual space
 
-- Suppose $V$ is a vector space over $\mathbf F$. A **linear functional** on $V$ is a linear map from $V$ to $\mathbf{F}$.
-  - $V' = \L(V, \mathbf F)$ is the **algebraic dual space** of $V$, it is a vector space over $\mathbf F$.
+- Suppose $V$ is a vector space over $\symbf F$. A **linear functional** on $V$ is a linear map from $V$ to $\symbf{F}$.
+  - $V' = \L(V, \symbf F)$ is the **algebraic dual space** of $V$, it is a vector space over $\symbf F$.
   - We default $V'$ to algebraic when $V$ has no special topology.
 - Suppose $V$ is a **topological vector space (e.g. normed space)** over $\bF$.
   - $V' = \mathcal B(V, \bF)$ is the set of all **continuous linear functionals**, called the **continuous dual space** / **topological dual space**.
@@ -116,13 +116,13 @@ Suppose $x \in X$ is nonzero. There exists $f \in X'$ such that $\n f  = 1$ and 
 
 ##### Dual map of a linear map
 
-Suppose $V, W$ are vector spaces over $\mathbf F$.
+Suppose $V, W$ are vector spaces over $\symbf F$.
 
 If $T \in \L(V, W)$, then define $T': W' \to V'$ by $T'(\varphi) = \varphi \circ T$.
 
 - $T' \in \L(W', V')$.
   - $(S+T)^{\prime}=S^{\prime}+T^{\prime}$ for all $S, T \in \mathcal{L}(V, W)$.
-  - $(\lambda T)^{\prime}=\lambda T^{\prime}$ for all $\lambda \in \mathbf{F}$ and all $T \in \mathcal{L}(V, W)$.
+  - $(\lambda T)^{\prime}=\lambda T^{\prime}$ for all $\lambda \in \symbf{F}$ and all $T \in \mathcal{L}(V, W)$.
 - $(S T)^{\prime}=T^{\prime} S^{\prime}$ for all $T \in \mathcal{L}(U, V)$ and all $S \in \mathcal{L}(V, W)$.
 - $I_V' = I_{V'}$.
 
@@ -134,7 +134,7 @@ Suppose $V, W$ are normed vector spaces over $\bF$. Define $T'$ similarly for $T
 
 ##### Annihilator
 
- Suppose $V, W$ are vector spaces over $\mathbf F$.
+ Suppose $V, W$ are vector spaces over $\symbf F$.
 
 For $U \subset V,$ the **annihilator** of $U,$ denoted $U^{0},$ is defined by $U^{0}=\left\{\varphi \in V^{\prime}: \varphi[U] = \{0\}\right\}$. The set of functionals in $V'$ that are maps entire $U$ to zero.
 
@@ -165,7 +165,7 @@ The vector $u$ is unique. Suppose there are two such vectors. $\langle v, u_1 \r
 
 ##### Range and null space of dual map
 
- Suppose $V, W$ are vector spaces over $\mathbf F$. $T \in \L(V, W)$.
+ Suppose $V, W$ are vector spaces over $\symbf F$. $T \in \L(V, W)$.
 
 - $\null T' = (\range T)^0$. The following are equivalent.
   - $\varphi \in \null T' \subseteq W'$.

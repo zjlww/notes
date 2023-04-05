@@ -4,7 +4,7 @@ Suppose $\bF = \R$ or $\C$.
 
 ##### Inner product
 
-Suppose $V$ is a vector space over $\bF$. An **inner product** on $V$ is $\pd{\cdot}{\cdot}: V \times V \to \mathbf F$.
+Suppose $V$ is a vector space over $\bF$. An **inner product** on $V$ is $\pd{\cdot}{\cdot}: V \times V \to \symbf F$.
 
 - (positivity) $\forall v \in V:\langle v, v\rangle \in [0, \infty)$.
 - (definiteness) $\forall v \in V: v = 0 \iff \langle v, v\rangle=0$.
@@ -113,7 +113,7 @@ A set $E \subset V$ is an **orthonormal family** if $\forall a, b \in E: \langle
 
 - A orthonormal family is **linearly independent**.
 - All elements of $E$ has norm $1$.
-- For any finite subset $\{e_1, \ldots, e_m\} \subset E$. And $v = \sum_{i = 1}^ma_i e_i$ for $a_{1}, \ldots, a_{m} \in \mathbf{F}$.
+- For any finite subset $\{e_1, \ldots, e_m\} \subset E$. And $v = \sum_{i = 1}^ma_i e_i$ for $a_{1}, \ldots, a_{m} \in \symbf{F}$.
   - $\|v\|^{2}=\left|a_{1}\right|^{2}+\cdots+\left|a_{m}\right|^{2}$.
   - $v=\left\langle v, e_{1}\right\rangle e_{1}+\cdots+\left\langle v, e_{n}\right\rangle e_{n}$.
   - $\|v\|^{2}=\left|\left\langle v, e_{1}\right\rangle\right|^{2}+\cdots+\left|\left\langle v, e_{n}\right\rangle\right|^{2}$.

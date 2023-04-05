@@ -72,5 +72,5 @@ In practice we cannot work directly with this objective since:
 - $\F$ may be restricted and global maximum in $\phi$ is not achievable.
 - It is too slow to solve the inner maximum when $T_\phi$ is a neural network.
 
-So we have to work with some approximation of the objective.
+So we have to work with some approximation of the objective...
 

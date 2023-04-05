@@ -4,29 +4,29 @@
 
 ##### Discrete forward diffusion
 
-Suppose $\mathbf X_0 \sim p_0(\mathbf x)$ is a random variable in $\R^d$ with data distribution.
+Suppose $\symbf X_0 \sim p_0(\symbf x)$ is a random variable in $\R^d$ with data distribution.
 
-Let $(\mathbf Z_n)_{n = 1}^{T} \sim_{\iid} \mathcal N(\mathbf 0, \bI_d)$ be $T$ independent gaussian random variables. Define $(\mathbf X_{n})_{n = 1}^T$ recursively as
+Let $(\symbf Z_n)_{n = 1}^{T} \sim_{\iid} \mathcal N(\symbf 0, \bI_d)$ be $T$ independent gaussian random variables. Define $(\symbf X_{n})_{n = 1}^T$ recursively as
 $$
-\mathbf X_n = \sqrt{\beta_n} \mathbf Z_n + \sqrt{1 - \beta_n} \mathbf X_{n - 1}, \quad n \in \c{1, \ldots, T}
+\symbf X_n = \sqrt{\beta_n} \symbf Z_n + \sqrt{1 - \beta_n} \symbf X_{n - 1}, \quad n \in \c{1, \ldots, T}
 $$
-for some sequence of predefined $(\beta_n)_{n = 1}^T \in (0, 1)$. The Markov process $(\mathbf X_n)_{n = 0}^T$ is called the **forward diffusion**, which gradually adds noise into $\mathbf X_0$.
+for some sequence of predefined $(\beta_n)_{n = 1}^T \in (0, 1)$. The Markov process $(\symbf X_n)_{n = 0}^T$ is called the **forward diffusion**, which gradually adds noise into $\symbf X_0$.
 
 - The forward diffusion process has conditional density given by
   $$
-  q(\mathbf x_{1..T}|\mathbf  x_0) = \prod_{n=1}^T q(\mathbf x_{n} | \mathbf x_{n-1}) \quad q(\mathbf x_n | \mathbf x_{n-1}) = \mathcal N(\mathbf x_n; \sqrt {1-\beta_n} \mathbf x_{n-1}, \beta_n \bI_d)
+  q(\symbf x_{1..T}|\symbf  x_0) = \prod_{n=1}^T q(\symbf x_{n} | \symbf x_{n-1}) \quad q(\symbf x_n | \symbf x_{n-1}) = \mathcal N(\symbf x_n; \sqrt {1-\beta_n} \symbf x_{n-1}, \beta_n \bI_d)
   $$
 
 - For $n \in 1.. T$ define $\alpha_n = 1 - \beta_n \in (0, 1)$ and $\bar \alpha_n = \prod_{k = 1}^n \alpha_k$. $\alpha_n$ and $\bar \alpha_n$ strictly decreases from $1$ to a value close to $0$.
 
 - Then the marginal conditional density is given by
   $$
-  q(\mathbf x_n | \mathbf x_0) = \mathcal N(\mathbf x_n ; \mathbf x_0 \sqrt{\bar \alpha_n}, (1 - \bar \alpha_n )\bI_d)
+  q(\symbf x_n | \symbf x_0) = \mathcal N(\symbf x_n ; \symbf x_0 \sqrt{\bar \alpha_n}, (1 - \bar \alpha_n )\bI_d)
   $$
 
-- For some $\mathbf E_n \sim \mathcal N(\mathbf 0, \bI_d)$ depending on $(\mathbf Z_1, \ldots, \mathbf Z_n)$, we have
+- For some $\symbf E_n \sim \mathcal N(\symbf 0, \bI_d)$ depending on $(\symbf Z_1, \ldots, \symbf Z_n)$, we have
   $$
-  \mathbf X_n = \sqrt{1-\bar \alpha_n} \mathbf E_n + \sqrt{\bar \alpha_n} \mathbf X_0
+  \symbf X_n = \sqrt{1-\bar \alpha_n} \symbf E_n + \sqrt{\bar \alpha_n} \symbf X_0
   $$
 
 ##### A posterior of forward diffusion
@@ -34,14 +34,14 @@ for some sequence of predefined $(\beta_n)_{n = 1}^T \in (0, 1)$. The Markov pro
 The posterior density can be derived by Bayes' theorem
 
 $$
-q(\mathbf{x}_{n-1}|\mathbf{x}_{n}, \mathbf{x}_0) = \frac{q(\mathbf{x}_{n}|\mathbf{x}_{n-1}, \mathbf{x}_0)q(\mathbf{x}_{n-1}|\mathbf{x}_0)}{q(\mathbf{x}_n|\mathbf{x}_0)}
+q(\symbf{x}_{n-1}|\symbf{x}_{n}, \symbf{x}_0) = \frac{q(\symbf{x}_{n}|\symbf{x}_{n-1}, \symbf{x}_0)q(\symbf{x}_{n-1}|\symbf{x}_0)}{q(\symbf{x}_n|\symbf{x}_0)}
 $$
 
 Where we already know:
 
-- $q(\mathbf{x}_n | \mathbf{x}_{n - 1}, \mathbf{x}_0) = q(\mathbf{x}_n | \mathbf{x}_{n-1}) = \mathcal N(\mathbf{x}_n; \sqrt {1-\beta_n} \mathbf{x}_{n-1}, \beta_n \mathbf{I})$.
-- $q(\mathbf{x}_n | \mathbf{x}_0) = \mathcal N(\mathbf{x}_n ; \mathbf{x}_0 \sqrt{\bar \alpha_n}, (1 - \bar \alpha_n) \mathbf{I})$.
-- $q(\mathbf{x}_{n-1} | \mathbf{x}_0) = \mathcal N(\mathbf{x}_{n - 1}; \mathbf{x}_0 \sqrt{\bar \alpha_{n - 1}}, (1 - \bar \alpha_{n - 1}) \mathbf{I})$.
+- $q(\symbf{x}_n | \symbf{x}_{n - 1}, \symbf{x}_0) = q(\symbf{x}_n | \symbf{x}_{n-1}) = \mathcal N(\symbf{x}_n; \sqrt {1-\beta_n} \symbf{x}_{n-1}, \beta_n \symbf{I})$.
+- $q(\symbf{x}_n | \symbf{x}_0) = \mathcal N(\symbf{x}_n ; \symbf{x}_0 \sqrt{\bar \alpha_n}, (1 - \bar \alpha_n) \symbf{I})$.
+- $q(\symbf{x}_{n-1} | \symbf{x}_0) = \mathcal N(\symbf{x}_{n - 1}; \symbf{x}_0 \sqrt{\bar \alpha_{n - 1}}, (1 - \bar \alpha_{n - 1}) \symbf{I})$.
 
 
 We can simplify with following knowledge:
@@ -64,22 +64,22 @@ $$
 \sigma^2 = \frac{\p{1 - \bar \alpha_{n - 1}}\beta_n}{(1 - \bar \alpha_n)}; \quad \mu = \frac{\sqrt{\alpha_n} \p{1 - \bar \alpha_{n - 1}} x_n + \beta_n \sqrt{\bar \alpha_{n - 1}} x_0}{\p{1 - \bar \alpha_n}}
 $$
 
-So the conditional density $q(\mathbf x_{n - 1} | \mathbf x_n, \mathbf x_0), n \in 2..T$ has the closed form solution:
+So the conditional density $q(\symbf x_{n - 1} | \symbf x_n, \symbf x_0), n \in 2..T$ has the closed form solution:
 
 $$
 \begin{aligned}
-q(\mathbf{x}_{n - 1} | \mathbf{x}_n, \mathbf{x}_0) &= \mathcal N\p{\mathbf{x}_{n - 1}; \tilde \mu_n(\mathbf{x}_n, \mathbf{x}_0), \tilde \beta_n I}\\
-\quad \tilde\mu_{n}\left(\mathbf{x}_n, \mathbf{x}_0\right) &= \frac{\sqrt{\bar{\alpha}_{n-1}} \beta_{n}}{1-\bar{\alpha}_{n}} \mathbf{x}_{0}+\frac{\sqrt{\alpha_{n}}\left(1-\bar{\alpha}_{n-1}\right)}{1-\bar{\alpha}_{n}} \mathbf{x}_{n}; \quad \tilde{\beta}_{n}=\frac{1-\bar{\alpha}_{n-1}}{1-\bar{\alpha}_{n}} \beta_{n}
+q(\symbf{x}_{n - 1} | \symbf{x}_n, \symbf{x}_0) &= \mathcal N\p{\symbf{x}_{n - 1}; \tilde \mu_n(\symbf{x}_n, \symbf{x}_0), \tilde \beta_n I}\\
+\quad \tilde\mu_{n}\left(\symbf{x}_n, \symbf{x}_0\right) &= \frac{\sqrt{\bar{\alpha}_{n-1}} \beta_{n}}{1-\bar{\alpha}_{n}} \symbf{x}_{0}+\frac{\sqrt{\alpha_{n}}\left(1-\bar{\alpha}_{n-1}\right)}{1-\bar{\alpha}_{n}} \symbf{x}_{n}; \quad \tilde{\beta}_{n}=\frac{1-\bar{\alpha}_{n-1}}{1-\bar{\alpha}_{n}} \beta_{n}
 \end{aligned}
 $$
 
 ##### Discrete reverse diffusion model
 
-The idea is to train an autoregressive model on $\R^d$ to sample paths from the forward diffusion without $\mathbf X_0$.
+The idea is to train an autoregressive model on $\R^d$ to sample paths from the forward diffusion without $\symbf X_0$.
 
 Consider a reverse time Markov process with states in $\R^d$ decomposed as
 $$
-p_\theta(\mathbf x_0, \ldots, \mathbf x_T) = p_\theta(\mathbf x_T) \prod_{n = 1}^T p_\theta(\mathbf x_{n - 1} | \mathbf x_{n}),\quad p_\theta(\mathbf x_T) := \mathcal N(\mathbf x_T;\mathbf 0, \bI_d)
+p_\theta(\symbf x_0, \ldots, \symbf x_T) = p_\theta(\symbf x_T) \prod_{n = 1}^T p_\theta(\symbf x_{n - 1} | \symbf x_{n}),\quad p_\theta(\symbf x_T) := \mathcal N(\symbf x_T;\symbf 0, \bI_d)
 $$
 this process is also called the **denoising process**.
 
@@ -88,82 +88,82 @@ But there is indeed an ELBO we could use for training. This is equivalent to an 
 $$
 \begin{aligned}
 \mathcal L_\theta
-&= E\s{\log p_\theta(\mathbf{X}_0|\mathbf{Z}) - \log q(\mathbf{Z}|\mathbf{X}_0) + \log p_\theta(\mathbf{Z})}\\
-&= E\s{\log p_\theta(\mathbf{X}_0, \mathbf{X}_{1..T}) - \log q(\mathbf{X}_{1..T}|\mathbf{X}_0)}\\
-&= E\s{\log p_\theta(\mathbf{X}_T) + \sum_{n=1}^T\log \frac{p_\theta(\mathbf{X}_{n-1}|\mathbf{X}_{n})}{q(\mathbf{X}_n|\mathbf{X}_{n-1})}}\\
+&= E\s{\log p_\theta(\symbf{X}_0|\symbf{Z}) - \log q(\symbf{Z}|\symbf{X}_0) + \log p_\theta(\symbf{Z})}\\
+&= E\s{\log p_\theta(\symbf{X}_0, \symbf{X}_{1..T}) - \log q(\symbf{X}_{1..T}|\symbf{X}_0)}\\
+&= E\s{\log p_\theta(\symbf{X}_T) + \sum_{n=1}^T\log \frac{p_\theta(\symbf{X}_{n-1}|\symbf{X}_{n})}{q(\symbf{X}_n|\symbf{X}_{n-1})}}\\
 &= E\s{
-\log p_\theta(\mathbf{X}_T) + \sum_{n=2}^T\log \frac{p_\theta(\mathbf{X}_{n-1}|\mathbf{X}_{n})}{q(\mathbf{X}_{n-1}|\mathbf{X}_n, \mathbf{X}_0)} + \log \frac{p_\theta (\mathbf{X}_0 | \mathbf{X}_1)}{q(\mathbf{X}_1 | \mathbf{X}_0)}
+\log p_\theta(\symbf{X}_T) + \sum_{n=2}^T\log \frac{p_\theta(\symbf{X}_{n-1}|\symbf{X}_{n})}{q(\symbf{X}_{n-1}|\symbf{X}_n, \symbf{X}_0)} + \log \frac{p_\theta (\symbf{X}_0 | \symbf{X}_1)}{q(\symbf{X}_1 | \symbf{X}_0)}
 }\\
 &= E\s{
-\log p_\theta(\mathbf{X}_T) + \sum_{n=2}^T\log \frac{p_\theta(\mathbf{X}_{n-1}|\mathbf{X}_{n})}{q(\mathbf{X}_{n-1}|\mathbf{X}_n, \mathbf{X}_0)}  + \sum_{n=2}^T\log  \frac{q(\mathbf{X}_{n-1}|\mathbf{X}_0)}{q(\mathbf{X}_n|\mathbf{X}_0)} + \log \frac{p_\theta (\mathbf{X}_0 | \mathbf{X}_1)}{q(\mathbf{X}_1 | \mathbf{X}_0)}
+\log p_\theta(\symbf{X}_T) + \sum_{n=2}^T\log \frac{p_\theta(\symbf{X}_{n-1}|\symbf{X}_{n})}{q(\symbf{X}_{n-1}|\symbf{X}_n, \symbf{X}_0)}  + \sum_{n=2}^T\log  \frac{q(\symbf{X}_{n-1}|\symbf{X}_0)}{q(\symbf{X}_n|\symbf{X}_0)} + \log \frac{p_\theta (\symbf{X}_0 | \symbf{X}_1)}{q(\symbf{X}_1 | \symbf{X}_0)}
 }\\
 &= E\s{
-\log \frac{p_\theta(\mathbf{X}_T)}{q(\mathbf{X}_T|\mathbf{X}_0)} + \sum_{n=2}^T\log \frac{p_\theta(\mathbf{X}_{n-1}|\mathbf{X}_{n})}{q(\mathbf{X}_{n-1}|\mathbf{X}_{n}, \mathbf{X}_0)} + \log p_\theta (\mathbf{X}_0 | \mathbf{X}_1)
+\log \frac{p_\theta(\symbf{X}_T)}{q(\symbf{X}_T|\symbf{X}_0)} + \sum_{n=2}^T\log \frac{p_\theta(\symbf{X}_{n-1}|\symbf{X}_{n})}{q(\symbf{X}_{n-1}|\symbf{X}_{n}, \symbf{X}_0)} + \log p_\theta (\symbf{X}_0 | \symbf{X}_1)
 }\\
 &= E\s{
-\log p_\theta (\mathbf{X}_0 | \mathbf{X}_1) - \sum_{n=2}^T\d{q(\mathbf{x}_{n-1}|\mathbf{X}_n, \mathbf{X}_0)}{p_\theta(\mathbf{x}_{n-1}|\mathbf{X}_n)} - \d{q(\mathbf{x}_T|\mathbf{X}_0)}{p_\theta(\mathbf{x}_T)}
+\log p_\theta (\symbf{X}_0 | \symbf{X}_1) - \sum_{n=2}^T\d{q(\symbf{x}_{n-1}|\symbf{X}_n, \symbf{X}_0)}{p_\theta(\symbf{x}_{n-1}|\symbf{X}_n)} - \d{q(\symbf{x}_T|\symbf{X}_0)}{p_\theta(\symbf{x}_T)}
 }\\
 &= E\s{
-\log p_\theta (\mathbf{X}_0 | \mathbf{X}_1) - \sum_{n=2}^T\d{q(\mathbf{x}_{n-1}|\mathbf{X}_n, \mathbf{X}_0)}{p_\theta(\mathbf{x}_{n-1}|\mathbf{X}_n)}
+\log p_\theta (\symbf{X}_0 | \symbf{X}_1) - \sum_{n=2}^T\d{q(\symbf{x}_{n-1}|\symbf{X}_n, \symbf{X}_0)}{p_\theta(\symbf{x}_{n-1}|\symbf{X}_n)}
 } + \const
 \end{aligned}
 $$
 
-The parameterization of $p_\theta(\mathbf x_{n - 1} | \mathbf x_n)$ for $n \ge 2$ given by J. Ho is as following
+The parameterization of $p_\theta(\symbf x_{n - 1} | \symbf x_n)$ for $n \ge 2$ given by J. Ho is as following
 $$
-p_\theta(\mathbf x_{n - 1} |\mathbf x_n) = \mathcal N(\mathbf x_{n - 1}; \mu_\theta(\mathbf x_n, n), \Sigma_\theta(\mathbf x_n, n))
+p_\theta(\symbf x_{n - 1} |\symbf x_n) = \mathcal N(\symbf x_{n - 1}; \mu_\theta(\symbf x_n, n), \Sigma_\theta(\symbf x_n, n))
 $$
 
-- Set $\Sigma_\theta(\mathbf x_n, n) := \sigma_n^2 \bI$. Note that $\sigma_n^2 = \beta_n$ is optimal for $X_0 \sim \mathcal N(0, I)$. And we will be **assuming** $\sigma_n^2 = \beta_n$ from now on.
+- Set $\Sigma_\theta(\symbf x_n, n) := \sigma_n^2 \bI$. Note that $\sigma_n^2 = \beta_n$ is optimal for $X_0 \sim \mathcal N(0, I)$. And we will be **assuming** $\sigma_n^2 = \beta_n$ from now on.
 
 - Then by the analytic KL-divergence of isotropic Gaussians:
   $$
-  \d{q(\mathbf{x}_{n - 1} | \mathbf{X}_n, \mathbf{X}_0)}{p_\theta(\mathbf{x}_{n - 1} | \mathbf{X}_n)} = \frac{E\norm{\tilde \mu_n(\mathbf{X}_n, \mathbf{X}_0) - \mu_\theta(\mathbf{X}_n, n)}^2_2}{2\sigma_n^2} + \const
+  \d{q(\symbf{x}_{n - 1} | \symbf{X}_n, \symbf{X}_0)}{p_\theta(\symbf{x}_{n - 1} | \symbf{X}_n)} = \frac{E\norm{\tilde \mu_n(\symbf{X}_n, \symbf{X}_0) - \mu_\theta(\symbf{X}_n, n)}^2_2}{2\sigma_n^2} + \const
   $$
 
-- Define $J_\theta^{(n)} := E\norm{\tilde \mu_n(\mathbf{X}_n, \mathbf{X}_0) - \mu_\theta(\mathbf{X}_n, n)}^2_2$. Define $L_\theta^{(n)} := J_\theta^{(n)} / 2\sigma_n^2$.
+- Define $J_\theta^{(n)} := E\norm{\tilde \mu_n(\symbf{X}_n, \symbf{X}_0) - \mu_\theta(\symbf{X}_n, n)}^2_2$. Define $L_\theta^{(n)} := J_\theta^{(n)} / 2\sigma_n^2$.
 
-Predicting $\mathbf{E}_n$ given $\mathbf X_0$ seems to be a good choice. Let $E_\theta(\mathbf{x}_n, n)$ be the neural predictor of $\mathbf{E}_n$.
+Predicting $\symbf{E}_n$ given $\symbf X_0$ seems to be a good choice. Let $E_\theta(\symbf{x}_n, n)$ be the neural predictor of $\symbf{E}_n$.
 
-- Recall that $\mathbf X_n = \sqrt{1-\bar \alpha_n} \mathbf E_n + \sqrt{\bar \alpha_n} \mathbf X_0$. Then
+- Recall that $\symbf X_n = \sqrt{1-\bar \alpha_n} \symbf E_n + \sqrt{\bar \alpha_n} \symbf X_0$. Then
   $$
-  \mathbf X_0 =  \frac{1}{\sqrt{\bar \alpha_n}}\p{\mathbf X_n - \sqrt{1-\bar \alpha_n} \mathbf E_n}
+  \symbf X_0 =  \frac{1}{\sqrt{\bar \alpha_n}}\p{\symbf X_n - \sqrt{1-\bar \alpha_n} \symbf E_n}
   $$
 
 - Then we have
   $$
-  \mu_\theta\p{\mathbf X_n, \frac{1}{\sqrt{\bar \alpha_n}}\p{\mathbf X_n - \sqrt{1-\bar \alpha_n} \mathbf E_n}} = \frac{1}{\sqrt{\alpha_n}}\p{\mathbf X_n - \frac{\beta_n}{\sqrt{1 - \bar \alpha_t}}\mathbf E_n}
+  \mu_\theta\p{\symbf X_n, \frac{1}{\sqrt{\bar \alpha_n}}\p{\symbf X_n - \sqrt{1-\bar \alpha_n} \symbf E_n}} = \frac{1}{\sqrt{\alpha_n}}\p{\symbf X_n - \frac{\beta_n}{\sqrt{1 - \bar \alpha_t}}\symbf E_n}
   $$
 
 - This inspires us to define
   $$
-  \mu_\theta(\mathbf X_n, n) := \frac{1}{\sqrt{\alpha_n}}\p{\mathbf X_n - \frac{\beta_n}{\sqrt{1 - \bar \alpha_t}}E_\theta(\mathbf X_n, n)}
+  \mu_\theta(\symbf X_n, n) := \frac{1}{\sqrt{\alpha_n}}\p{\symbf X_n - \frac{\beta_n}{\sqrt{1 - \bar \alpha_t}}E_\theta(\symbf X_n, n)}
   $$
 
 - Then $J_\theta^{(n)}$ simplifies to
   $$
-  J_\theta^{(n)} = E\s{\norm{\frac{1}{\sqrt{\alpha_n}}\left(\mathbf{X}_n - \frac{\beta_n}{\sqrt{1 - \bar \alpha_n}} \mathbf E_n\right) - \frac{1}{\sqrt{\alpha_n}}\p{\mathbf X_n - \frac{\beta_n}{\sqrt{1 - \bar \alpha_t}}E_\theta(\mathbf X_n, n)}}^2_2}
+  J_\theta^{(n)} = E\s{\norm{\frac{1}{\sqrt{\alpha_n}}\left(\symbf{X}_n - \frac{\beta_n}{\sqrt{1 - \bar \alpha_n}} \symbf E_n\right) - \frac{1}{\sqrt{\alpha_n}}\p{\symbf X_n - \frac{\beta_n}{\sqrt{1 - \bar \alpha_t}}E_\theta(\symbf X_n, n)}}^2_2}
   $$
 
 - And $L_\theta^{(n)}$ becomes
   $$
-  L_\theta^{(n)} = \frac{\beta_n^2}{2\sigma_n^2 \alpha_n (1 - \bar \alpha_n)} E\s{\norm{\mathbf E_n - E_\theta(\mathbf{X}_n, n)}^2_2}
+  L_\theta^{(n)} = \frac{\beta_n^2}{2\sigma_n^2 \alpha_n (1 - \bar \alpha_n)} E\s{\norm{\symbf E_n - E_\theta(\symbf{X}_n, n)}^2_2}
   $$
 
 - Ho et al. propose to **ignore the weighting term** and optimize for
   $$
-  \widetilde L_\theta^{(n)}:= E\s{\norm{\mathbf E_n - E_\theta(\mathbf{X}_n, n)}^2_2}
+  \widetilde L_\theta^{(n)}:= E\s{\norm{\symbf E_n - E_\theta(\symbf{X}_n, n)}^2_2}
   $$
 
-- Notice that the parameterization of $p_\theta(\mathbf{x}_0 | \mathbf{x}_1)$ may depend on the problem in the DDPM framework.
+- Notice that the parameterization of $p_\theta(\symbf{x}_0 | \symbf{x}_1)$ may depend on the problem in the DDPM framework.
 
-As we have shown before, such a loss is equivalent to denoising score matching. Define $S_\theta(\mathbf{x}_n, n) = -E_\theta(\mathbf{x}_n, n) / \sqrt{1 - \bar\alpha_n}$.
+As we have shown before, such a loss is equivalent to denoising score matching. Define $S_\theta(\symbf{x}_n, n) = -E_\theta(\symbf{x}_n, n) / \sqrt{1 - \bar\alpha_n}$.
 $$
-\widetilde L_\theta^{(n)} = (1 - \bar \alpha_n) E\s{\norm{S_\theta(\mathbf{X}_n, n) - \nabla_{1}\log q(\mathbf{X}_n | \mathbf{X}_0)}_2^2}
+\widetilde L_\theta^{(n)} = (1 - \bar \alpha_n) E\s{\norm{S_\theta(\symbf{X}_n, n) - \nabla_{1}\log q(\symbf{X}_n | \symbf{X}_0)}_2^2}
 $$
 The sampling process resembles sampling the reverse SDE, and the update rule is
 $$
-\mathbf x_{n - 1} = \frac{1}{\sqrt{\alpha_n}}(\mathbf x_n + \beta_n S_\theta(\mathbf x_n, n)) + \sqrt{\beta_n} \mathbf z_n
+\symbf x_{n - 1} = \frac{1}{\sqrt{\alpha_n}}(\symbf x_n + \beta_n S_\theta(\symbf x_n, n)) + \sqrt{\beta_n} \symbf z_n
 $$
 
 ##### Choice of variance
@@ -171,32 +171,32 @@ $$
 Consider the following alternative derivation of $\L_\theta$:
 $$
 \begin{aligned}
-\L_\theta(\mathbf{X}_0) & = 
+\L_\theta(\symbf{X}_0) & = 
 E\s{
-\log p_\theta(\mathbf{X}_T) + \sum_{n=1}^T\log \frac{p_\theta(\mathbf{X}_{n-1}|\mathbf{X}_{n})}{q(\mathbf{X}_n|\mathbf{X}_{n-1})}
+\log p_\theta(\symbf{X}_T) + \sum_{n=1}^T\log \frac{p_\theta(\symbf{X}_{n-1}|\symbf{X}_{n})}{q(\symbf{X}_n|\symbf{X}_{n-1})}
 }
 \\
 & = E\s{
-\log p_\theta(\mathbf{X}_T) + \sum_{n=1}^T\log \p{\frac{p_\theta(\mathbf{X}_{n-1}|\mathbf{X}_{n})}{q(\mathbf{X}_{n-1}|\mathbf{X}_{n})} \cdot \frac{q(\mathbf{X}_{n-1})}{q(\mathbf{X}_n)}}
+\log p_\theta(\symbf{X}_T) + \sum_{n=1}^T\log \p{\frac{p_\theta(\symbf{X}_{n-1}|\symbf{X}_{n})}{q(\symbf{X}_{n-1}|\symbf{X}_{n})} \cdot \frac{q(\symbf{X}_{n-1})}{q(\symbf{X}_n)}}
 }\\
 & = E\s{
-\log \frac{p_\theta(\mathbf{X}_T)}{q(\mathbf{X}_T)} + \sum_{n=1}^T\log \frac{p_\theta(\mathbf{X}_{n-1}|\mathbf{X}_{n})}{q(\mathbf{X}_{n-1}|\mathbf{X}_{n})} + \log q(\mathbf{X}_0)
+\log \frac{p_\theta(\symbf{X}_T)}{q(\symbf{X}_T)} + \sum_{n=1}^T\log \frac{p_\theta(\symbf{X}_{n-1}|\symbf{X}_{n})}{q(\symbf{X}_{n-1}|\symbf{X}_{n})} + \log q(\symbf{X}_0)
 }
 \\
-& = -\d{q(\mathbf{X}_T)}{p_\theta(\mathbf{X}_T)} - E\s{\d{q(\mathbf{x}_{n-1}|\mathbf{X}_n)}{p_\theta(\mathbf{x}_{n-1}|\mathbf{X}_n)} + \log q(\mathbf{X}_0)}
+& = -\d{q(\symbf{X}_T)}{p_\theta(\symbf{X}_T)} - E\s{\d{q(\symbf{x}_{n-1}|\symbf{X}_n)}{p_\theta(\symbf{x}_{n-1}|\symbf{X}_n)} + \log q(\symbf{X}_0)}
 \end{aligned}
 $$
-The optimal variance for $p_\theta(\mathbf{x}_{n - 1} | \mathbf{x}_n)$ can be derived from $q(\mathbf{x}_{n - 1} | \mathbf{x}_n)$ if it is also diagonal Normal.
+The optimal variance for $p_\theta(\symbf{x}_{n - 1} | \symbf{x}_n)$ can be derived from $q(\symbf{x}_{n - 1} | \symbf{x}_n)$ if it is also diagonal Normal.
 
-When $q_0(\mathbf{x}_0) = \delta(\mathbf{x}_0 - \mathbf{c}_0)$, then
+When $q_0(\symbf{x}_0) = \delta(\symbf{x}_0 - \symbf{c}_0)$, then
 
-- $q(\mathbf{x}_{n-1} | \mathbf{x}_n) = q(\mathbf{x}_{n-1} | \mathbf{x}_n, \mathbf{x}_0)$.
+- $q(\symbf{x}_{n-1} | \symbf{x}_n) = q(\symbf{x}_{n-1} | \symbf{x}_n, \symbf{x}_0)$.
 - Clearly $\sigma_n := \tilde{\beta}_{n}=\frac{1-\bar{\alpha}_{n-1}}{1-\bar{\alpha}_{n}} \beta_{n}$ minimizes the KL divergence.
 
-When $q_0(\mathbf{x}_0) = \mathcal N(\mathbf{x}_0; \mathbf{0}, \mathbf{I})$, then
+When $q_0(\symbf{x}_0) = \mathcal N(\symbf{x}_0; \symbf{0}, \symbf{I})$, then
 
-- $q(\mathbf{x}_{n-1} | \mathbf{x}_n) = {q(\mathbf{x}_{n-1}) q(\mathbf{x}_n | \mathbf{x}_{n - 1})} /{q(\mathbf{x}_n)}$.
-  - $q(\mathbf{x}_n) = \mathcal N(\mathbf{x}_n; \mathbf{0}, \mathbf{I})$, $q(\mathbf{x}_{n-1}) = \mathcal N(\mathbf{x}_{n-1}; \mathbf{0}, \mathbf{I})$.
-  - $q(\mathbf{x}_n | \mathbf{x}_{n - 1}) = \mathcal N(\mathbf{x}_n; \sqrt {1-\beta_n} \mathbf{x}_{n-1}, \beta_n \mathbf{I})$.
-- Therefore $q(\mathbf{x}_{n - 1} | \mathbf{x}_n) = \mathcal N(\mathbf{x}_{n-1}; \sqrt{1 - \beta_n} \mathbf{x}_n, \beta_n \mathbf{I})$.
+- $q(\symbf{x}_{n-1} | \symbf{x}_n) = {q(\symbf{x}_{n-1}) q(\symbf{x}_n | \symbf{x}_{n - 1})} /{q(\symbf{x}_n)}$.
+  - $q(\symbf{x}_n) = \mathcal N(\symbf{x}_n; \symbf{0}, \symbf{I})$, $q(\symbf{x}_{n-1}) = \mathcal N(\symbf{x}_{n-1}; \symbf{0}, \symbf{I})$.
+  - $q(\symbf{x}_n | \symbf{x}_{n - 1}) = \mathcal N(\symbf{x}_n; \sqrt {1-\beta_n} \symbf{x}_{n-1}, \beta_n \symbf{I})$.
+- Therefore $q(\symbf{x}_{n - 1} | \symbf{x}_n) = \mathcal N(\symbf{x}_{n-1}; \sqrt{1 - \beta_n} \symbf{x}_n, \beta_n \symbf{I})$.
 - Clearly $\sigma_n := \beta_n$ is the optimal choice here.

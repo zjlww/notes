@@ -11,7 +11,7 @@ $$
 Then $X_{N(\omega)}(\omega)$ is a real random variable on $\F$.
 
 - Define $S_n(\omega) = X_1 + \cdots + X_n$ for $n \in \N$. $S_n$ is a random variable.
-- Define $S_N(\omega) = S_{N(\omega)}(\omega)$ on $\mathbf \omega \in \Omega$. It is a random variable.
+- Define $S_N(\omega) = S_{N(\omega)}(\omega)$ on $\symbf \omega \in \Omega$. It is a random variable.
 - $E[S_N] = E[E[S_N|N]] = \sum_{n \in \N} E[S_n | N = n] P_N(n)$.
   - Notice that $E[S_N | N = n] = E[S_n]$ requires $E|S_N| < \infty$ or $X_n \ge 0$.
 

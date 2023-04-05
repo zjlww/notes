@@ -76,7 +76,7 @@ $$
 
 - The log determinant of the coupling layer is determined by $\part \tau / \part x_{> p}$.
   $$
-  \log \operatorname{det} J_f=\log \left(\operatorname{det}{\I}_p \cdot \operatorname{det} \partial \tau / \partial x_{>p}\right)=\log \left(\operatorname{det} \partial \tau / \partial x_{>p}\right)
+  \log \det J_f=\log \p{\det{\bI}_p \cdot \det \partial \tau / \partial x_{>p}}=\log \p{\det \partial \tau / \partial x_{>p}}
   $$
 
 Coupling layers are symmetric in structure.
@@ -138,11 +138,11 @@ We have already introduced all of the flow components applied in Glow, which is 
 
 <img src="./images/glow.svg" alt="glow" style="zoom:67%;" />
 
-- Suppose $\mathbf x = \mathbf z_0 \in \R^{n \times d}$ follows the data distribution $p_*(\mathbf x)$.
+- Suppose $\symbf x = \symbf z_0 \in \R^{n \times d}$ follows the data distribution $p_*(\symbf x)$.
 - The Glow model contains $L$ stacks of flows. In each stack $i \in \c{1, \ldots, L}$,
-  - We first squeeze $\mathbf x_{i - 1}$ in time into $\mathbf a_{i}$.
-  - Then apply a series of flow steps on $\mathbf a_i$ to obtain $\mathbf b_i$.
-  - Finally, we could split $\mathbf b_i = \operatorname{concat}(\mathbf z_i, \mathbf x_i)$. $\mathbf x_i$ is further transformed down the Glow model while $\mathbf z_i$ is left out.
+  - We first squeeze $\symbf x_{i - 1}$ in time into $\symbf a_{i}$.
+  - Then apply a series of flow steps on $\symbf a_i$ to obtain $\symbf b_i$.
+  - Finally, we could split $\symbf b_i = \operatorname{concat}(\symbf z_i, \symbf x_i)$. $\symbf x_i$ is further transformed down the Glow model while $\symbf z_i$ is left out.
 
-To sample from the Glow model, first sample $\mathbf z = (\mathbf z_1, \ldots, \mathbf z_L)$ from prior density $p(\mathbf z)$. Then apply the reverse transform.
+To sample from the Glow model, first sample $\symbf z = (\symbf z_1, \ldots, \symbf z_L)$ from prior density $p(\symbf z)$. Then apply the reverse transform.
 

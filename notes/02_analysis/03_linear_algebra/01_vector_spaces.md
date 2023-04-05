@@ -21,11 +21,11 @@ Examples of vector spaces:
 
 ##### Functional vector space
 
-If $S$ is a set, then $\mathbf{F}^{S}$ denotes the set of functions from $S$ to $\mathbf{F}$.
+If $S$ is a set, then $\symbf{F}^{S}$ denotes the set of functions from $S$ to $\symbf{F}$.
 
-- For $f, g \in \mathbf{F}^{S},$ the sum $f+g \in \mathbf{F}^{S}$ is the function defined by $(f+g)(x)=f(x)+g(x)$ for all $x \in S$.
-- For $\lambda \in \mathbf{F}$ and $f \in \mathbf{F}^{S},$ the product $\lambda f \in \mathbf{F}^{S}$ is the function defined by $(\lambda f)(x)=\lambda f(x)$ for all $x \in S$.
-- $\mathbf F^S$ is a vector space.
+- For $f, g \in \symbf{F}^{S},$ the sum $f+g \in \symbf{F}^{S}$ is the function defined by $(f+g)(x)=f(x)+g(x)$ for all $x \in S$.
+- For $\lambda \in \symbf{F}$ and $f \in \symbf{F}^{S},$ the product $\lambda f \in \symbf{F}^{S}$ is the function defined by $(\lambda f)(x)=\lambda f(x)$ for all $x \in S$.
+- $\symbf F^S$ is a vector space.
     - Take $S = N = \{1, \cdots, N\}$, $\bF^N$ is a vector space over $\bF$.
     - Take $S = \{1, \cdots, m\} \times \{1, \cdots, n\}$, $\bF^{m \times n}$ is a vector space over $\bF$.
 
@@ -48,7 +48,7 @@ Then $R$ is a vector space over $\bF$, with the addition and scalar multiplicati
 
 ##### Subspace
 
-A subset $U$ of $V$ is called a subspace of $V$ if $U$ is also a vector space over $\mathbf F$.
+A subset $U$ of $V$ is called a subspace of $V$ if $U$ is also a vector space over $\symbf F$.
 
 ##### Subspace test
 
@@ -56,7 +56,7 @@ A subset $U$ of $V$ is a subspace of $V$ if and only if $U$ satisfies the follow
 
  - additive identity $0 \in U$.
  - closed under addition $u, w \in U \text { implies } u+w \in U$.
- - closed under scalar multiplication $a \in \mathbf{F}$ and $u \in U$ implies $a u \in U$.
+ - closed under scalar multiplication $a \in \symbf{F}$ and $u \in U$ implies $a u \in U$.
 
 Intersection of subspaces is a subspace. But unions of subspaces may not be a subspace.
 

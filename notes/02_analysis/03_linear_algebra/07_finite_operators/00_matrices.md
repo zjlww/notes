@@ -1,6 +1,6 @@
 ##### Matrix
 
-Let $m$ and $n$ denote positive integers. An $m \times n$ matrix $A$ is a rectangular array of elements of $\mathbf{F}$ with $m$ rows and $n$ columns:
+Let $m$ and $n$ denote positive integers. An $m \times n$ matrix $A$ is a rectangular array of elements of $\symbf{F}$ with $m$ rows and $n$ columns:
 $$
 A=\left(\begin{array}{ccc}
 A_{1,1} & \ldots & A_{1, n} \\
@@ -10,7 +10,7 @@ A_{m, 1} & \ldots & A_{m, n}
 $$
 - The notation $A_{jk}$ denotes the entry in row $j,$ column $k$ of $A$.
 
-- For $m$ and $n$ positive integers, the set of all $m$-by-$n$ matrices with entries in $\mathbf{F}$ is denoted by $\mathbf{F}^{m \times n}$.
+- For $m$ and $n$ positive integers, the set of all $m$-by-$n$ matrices with entries in $\symbf{F}$ is denoted by $\symbf{F}^{m \times n}$.
 
 - For $A \in \bF^{m \times n}$:
 
@@ -62,7 +62,7 @@ A_{m, 1} & \ldots & A_{m, n}
 $$
 In other words, $(\lambda A)_{j, k}=\lambda A_{j, k}$.
 
-- Suppose $\lambda \in \mathbf{F}$ and $T \in \mathcal{L}(V, W) .$ Then $\mathcal{M}(\lambda T)=\lambda \mathcal{M}(T)$.
+- Suppose $\lambda \in \symbf{F}$ and $T \in \mathcal{L}(V, W) .$ Then $\mathcal{M}(\lambda T)=\lambda \mathcal{M}(T)$.
 
 Suppose $m$ and $n$ are positive integers. With addition and scalar multiplication defined as above, $\bF^{m \times n}$ is a vector space with dimension $m n$.
 
@@ -106,7 +106,7 @@ There are three row (resp. column) elementary operations.
 
 1. (**Add**) Add a row to another row.
 2. (**Interchange**) Interchange two rows.
-3. (**Scale**) Multiply all entries in a row by a nonzero constant in $\mathbf F$.
+3. (**Scale**) Multiply all entries in a row by a nonzero constant in $\symbf F$.
 
 Two matrices are called **row (resp. column) equivalent** if there is a finite sequence of elementary row operations that transforms one matrix into the other.
 
@@ -127,16 +127,16 @@ where $a_{ij}, b_i \in \bF$.
 
 The linear system can be represented with matrices:
 $$
-A \mathbf x = \mathbf b; \quad (a_{ij}) = A; \quad \mathbf b = (b_1, \cdots, b_m)^T
+A \symbf x = \symbf b; \quad (a_{ij}) = A; \quad \symbf b = (b_1, \cdots, b_m)^T
 $$
 
-- A **solution** is a vector $\mathbf s \in \bF^n$ such that $A\mathbf{s} = \mathbf b$.
-  - A solution $\mathbf s \in \bF^n$ is **nontrivial** if $\mathbf s \neq \mathbf 0$.
+- A **solution** is a vector $\symbf s \in \bF^n$ such that $A\symbf{s} = \symbf b$.
+  - A solution $\symbf s \in \bF^n$ is **nontrivial** if $\symbf s \neq \symbf 0$.
   - A **solution set** is the set of all solutions of the system.
   - The set of all solutions to the homogeneous system is the **null space** of the system.
 - The matrix $[A|b]$ is the **augment matrix**.
   - If the augmented matrices of two linear systems are row equivalent, then the two systems have the same solution set.
-- The system is called **homogeneous** if $\mathbf{b} = \mathbf{0}$.
+- The system is called **homogeneous** if $\symbf{b} = \symbf{0}$.
 - The system of linear equations has either
   1. no solution (**inconsistent**).
   1. exactly one solution (**consistent and fully determined**).
@@ -226,15 +226,15 @@ An invertible matrix's RREF and SF must be the same.
 
 A **blocked matrix** is the tuple $(A \in \bF^{n, m}, (n_1, \ldots, n_s), (m_1,\ldots, m_t))$, where $\sum_{i = 1}^s n_s = n$ and $\sum_{i = 1}^t m_t = m$.
 
-- Then $\mathbf A = (A_{ij})_{i \le s, j \le t}$ where $A_{ij} \in \bF^{n_i \times m_j}$ is the blocking of $A$ under partition $(n_i), (m_j)$.
-- $(A \in \bF^{n \times m}, (n_i), (m_j))$ and $(B \in \bF^{m\times p}, (m_j), (p_k))$ can be **multiplied**. The product under shared partition is $(AB, (n_i), (p_k))$ where $\mathbf {AB} = (\sum_{j \le t}A_{ij} B_{jk})_{i \le s, k \le u}$.
+- Then $\symbf A = (A_{ij})_{i \le s, j \le t}$ where $A_{ij} \in \bF^{n_i \times m_j}$ is the blocking of $A$ under partition $(n_i), (m_j)$.
+- $(A \in \bF^{n \times m}, (n_i), (m_j))$ and $(B \in \bF^{m\times p}, (m_j), (p_k))$ can be **multiplied**. The product under shared partition is $(AB, (n_i), (p_k))$ where $\symbf {AB} = (\sum_{j \le t}A_{ij} B_{jk})_{i \le s, k \le u}$.
 - Transpose, addition, ... also works.
 
 ##### Matrix inverse algorithm
 
-Suppose we need to inverse matrix $A \in \mathbf F^{n \times n}$.
+Suppose we need to inverse matrix $A \in \symbf F^{n \times n}$.
 
-- Construct $[A | I]$ and row reduce the left half to $I \in \mathbf F^{n \times n}$.
+- Construct $[A | I]$ and row reduce the left half to $I \in \symbf F^{n \times n}$.
 - The result is guaranteed to be $(I | A^{-1})$.
 
 

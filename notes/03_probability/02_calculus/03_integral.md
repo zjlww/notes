@@ -32,24 +32,31 @@ For further restrictions on the classes of processes, we make following definiti
 - Add subscript $p \ge 1$ to assert that $\int_0^T |X_t|^p \dd t < \infty$ almost surely.
 - Add subscript $(m \times n)$ to assert that the process has values in $\R^{m \times n}$.
 
+##### Non-anticipating processes
+
+Suppose $(\Omega, \F, (\F_t), [0, T], P)$ is a complete filtered probability space.
+
+Let $(B_t) \in \bL^2_{c, m, [2]}(0, T)$ be a **standard Brownian motion** and $(X_t)$ is a real-valued random process.
+
+$(X_t)$ is called not anticipating with respect to $(B_t)$ if $\boxed{\forall t \in [0, T]:\sigma(X_{\le t}) \perp (B_{t + s} - B_t)_{s \ge 0}}$.
+
+Notice that when $\F_t = \sigma(B_{\le t})$ this is automatically true.
+
 ##### A collection of dense subspace results
 
-The following dense subspace results are important in our proof.
-
-- Take $p \ge 1$ in the following statements.
-- For non-anticipating processes, we require the approximating sequence to be non-anticipating as well.
+The following dense subspace results are important in our proof. For non-anticipating processes, we require the approximating sequence to be non-anticipating as well. This can be achieved that the approximation at time $t$ only depends on $\le t$.
 
 $\bS^p(0, T)$ is dense in $\bA_{c, [p]}^p(0, T)$ for $p \ge 1$.
 
 - Consider any $(X_t) \in \bA^p_{c, [p]}(0, T)$.
 - Suppose $P_n = (t_{n, j})_{j = 0}^{n_j}$ is **the shrinking dyadic** partition sequence in $P[0, T]$.
 - For each $n$, define $(X_t^{(n)})$ as $X_0 1_{\c{0}}(t) + \sum_{j = 0}^{n_j - 1} X_{t_{n, j}}1_{(t_{n, j}, t_{n, j + 1}]}(t)$.
-- It is easy to see that $(X_t^{(n)}) \subseteq \bS^p(0, T)$, and that $(X_t^{(n)} - X_t)^2 \downarrow 0$ monotonically pointwise in $t$.
-- By dominated convergence theorem, $(X_t^{(n)}) \to (X_t)$ in $\L_2$ norm.
+- It is easy to see that $(X_t^{(n)}) \subseteq \bS^p(0, T)$, and that $(X_t^{(n)} - X_t)^p \downarrow 0$ monotonically pointwise in $t$.
+- By dominated convergence theorem, $(X_t^{(n)}) \to (X_t)$ in $\L_p$ norm.
 
 $\bA_{c, b}^2(0, T)$ is dense in $\bA_b^2(0, T)$. ==TODO== (see Øksendal p.28).
 
-$\bA_b^p(0, T)$ is dense in $\bA^p(0, T)$.
+$\bA_b^p(0, T)$ is dense in $\bA^p(0, T)$ for $p \ge 1$.
 
 - Consider any $(X_t) \in \bA^p(0, T)$.
 - Define the process $(X_t^{(n)})$ as truncation of $(X_t)$ into range $[-n, n]$.
@@ -65,7 +72,7 @@ Notice that the 1D standard Brownian motion $(B_t) \in \bL_{c, m, [2]}^2(0, T)$.
 
 Suppose $(M_t) \in \bL_{c, m, [2]}^2(T)$ and $(X_t), (Z_t) \in \bS^2(0, T)$.
 
-- We will assume $X_t = Y_j 1_{(t_j, t_{j + 1}]}(t)$ for some partition $(t_j)_{j = 0}^n \in P[0, T]$.
+- We will assume $X_t=Y_01_{\c{0}}(t) + \sum_{j = 0}^nY_j1_{(t_j,t_{j+1}]}(t)$ for some partition $(t_j)_{j = 0}^n \in P[0, T]$.
 
 For $t \in [0, T]$, define random process $I_t$ as the following:
 $$
@@ -84,18 +91,8 @@ $$
     - Suppose $s \le a < b$, $E[\cdots] = 0$.
 - $I_t$ has **zero mean** for all $t \in [0, T]$.
   - $E[(X \cdot M)_t] = E[E[(X \cdot M)_t | \F_0]] = E[(X \cdot M)_0] = 0$.
-- $(X \cdot M)_t$ is **linear** in the integrator.
+- $(X \cdot M)_t$ is **linear** in the integrand.
   - $(a X \cdot M)_t = a(X \cdot M)_t$ and $((X + Z) \cdot M)_t = (X \cdot M)_t + (Z \cdot M)_t$.
-
-##### Non-anticipating processes
-
-Suppose $(\Omega, \F, (\F_t), [0, T], P)$ is a complete filtered probability space.
-
-Let $(B_t) \in \bL^2_{c, m, [2]}(0, T)$ be a **standard Brownian motion** and $(X_t)$ is a real-valued random process.
-
-$(X_t)$ is called not anticipating with respect to $(B_t)$ if $\boxed{\forall t \in [0, T]:\sigma(X_{\le t}) \perp (B_{t + s} - B_t)_{s \ge 0}}$.
-
-Notice that when $\F_t = \sigma(B_{\le t})$ this is automatically true.
 
 ##### Itô stochastic integral of $\bS^2(0, T)$ processes
 
@@ -178,7 +175,7 @@ $$
   $$
   \begin{aligned}
   E\s{\int_0^T X_t \dd B_t + \int_0^T Y_t \dd B_t}^2 & =E\s{\int_0^T(X_t + Y_t) \dd B_t}^2 = \int_0^T E[(X_t + Y_t)^2]\dd t\\
-  E\s{\int_0^T X_t \dd B_t}^2 + E\s{\int_0^T Y_t \dd B_t}^2 + 2 E\s{\int_0^T X_t \dd B_t \int_0^T Y_t \dd B_t}&= \int_0^T (E[X_t^2] + E[Y_t^2] + 2E[X_t Y_t]) dt
+  E\s{\int_0^T X_t \dd B_t}^2 + E\s{\int_0^T Y_t \dd B_t}^2 + 2 E\s{\int_0^T X_t \dd B_t \int_0^T Y_t \dd B_t}&= \int_0^T (E[X_t^2] + E[Y_t^2] + 2E[X_t Y_t]) \dd t
   \end{aligned}
   $$
 - Now cancellation on both sides gives the desired result.

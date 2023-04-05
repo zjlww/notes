@@ -2,20 +2,9 @@
 
 ##### Energy-based models
 
-Measurable space $(X, \F)$ is called the **state space** of the model. $X$ can be $\R^d$ or $\{1, \ldots, k\}$, and so on.
+Measurable space $(X, \F)$ is called the **state space** of the model.
 
-$f_\theta(x): X \to \R$ with parameter $\theta \in \Theta$ is called a **energy function**.
-
-- As a non-standard notation, we define energy and potentials:
-  - $U_\theta(x): X \to \R$ is the potential function. Higher potential states are more stable and has higher density.
-  - $E_\theta(x): X \to \R$ is the energy function. Lower energy states are more stable states.
-  - And we use the convention that $p_\theta(x) \propto \exp(-U_\theta(x)) \propto \exp(E_\theta(x))$.
-
-The normalizing constant $Z_\theta = \int_{X} e^{- U_\theta(x)} \dd x$ is called the **partition function**. Which is usually **intractable**.
-
-EBMs are **unnormalized probability density models**. The probability measure of the energy-based model is $\dd P_\theta(A) := f_\theta(x) / Z_\theta\dd x$.
-
-- A distribution of the form $P_\theta$ is called a **Gibbs distribution**.
+$U_\theta(x) \in \L(X \to \R, \F)$ with parameter $\theta \in \Theta$ is called a **energy function**. An energy function defines a **Gibbs distribution** on $X$ by $p_\theta(x) = \exp(-U_\theta(x)) / Z_\theta$. The normalizing constant $Z_\theta = \int_{X} e^{- U_\theta(x)} \dd x$ is called the **partition function**. Which is usually **intractable**. Therefore EBMs are **unnormalized probability density models**.
 
 ##### Score-based models
 
@@ -24,7 +13,7 @@ Suppose $p(x): \R^d \to [0, \infty)$ is a differentiable density function.
 A model $s_\theta(x): \R^d \to \R^d$ matching the score $s_\theta(x) \approx \nabla_x \log p(x)$ is called a **score-estimator**.
 
 - Energy-based models on $\R^d$ can be transformed into score-based models.
-  - The score is just $-\nabla_x U_\theta(x)$ or $\nabla_x E_\theta(x)$.
+  - The score is just $-\nabla_x U_\theta(x)$.
 - Score-based models on $\R^d$ could be transformed into energy-based models.
   - Suppose $s_\theta(x)$ describes a conservative vector field. Path integrals recover the energy function.
 

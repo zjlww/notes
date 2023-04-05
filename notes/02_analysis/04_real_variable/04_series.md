@@ -2,7 +2,7 @@
 
 ##### Vector series
 
-Consider **infinite sequence** $(c_n)_{n = 1}^\infty \in V$. Where $V$ is a **normed vector space** over $\mathbf F = \R, \C$.
+Consider **infinite sequence** $(c_n)_{n = 1}^\infty \in V$. Where $V$ is a **normed vector space** over $\symbf F = \R, \C$.
 
 A **series** is the **action** of adding $c_n$ together. $\sum c_n$ denote both the action and the result.
 

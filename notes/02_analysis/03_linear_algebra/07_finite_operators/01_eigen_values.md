@@ -42,7 +42,7 @@ We have following properties for eigenvalues / vectors:
 
 Suppose $V$ is a vector space over $\bF$. Suppose $T \in \mathcal{L}(V)$.
 
-- Let $p \in \mathbf F[z]$ and $p(z)=a_{0}+a_{1} z+a_{2} z^{2}+\cdots+a_{m} z^{m}$.
+- Let $p \in \symbf F[z]$ and $p(z)=a_{0}+a_{1} z+a_{2} z^{2}+\cdots+a_{m} z^{m}$.
 
 - Define $Q: \bF[z] \to \L(V)$ as $p \mapsto p(T)$. $p(T)=a_{0} I+a_{1} T+a_{2} T^{2}+\cdots+a_{m} T^{m} \in \L(V)$.
   - $Q(p + q) = Q(p) + Q(q)$.

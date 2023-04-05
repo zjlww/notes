@@ -19,16 +19,16 @@ $$
 Therefore
 $$
 \begin{aligned}
-E\s{X | Y = y} & = \int_\R x p(x | y) \dd x = \frac{1}{p(y)}\int_\R x {p(y | x) p(x)} \dd x\\
-& = \frac{1}{p(y)} \int_\R (x - y) p(y|x) p(x) \dd x + \frac{1}{p(y)} \int _\R y p(y|x) p(x)\dd x\\
-& = y - \frac{1}{p(y)} \int _\R \sigma^2 D_y p(y | x) p(x) \dd x\\
-& = y - \frac{\sigma^2}{p(y)} D_y p(y) = y - \sigma^2 D_y \log p(y)
+E\s{ X | Y = y } & = \int_\R x p_{X|Y}(x | y) \dd x = \frac{1}{p_Y(y)}\int_\R x p_{Y|X}(y | x) p_X(x) \dd x\\
+& = \frac{1}{p_Y(y)} \int_\R (x - y) p_{Y|X}(y|x) p_X(x) \dd x + \frac{1}{p_Y(y)} \int _\R y p_{Y|X}(y|x) p_X(x)\dd x\\
+& = y - \frac{1}{p_Y(y)} \int _\R \sigma^2 D_y p_{Y|X}(y | x) p_X(x) \dd x\\
+& = y - \frac{\sigma^2}{p_Y(y)} D_y p_Y(y) = y - \sigma^2 D_y \log p_Y(y)
 \end{aligned}
 $$
 
 ##### Tweedie's formula nD
 
-Suppose $\mathbf X, \mathbf Y, \mathbf Z$ are $\R^n$ random variables. Where $\mathbf X$ has density $p(\mathbf x)$ respect to the Lebesgue measure. $\mathbf Z \sim \mathcal N(0, \sigma^2 I_n)$, $\mathbf X \perp \mathbf Z$. And $\mathbf Y = \mathbf X + \mathbf Z$. Then we have **tweedie's formula**
+Suppose $\symbf X, \symbf Y, \symbf Z$ are $\R^n$ random variables. Where $\symbf X$ has density $p(\symbf x)$ respect to the Lebesgue measure. $\symbf Z \sim \mathcal N(0, \sigma^2 I_n)$, $\symbf X \perp \symbf Z$. And $\symbf Y = \symbf X + \symbf Z$. Then we have **tweedie's formula**
 $$
-E[\mathbf X | \mathbf Y = \mathbf y] = \mathbf y - \sigma^2 \nabla \log p(\mathbf y)
+E[\symbf X | \symbf Y = \symbf y] = \symbf y - \sigma^2 \nabla \log p(\symbf y)
 $$

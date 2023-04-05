@@ -122,8 +122,8 @@ A **cyclic generator matrix** $G$ of $C$ can be directly generated from coeffici
   
 - Encoding a message with $G$ is equivalent to polynomial multiplication in $R_n$.
 
-  - For message $\mathbf m = (m_0, \ldots, m_{k - 1})$, define $[m(x)] := [m_0 + m_1 x + \cdots + m_{k - 1} x^{k - 1}]$.
-  - $\varphi(\mathbf m G) = [m(x) g(x)]$.
+  - For message $\symbf m = (m_0, \ldots, m_{k - 1})$, define $[m(x)] := [m_0 + m_1 x + \cdots + m_{k - 1} x^{k - 1}]$.
+  - $\varphi(\symbf m G) = [m(x) g(x)]$.
 
 
 A **cyclic parity check matrix** $H$ of $C$ can be directly generated from coefficients of $h(x)$.
@@ -149,12 +149,12 @@ A **cyclic parity check matrix** $H$ of $C$ can be directly generated from coeff
   
 - Parity check with $H$ is equivalent to polynomial multiplication in $R_n$.
 
-  - Suppose codeword $\mathbf c = (c_0, \ldots, c_{n - 1})$ is transmitted.
-  - Suppose $\mathbf r = (r_0, \ldots, r_{n - 1})$ is received with error vector $\mathbf e$. And $\mathbf r = \mathbf c + \mathbf e$.
-  - Recall that the syndrome is $\mathbf s = H \mathbf r^T = H \mathbf e^T$.
-  - Let $c(x) = \phi(\mathbf c)$, $r(x) = \phi(\mathbf r)$, $e(x) = \phi(\mathbf e)$, and $s(x) = \phi(\mathbf s)$.
+  - Suppose codeword $\symbf c = (c_0, \ldots, c_{n - 1})$ is transmitted.
+  - Suppose $\symbf r = (r_0, \ldots, r_{n - 1})$ is received with error vector $\symbf e$. And $\symbf r = \symbf c + \symbf e$.
+  - Recall that the syndrome is $\symbf s = H \symbf r^T = H \symbf e^T$.
+  - Let $c(x) = \phi(\symbf c)$, $r(x) = \phi(\symbf r)$, $e(x) = \phi(\symbf e)$, and $s(x) = \phi(\symbf s)$.
   - $[h(x) r(x)] = [h(x) e(x)]$.
-  - And $\mathbf s =H \mathbf r^T$ happens to be the coefficients of $x^k, x^{k + 1}, \ldots, x^{n - 1}$ in $h(x) r(x)$.
+  - And $\symbf s =H \symbf r^T$ happens to be the coefficients of $x^k, x^{k + 1}, \ldots, x^{n - 1}$ in $h(x) r(x)$.
 
 ##### Dual codes of cyclic codes
 
@@ -169,13 +169,13 @@ Given cyclic code $C \subseteq \bF^n$ with generator polynomial $g(x)$, and $h(x
 
 Consider cyclic code $C \subseteq \bF^n$ with generator polynomial $g(x) \in \bF[x]$ and $\deg g(x) = r$.
 
-Suppose $m(x) = \phi(\mathbf m)$ is the message polynomial, observe the following:
+Suppose $m(x) = \phi(\symbf m)$ is the message polynomial, observe the following:
 
 - With division algorithm in $\bF[x]$, $x^r m(x) = u(x) g(x) + v(x)$ where $\deg v(x) < r$.
 - Therefore $[x^r m(x) - v(x)] = [u(x) g(x)]$.
-- Consider encoding function $E(\mathbf m) := \varphi^{-1}\p{[x^k][x^r \phi(\mathbf m) - \phi(\mathbf m) \bmod g(x)]}$.
+- Consider encoding function $E(\symbf m) := \varphi^{-1}\p{[x^k][x^r \phi(\symbf m) - \phi(\symbf m) \bmod g(x)]}$.
   - $E$ is clearly linear over $\bF$, since all functions involved are linear over $\bF$.
-  - $E: \bF^k \to \bF^n$ is injective. Since $\null E = \c{\mathbf 0}$.
+  - $E: \bF^k \to \bF^n$ is injective. Since $\null E = \c{\symbf 0}$.
 - The matrix of $E$ under the standard basis of $\bF^k$ and $\bF^n$ is a standard generator matrix $G = [I_k | A] \in \bF^{k \times n}$.
 
 
@@ -213,7 +213,7 @@ f_1 \\
 f_2 \\
 \vdots \\
 f_{n-1}
-\end{array}\right]= \mathbf 0
+\end{array}\right]= \symbf 0
 $$
 The parity check matrix $\mathcal H \in \bF[K]^{m \times n}$ can be transformed into a matrix in $\bF^{r \times n}$.
 

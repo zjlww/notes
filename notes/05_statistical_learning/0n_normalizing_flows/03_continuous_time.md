@@ -31,7 +31,7 @@ $$
 \boxed{x'(t) = A(t) x(t),\quad x(0) = x_0, \quad A(t) \in C([0, T] \to \R^{n \times n})}
 $$
 
-Suppose $U(t)$ is a fundamental matrix solution, such that $x(t) = U(t) x_0$. Let $W(t) := \det U(t)$.
+Suppose $U(t)$ is a principal matrix solution, such that $x(t) = U(t) x_0$. Let $W(t) := \det U(t)$.
 
 - By definition, we have $U'(t) = A(t) U(t)$. So $\det U'(t) = \det A(t) W(t)$.
 
@@ -53,7 +53,7 @@ Suppose $U(t)$ is a fundamental matrix solution, such that $x(t) = U(t) x_0$. Le
   W(t) = W(0) \exp \int_{0}^t \tr(A(s)) \dd s
   $$
 
-- Now suppose $\Pi(t, t_0)$ is the principal matrix solution, and $U(t) = \Pi(t, t_0)$, we have $W(0) = 1$.
+- Since $U(t)$ is a principal matrix solution, we have $W(0) = 1$.
 
 ##### Instantaneous change of variable: from Abel's identity
 

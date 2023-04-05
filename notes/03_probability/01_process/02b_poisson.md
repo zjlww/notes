@@ -107,7 +107,7 @@ Define $N(t) = N_1 (t) + N_2(t)$. Then $N(t)$ is a Poisson process with rate $\l
 
 Suppose $N(t)$ is a Poisson process with rate $\lambda$.
 
-Suppose there are **i.i.d. Bernoulli** random variables $\p{B_{k}}_{k = 1}^\infty \sim_{\iid} \operatorname{Bernoulli}(m, \mathbf p)$. Where $\c{B_k} \perp \c{N(t)}$.
+Suppose there are **i.i.d. Bernoulli** random variables $\p{B_{k}}_{k = 1}^\infty \sim_{\iid} \operatorname{Bernoulli}(m, \symbf p)$. Where $\c{B_k} \perp \c{N(t)}$.
 
 Define a split Poisson process as $N_r(t) = \sum_{k = 1}^\infty 1(B_k = r, S_k \le t)$.
 
@@ -232,7 +232,7 @@ Suppose $N(t)$ is a Poisson process with rate $\lambda$.
 
 Suppose $U, \p{U_k}_{k = 1}^\infty$ are i.i.d. real random variables. And $\c{U, \p{U_k}} \perp \c{N(t)}$.
 
-Suppose $U$ obtains only **finitely** many values $\c{a_k}_{k = 1}^r$ with probability $\mathbf p = \c{p_k}_{k = 1}^r$.
+Suppose $U$ obtains only **finitely** many values $\c{a_k}_{k = 1}^r$ with probability $\symbf p = \c{p_k}_{k = 1}^r$.
 
 Let $M(t)$ be a compound Poisson process with jump distribution $P_U$.
 

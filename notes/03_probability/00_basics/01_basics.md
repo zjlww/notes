@@ -109,9 +109,9 @@ And $X, Y, \bX=(X_1, \ldots, X_n) \in \L(\Omega \to \R)$. Define the following w
 
 ##### Stochastic / random processes
 
-Suppose $(\Omega, \F, P)$ is a probability space. Suppose $T$ is the index set. A family of indexed random variables $\mathbf X(\omega) = (X_t(\omega))_{t\in T}$ is a random process.
+Suppose $(\Omega, \F, P)$ is a probability space. Suppose $T$ is the index set. A family of indexed random variables $\symbf X(\omega) = (X_t(\omega))_{t\in T}$ is a random process.
 - $\cup_{t \in T} \range(X_t)$ is called the state space.
-- $\mathbf X(\omega)$ for some $\omega \in \Omega$ is called a **sample function** or a **realization**.
+- $\symbf X(\omega)$ for some $\omega \in \Omega$ is called a **sample function** or a **realization**.
 - We can classify stochastic processes according to the state space and index set:
     - Cardinality of the index set: continuous-time and discrete-time processes.
     - Cardinality of the state space:

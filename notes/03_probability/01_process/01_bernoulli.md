@@ -29,36 +29,36 @@ Then $X$ has **Binomial** distribution.
 
 $X: \Omega \to \c{1, \dots, k}$ has **Categorical** distribution.
 
-- Denoted as $X \sim \operatorname{Categorical}(k, \mathbf p)$ when $P(X = i) = p_i$. Where $\sum p_i = 1$.
+- Denoted as $X \sim \operatorname{Categorical}(k, \symbf p)$ when $P(X = i) = p_i$. Where $\sum p_i = 1$.
 
 ##### Multinomial distribution
 
-Suppose independent $C_1, \ldots, C_n \sim \operatorname{Categorical}(k, \mathbf p)$. $\mathbf p = (p_1, \ldots, p_k)$.
+Suppose independent $C_1, \ldots, C_n \sim \operatorname{Categorical}(k, \symbf p)$. $\symbf p = (p_1, \ldots, p_k)$.
 
 For $1 \le i \le k$. Define $X_i = \sum_{m=1}^{n} 1(C_m = i)$.
 
-Then $\mathbf X = (X_1, \ldots, X_k)$ has **Multinomial** distribution with parameter $n$ and $\mathbf p = (p_1, \ldots p_k)$.
+Then $\symbf X = (X_1, \ldots, X_k)$ has **Multinomial** distribution with parameter $n$ and $\symbf p = (p_1, \ldots p_k)$.
 
-- Denoted as $\mathbf X \sim \operatorname{Multinomial}(n, \mathbf p)$.
-- When $x \in \N^k$ and $|\mathbf x| = n$, by **multinomial theorem**:
+- Denoted as $\symbf X \sim \operatorname{Multinomial}(n, \symbf p)$.
+- When $x \in \N^k$ and $|\symbf x| = n$, by **multinomial theorem**:
   $$
-  P(\mathbf X = \mathbf x) = \p{\begin{array}{c} n \\x_1, \ldots, x_k\end{array}} \prod_{i = 1}^k p_i ^{x_i} = \frac{n !}{\prod_{i=1}^k x_k!} \prod_{i=1}^{k} p_i^{x_i}
+  P(\symbf X = \symbf x) = \p{\begin{array}{c} n \\x_1, \ldots, x_k\end{array}} \prod_{i = 1}^k p_i ^{x_i} = \frac{n !}{\prod_{i=1}^k x_k!} \prod_{i=1}^{k} p_i^{x_i}
   $$
 - For $1 \le i \le k$, we have $X_i \sim \operatorname{Binomial}(n, p_i)$.
 
 ##### Conditioned Multinomial distribution
 
-Denoted as $\mathbf X \sim \operatorname{Multinomial}(n, \mathbf p)$. Where $\mathbf p = (p_1, \ldots, p_k)$.
+Denoted as $\symbf X \sim \operatorname{Multinomial}(n, \symbf p)$. Where $\symbf p = (p_1, \ldots, p_k)$.
 
-Given subspace $\c{X_j = m}$, $\bY :=\bX_{-j} \sim \operatorname{Multinomial}(n - m, \mathbf p / (1 - p_j))$.
+Given subspace $\c{X_j = m}$, $\bY :=\bX_{-j} \sim \operatorname{Multinomial}(n - m, \symbf p / (1 - p_j))$.
 
-- When $|\mathbf x| = n$ and $\mathbf x_j = m$. By definition:
+- When $|\symbf x| = n$ and $\symbf x_j = m$. By definition:
   $$
-  P(\bX = \mathbf x | X_j = m) = \frac{P(\bX = \mathbf x)}{P(X_j = m)} = \frac{\frac{n !}{\prod_{i=1}^k x_k!} \prod_{i=1}^{k} p_i^{x_i}}{\frac{n!}{(n-m)!m!}p_j^m (1 - p_j)^{n - m}}
+  P(\bX = \symbf x | X_j = m) = \frac{P(\bX = \symbf x)}{P(X_j = m)} = \frac{\frac{n !}{\prod_{i=1}^k x_k!} \prod_{i=1}^{k} p_i^{x_i}}{\frac{n!}{(n-m)!m!}p_j^m (1 - p_j)^{n - m}}
   $$
 - Observe that some terms cancel and leads to:
   $$
-  P(\mathbf X = \mathbf x |X_j = m) =  \frac{(n - m) !}{\prod_{i\neq j} x_k!} \prod_{i \neq j} \left({\frac{p_i}{1-p_j}}\right)^{x_i}
+  P(\symbf X = \symbf x |X_j = m) =  \frac{(n - m) !}{\prod_{i\neq j} x_k!} \prod_{i \neq j} \left({\frac{p_i}{1-p_j}}\right)^{x_i}
   $$
 
 #### Bernoulli Process

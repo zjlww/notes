@@ -19,7 +19,7 @@ Suppose $V, W, U$ are **inner product spaces** over $\bF$. Let $T \in \L(V, W)$ 
 
   - The map $\L(V, W) \to \L(W, V)$ defined by $T \mapsto T^*$ is conjugate linear.
     - $(S+T)^{*}=S^{*}+T^{*}$.
-    - $(\lambda T)^{*}=\bar{\lambda} T^{*}$ for all $\lambda \in \mathbf{F}$.
+    - $(\lambda T)^{*}=\bar{\lambda} T^{*}$ for all $\lambda \in \symbf{F}$.
 
   - $(T^{*})^{*}=T$ by definition.
 
@@ -159,25 +159,25 @@ Equivalently, for any matrix $A \in \C^{n \times n}$ there exists unitary $U \in
 - Extend $\alpha_1$ to an orthonormal basis of $\C^n$. Define matrix $U_1 = [\alpha_1, \ldots, \alpha_n]$.
 
 - Then $U_1^* A U_1$​ must be of the form $U_1^*AU_1 = \left(\begin{array}{cc}
-  \lambda_{1} & \mathbf c_{2*}\\ \mathbf 0 & C_1\end{array}\right)$.
+  \lambda_{1} & \symbf c_{2*}\\ \symbf 0 & C_1\end{array}\right)$.
 
 - Some unitary $U_2 \in \bF^{n - 1 \times n - 1}$ and $U_2^* C_1 U_2 = B_1$ is upper-triangular.
 
 - Now define $U=U_1\left(\begin{array}{ll}
-  1 & \mathbf 0\\
-  \mathbf 0& U_{2}
+  1 & \symbf 0\\
+  \symbf 0& U_{2}
   \end{array}\right)$. Then $U^*AU$ is upper-triangular.
 
 - $$
   U^*AU = \left(\begin{array}{ll}
-  1 & \mathbf 0\\
-  \mathbf 0& U_{2}^*
-  \end{array}\right)\left(\begin{array}{cc}\lambda_{1} & \mathbf c_{2*}\\ \mathbf 0 & C_1\end{array}\right) \left(\begin{array}{ll}
-  1 & \mathbf 0\\
-  \mathbf 0& U_{2}
+  1 & \symbf 0\\
+  \symbf 0& U_{2}^*
+  \end{array}\right)\left(\begin{array}{cc}\lambda_{1} & \symbf c_{2*}\\ \symbf 0 & C_1\end{array}\right) \left(\begin{array}{ll}
+  1 & \symbf 0\\
+  \symbf 0& U_{2}
   \end{array}\right) = \left(\begin{array}{ll}
-  1 & \mathbf c_{2*}\\
-  \mathbf 0& U_{2}^* C_1 U_2
+  1 & \symbf c_{2*}\\
+  \symbf 0& U_{2}^* C_1 U_2
   \end{array}\right)
   $$
 

@@ -66,7 +66,7 @@ Suppose $X$ is a **normed space** over $\bF$. $X$ has a completion $(\widetilde 
   - Define $x + y := [(x_n + y_n)_{n=1}^\infty]$.
     - $(x_n + y_n)$ is Cauchy, so $(x + y) \in \widetilde X$.
     - Clearly the addition is well defined.
-  - For $\alpha \in \mathbf F$, define $\alpha x := [(\alpha x_n)]$.
+  - For $\alpha \in \symbf F$, define $\alpha x := [(\alpha x_n)]$.
     - Clearly the scalar-multiplication is well defined.
 - Define the norm on $\widetilde X$ as $x \mapsto \widetilde d(x, 0)$.
 - The operations and norm **extends** original operations on $X$.
