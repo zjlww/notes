@@ -55,12 +55,9 @@ $$
 $$
 
 - Suppose $A$ is upper-triangular, then $\det A = 0$.
-
   - $\sigma(1) \le 1$, $\sigma(2) \le 2$, and so on. The only $\sigma \in S_n$ that satisfies these conditions is the identity.
   - So $\det A = \prod A_{ii}$.
-
 - Elementary operations have various effect on the determinant:
-
   - Suppose $B$ is the result of application of a single operation.
   - Interchange two rows, then $\det A = -\det B$.
     - Suppose two rows in $A$ are equal, then $\det A = 0$.
@@ -68,12 +65,9 @@ $$
     - This is equivalent to add the determinant of a new matrix $B$ with another row replaced with a row. But $\det B = 0$.
   - Multiply a row with $c \in \C$, then $\det B = c \det A$.
   - Permuting the rows with $\sigma$, then $\det B = \sgn(\sigma) \det A$.
-
 - Suppose $A, B \in \C^{n \times n}$ then $\det(AB) = \det(BA) = \det A\cdot \det B$.
-
   - Construct the following matrix $C = \left(\begin{array}{cc}A & 0 \\
-    -I & B\end{array}\right)$.​
-
+    -I & B\end{array}\right)$.
   - Now reduce the first row in $C$ to $(0, AB)$ by repeatedly adding the bottom rows:
     $$
     \det C =\det \left(\begin{array}{cc}
@@ -84,7 +78,6 @@ $$
     -I & B
     \end{array}\right) = (-1)^{n^2} (-1)^n \det AB
     $$
-
 - Determinant of similar matrices are the same as $\det(P^{-1}AP) = \det(APP^{-1}) = \det A$.
 - Suppose $V$ is vector space over $\C$ with $\dim V = n$. And $T \in \L(V)$. Then $\det T = \det \M(T, E)$.
   - Since determinant does not depend on the basis, we can take **Jordan form**.
@@ -104,9 +97,7 @@ Suppose $A = (A_{ij}) \in \bF^{n \times n}$.
   A_{n 1} & \cdots & A_{n, j-1} & A_{n, j+1} & \cdots & A_{m i}
   \end{array}\right|
   $$
-
 - The $(i, j)$ **cofactor** $C_{ij} = (-1)^{i + j}M_{ij}$.
-
 - $(\newcommand{adj}{\operatorname{adj}}\adj A)_{ji} = (C_{ij})$ is called the **adjugate matrix** of $A$.
 
 ##### Laplace expansion

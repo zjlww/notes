@@ -12,22 +12,15 @@ Suppose $V$ is a **inner product space** over $\bF$. And $s, t \in V$, $T\in \L(
 Suppose $V, W, U$ are **inner product spaces** over $\bF$. Let $T \in \L(V, W)$ and $S \in \L(W, U)$.
 
 - The **adjoint** of $T$ is the map $T^{*}: W \rightarrow V$ such that $\forall v \in V, \forall w \in W: \pd{T v} w=\pd v {T^{*} w}$.
-
   - By **Riesz representation theorem in finite case**, $T^*: W \to V$ is well defined.
-
   - The adjoint remains linear $T^{*} \in \mathcal{L}(W, V)$.
-
   - The map $\L(V, W) \to \L(W, V)$ defined by $T \mapsto T^*$ is conjugate linear.
     - $(S+T)^{*}=S^{*}+T^{*}$.
     - $(\lambda T)^{*}=\bar{\lambda} T^{*}$ for all $\lambda \in \symbf{F}$.
-
   - $(T^{*})^{*}=T$ by definition.
-
   - $I^{*}=I$, where $I$ is the identity operator on $V$.
-
   - $(S T)^{*}=T^{*} S^{*}$.
 - The range and null spaces of $T$ and $T^*$ are of special interest.
-
   - $\null T^* = (\range T)^\perp$.
     - $w\in \null T^* \iff \forall v:\pd v{T^*w} = 0 \iff \forall v:\pd {Tv} w = 0 \iff w \in (\range T)^\perp$
   - $\range T^* = (\null T)^\perp$.
@@ -77,7 +70,6 @@ Now suppose $T$ is a **self-adjoint** operator.
 Suppose $V$ is an **inner product space** over $\C$, and $T \in \L(V)$.
 
 - $\forall v \in V: \pd {Tv}{v} = 0 \iff T = 0$.
-
   - Just notice that in a complex inner product space:
     $$
     \begin{aligned}
@@ -85,11 +77,8 @@ Suppose $V$ is an **inner product space** over $\C$, and $T \in \L(V)$.
     &+\frac{i}{4}\left({\langle T(u+i w), u+i w\rangle-\langle T(u-i w), u-i w\rangle}\right)
     \end{aligned}
     $$
-
   - This is clearly not true when $\bF = \R$. Consider the $90^\circ$ rotation.
-
 - $\forall v \in V:\pd {Tv} v \in \R \iff T = T^*$.
-
   - $\forall v \in V: \pd{Tv} v - \overline{\pd {Tv} v} = \pd{Tv} v - \pd v{Tv} = \pd{Tv} v - \pd {T^* v} v = \pd{(T - T^*) v} {v} = 0$.
 
 ##### Real traversal lemma
@@ -97,16 +86,12 @@ Suppose $V$ is an **inner product space** over $\C$, and $T \in \L(V)$.
 Suppose $V$ is an **inner product space** over $\R$, and $T \in \L(V)$.
 
 - $\forall v \in V: \pd {Tv}{v} = 0 \iff T = -T^*$.
-
   - Just notice that in a real inner product space:
     $$
     \pd {(T + T^*)u}{w} = \left(\pd{T(u + w)}{u + w} - \pd {T(u - w)}{u - w}\right) / 2
     $$
-    
   - Therefore $T^* = -T$.
-
   - The converse is apparent.
-
 - Suppose $T$ is self-adjoint and $\forall v \in V: \pd {Tv} v = 0$ then $T = 0$.
 
 ##### Normal operators
@@ -155,19 +140,14 @@ Then $T$ has upper triangular matrix with respect to some orthonormal basis of $
 Equivalently, for any matrix $A \in \C^{n \times n}$ there exists unitary $U \in \C^{n \times n}$ and $U^*AU = B$ where $B$ is upper-triangular. We proceed with induction:
 
 - Since $A \in \C^{n \times n}$ there must exists an eigenvalue $\lambda_1$ and unit eigenvector $\alpha_1$.
-
 - Extend $\alpha_1$ to an orthonormal basis of $\C^n$. Define matrix $U_1 = [\alpha_1, \ldots, \alpha_n]$.
-
 - Then $U_1^* A U_1$​ must be of the form $U_1^*AU_1 = \left(\begin{array}{cc}
   \lambda_{1} & \symbf c_{2*}\\ \symbf 0 & C_1\end{array}\right)$.
-
 - Some unitary $U_2 \in \bF^{n - 1 \times n - 1}$ and $U_2^* C_1 U_2 = B_1$ is upper-triangular.
-
 - Now define $U=U_1\left(\begin{array}{ll}
   1 & \symbf 0\\
   \symbf 0& U_{2}
   \end{array}\right)$. Then $U^*AU$ is upper-triangular.
-
 - $$
   U^*AU = \left(\begin{array}{ll}
   1 & \symbf 0\\
@@ -325,14 +305,11 @@ There exists an **isometry** $S \in \L(V)$ such that $T = S D$ where $D = \sqrt{
   - Since $D$ is positive. $V = \range D \oplus \null D$, and $\range D = (\null D)^\perp$.
   - $e_i$ is either in $\range D$ or $\null D$. Split $(e_i, \sigma_i)_{i=1}^n$ into $(r_i, \lambda_i)_{i=1}^m$ and $(n_i, 0)_{i=1}^k$.
   - Such that $\range D = \span(r_i)$ and $\null D = \span(n_i)$.
-
 - Let's further analysis the effect of $T$ on the basis $(e_i)$.
   - Let $U = T[\range D]$.
   - $T[(r_i)] = (Tr_i)$ is an orthogonal basis of $U$.
     - $\pd{Tr_i}{Tr_j} = \pd{Dr_i}{Dr_j} = \lambda_i \lambda_j \delta_{ij}$.
-
   - Since $\null T = \null D$, $T[(n_i)] = \{0\}$.
-
 - Now we can determine $S$ by defining $S e_i$, while guaranteeing $SD = T$.
   - For $(r_i)_{i=1}^m$, define $S r_i = Tr_i / \lambda_i$. Then $SDr_i = T r_i$.
   - Suppose $(p_i)_{i=1}^k$ is an orthonormal basis of $U^\perp$.
@@ -341,7 +318,6 @@ There exists an **isometry** $S \in \L(V)$ such that $T = S D$ where $D = \sqrt{
   - For $r_i$ and $r_j$, $\pd{Sr_i}{Sr_j} = \pd{Tr_i}{Tr_j}/\lambda_i\lambda_j = \delta_{ij}$.
   - For $r_i$ and $n_j$, $\pd{Sr_i}{Sn_j} = \pd{Tr_i/\lambda_i}{p_j} = 0$.
   - For $n_i$ and $n_j$, $\pd{S n_i}{S n_j} = \pd{p_i}{p_j} = \delta_{ij}$.
-
 - $S$ and $D$ are unique in the following sense.
   - Suppose $S$ is an isometry and $R$ is positive and $T = SR$, then $R = D$.
     - $T^* = R^* S^*, T = SR \implies T^* T = R^* R = R^2$.

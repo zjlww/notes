@@ -25,7 +25,6 @@ Suppose $\sigma \in S_n$. Let $A = \c{0, 1, \ldots, n - 1}$.
 - For $1 \le m \le k$, define permutation $c_m: A \to A$ as following:
   - For $a \in E_m$, $c_m(a) = \sigma(a)$.
   - For $a \notin E_m$, $c_m(a) = a$.
-
 - $c_m: A \to A$ is called a **cycle** on $A$.
   - Let $a_0 \in E_m$ and $a_{t + 1} = \sigma(a_t)$ for $t \ge 0$.
   - $c_m$ can be represented with tuple $(a_0, \ldots, a_{N_m - 1})$. Since $c_m(a_0) = a_1$, $c_m(a_1) = a_2$, and so on...

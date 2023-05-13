@@ -74,7 +74,6 @@ Suppose $(\Omega, \F)$ is a measurable space and $\mu, \lambda$ are signed measu
   $$
   \forall A \in \F: \mu(A) = 0 \to \lambda(A) = 0
   $$
-
   - Denoted by $\lambda \ll \mu$.
 
 ##### Density of measure
@@ -85,7 +84,6 @@ Suppose $(\Omega, \F, \mu)$ is a measure space. And $f \in \overline L(X \to \eR
 - $f$ is called a **Radon-Nikodym derivative / density** of $\mu_f$ with respect to $\mu$.
   - Clearly such $f$ is **unique** up to a $\mu$-null set.
   - Also denoted as $f = \dd\mu_f / \dd\mu$ or $f \dd\mu = \dd\mu_f$.
-
 - $\mu_f^+ = \mu_{f^+}$ and $\mu_f^- = \mu_{f^-}$.
 - $f \in L^1(X\to \eR, \mu)$ if and only if $\mu_f$ is finite.
 
@@ -192,4 +190,3 @@ Then $\lambda$ has a **unique decomposition** into **signed measures** $\lambda 
    - The decomposition is unique. See (1).
 4. Suppose $\lambda$ is a $\sigma$-finite signed measure. $\lambda_s$ and $\lambda_c$ are $\sigma$-finite signed measures.
    - See (2).
-

@@ -43,12 +43,10 @@ Then $\overline \mu$ is the **unique measure extending** $\mu$ on $\overline \S$
 - $\overline \mu$ is countably additive on $\overline \S$.
   - Suppose $A, (B_i)_{i = 1}^\infty \in \overline \S$ and $A = +_i B_i$.
   - $\overline \mu(A) \le \sum_{i} \overline \mu(B_i)$:
-
     - Suppose $B_i = +_{j = 1}^{n_i} S_{i, j}$ where $S_{i, j} \in \S$.
     - Suppose $A = +_{k = 1}^{m_i} T_k$ where $T_k \in \S$. And $T_k = +_i(T_k \cap B_i)$.
     - Then $\overline \mu(A) = \sum_{k} \mu(T_k) \le \sum_i \sum_k \mu(T_k \cap B_i) = \sum_i \mu(B_i)$.
   - $\overline \mu(A) \ge \sum_{i} \overline \mu(B_i)$:
-
     - For $n \ge 1$, define $A_n:= +_{i = 1}^n \in \overline \S$.
     - $\overline{\mu}(A) \geq \overline \mu(A_n) = \sum_{i=1}^n\overline{\mu}(B_{i})$.
     - Take limit, then $\overline \mu(A) \ge \sum_i \overline \mu(B_i)$.
@@ -150,7 +148,6 @@ Suppose $\mu$ is a **finitely additive measure on semi-ring** $\S$. Then $\S \su
   $$
   \forall A \in \S, \forall B \in \P(X) \land \mu^*(B) < \infty: \mu^*(B)\ge\mu^*(B \cap A)+\mu^*(B \cap A^{c})
   $$
-
 - Now consider any $A \in \S$ and $B \in \P(X)$.
 - For any $\epsilon > 0$ there exists $(B_j)_{j = 1}^\infty \in \S$ where $B \subseteq \cup_j B_j$. And $\sum_j \mu(B_j) \le \mu^*(B ) + \epsilon$.
   - $\mu^*(B \cap A) \le \sum_j \mu^*(B_j \cap A) \le \sum_j\mu(B_j \cap A)$.

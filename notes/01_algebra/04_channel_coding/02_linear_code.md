@@ -19,25 +19,18 @@ In coding theory, we use the convention where codewords correspond to **row vect
 Suppose $\sigma \in S_n$ is a permutation on $\c{1, \ldots, n}$.
 
 - For $c = (c_1, \ldots, c_n) \in \bF^n$, define $\sigma(c) := (c_{\sigma(1)}, \ldots, c_{\sigma(n)})$.
-
 - Define $P_{\sigma} \in \c{0, 1}^{n \times n}$ as $(P_\sigma)_{ij} = 1(i = \sigma(j))$.
-
   - It is called the **column permutation matrix**.
-
   - It permutes columns by $\sigma$ when acting on the right. Since
     $$
     (AP_{\sigma})_{ik} = A_{ij} (P_{\sigma})_{jk} = A_{ij} 1(j = \sigma(k)) = A_{i, \sigma(k)}
     $$
-
   - It is straight forward to give the inverse matrix of $P_{\sigma}$, since
     $$
     (P_{\sigma^{-1}})_{ij} = 1(i = \sigma^{-1}(j)) = 1(j = \sigma(i)) = (P_\sigma)^{-1} = P_{\sigma}^T
     $$
-
   - $\det P_\sigma = \operatorname{sgn}(\sigma)$, which is a basic fact from linear algebra.
-
 - Block code $C \subseteq \bF^n$ and $\sigma[C]$ are called **permutation-equivalent**.
-
   - It is an equivalence relationship on block codes on $\bF^n$.
 
 ##### Standard form of the generating matrix
@@ -72,12 +65,10 @@ Given generating matrix $G \in \bF^{k \times n}$, first transform it into the st
 That is $G' = EGP_{\sigma} = [I_k | A]$. Now define $H' = [-A^T | I_{n - k}]$.
 
 - Clearly $H'$ has full rank, and $H' (G')^T = \O$.
-
 - Observe that
   $$
   H'(G')^T = H'(EGP_{\sigma})^T = H'P_{\sigma^{-1}} G^T E^T = \O \implies H' P_{\sigma^{-1}}G^T = \O
   $$
-
 - Now define $H = H'P_{\sigma^{-1}}$.
 
 $H$ is the desired parity check matrix.
@@ -92,12 +83,10 @@ Given parity check matrix $H \in \bF^{(n - k) \times n}$, first transform it int
 That is $H' = EHP_{\sigma} = [B|I_{n - k}]$. Now define $G' := [I_k | -B^T]$.
 
 - Clearly $G'$ has full rank, and $H' (G')^T = \O$.
-
 - Observe that
   $$
   H'(G')^T = EHP_{\sigma}(G')^T = E H (G'P_{\sigma^{-1}})^T = \O \implies H(G' P_{\sigma^{-1}})^T = \O
   $$
-
 - Now define $G = G'P_{\sigma^{-1}}$.
 
 $G$ is the desired generating matrix.

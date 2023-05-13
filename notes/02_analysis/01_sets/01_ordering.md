@@ -88,23 +88,17 @@ If $X$ is linearly ordered by $\leq$ and every **nonempty** subset of $X$ has a 
 
 #### Axiom of Choice
 
-##### Hausdorff maximal principle
-
- ==TODO==
+##### Hausdorff maximal principle ==TODO==
 
 Every partially ordered set by $\le$ has a maximal linearly ordered subset (under $\subseteq$).
 - There is a set $E \subseteq X$ that is linearly ordered by $\leq$.
 - No subset of $X$ that properly includes $E$ is linearly ordered by $\leq$.
 
-##### Well ordering principle
-
- ==TODO==
+##### Well ordering principle ==TODO==
 
 Every nonempty set $X$ can be well ordered.
 
-##### Zorn's Lemma
-
- ==TODO==
+##### Zorn's Lemma ==TODO==
 
 If $X$ is a partially ordered set and every chain in $X$ has an upper bound in $X$, then $X$ has a maximal element.
 

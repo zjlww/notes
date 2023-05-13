@@ -19,7 +19,6 @@ $$
   $$
   - The swapping is justified by dominated convergence.
   - Notice that $t^k f(t)$ has the same ROC as $f(t)$.
-  
 
 ##### Laplace transform: injective map
 

@@ -177,24 +177,17 @@ There is a unique monic polynomial $p$ of some minimal degree such that $p(T) = 
 Such a polynomial $p(z)$  of degree $m$ is called the **minimal polynomial** of $T$.
 
 - When $\bF = \C$, $\deg p \le n$ as the characteristic polynomial has degree $n$.
-
 - To find the minimal polynomial, try to solve the system for different $m$:
   $$
   a_{0} \mathcal{M}(I)+a_{1} \mathcal{M}(T)+\cdots+a_{m-1} \mathcal{M}(T)^{m-1}=-\mathcal{M}(T)^{m}
   $$
   The first successful solution is guaranteed to give the minimal polynomial.
-
 - For $q \in \bF[z]$, $q(T) = 0$ implies $p(z) \mid q(z)$.
-
   - Clearly $\deg q > \deg p$, division gives $q(T) = p(T) s(T) + r(T)$.
   - $r(T)$ must be zero, otherwise $r(T) = 0$, and $\deg r < \deg p$ which is not possible.
-
 - Zeros of the minimal polynomial is exactly the eigenvalues of $T$. The multiplicity is denoted as the index of the eigenvalue $\lambda$.
-
   - Suppose $\lambda$ is one of the zeros of $p$.
-
     - $p(T) = (T - \lambda I)r(T)$. The operator $(T - \lambda I)$ must not be invertible. Otherwise $p(T)$ is not minimal.
-
   - Suppose $\lambda$ is a eigenvalue of $T$, then
     $$
     \begin{aligned}
@@ -203,18 +196,12 @@ Such a polynomial $p(z)$  of degree $m$ is called the **minimal polynomial** of 
     &=p(\lambda) v
     \end{aligned}
     $$
-
 - $T$ is invertible iff the constant term in $p(z)$ is non-zero.
-
   - $T$ is invertible iff zero is not an eigenvalue.
-
 - If $T$ is invertible the minimal polynomial of its inverse is $q(z) = z^m p(z^{-1})/p(0)$.
-
   - Since $T^{-m}p(T) = 0$. $q(T^{-1}) = 0$.
   - By symmetry, $p, q$ must be of the same degree.
-
 - When $\bF = \C$, $T$ is diagonalizable if and only if $p(z)$ has no repeated zeros.
-
 - (**Change of coordinate**) Suppose $P \in \L(V)$ is invertible, $S = P^{-1}T P$. Then $p$ is also the minimal polynomial of $S$.
 
 ##### Cyclic basis of nilpotent operators

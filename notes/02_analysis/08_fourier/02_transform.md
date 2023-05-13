@@ -11,10 +11,9 @@ For $f \in L^1(\R \to \C)$, the Fourier transform is $\what f: \R \to \C$.
 $$
 \what f(\omega) = \F[f](\omega) := \int_{\R} f(x) \exp(-i \omega x)\dd x = \pd{f(x)}{e^{i\omega x}}
 $$
+
 - We have $\what f(\omega) \to 0$ as $\omega \to \pm \infty$ for $f \in \L^1(\R \to \C)$.
-
   - The proof is similar to the proof for Fourier series, using a density argument.
-
 - And $\what f$ is bounded. $\n{\what f}_\infty \le \n{f}_1$.
   $$
   |f(\omega)| \le \int_{\R} |f(x)| \dd x = \n{f}_1
@@ -30,13 +29,9 @@ For $f \in L^1(\R \to \C)$, $\what f(\omega)$ is **uniformly continuous** on $\R
   $$
   \what f(\omega) = \int_{b}^c e^{-i\omega x} = \begin{cases}i(e^{-2\pi c \omega} - e^{-2 \pi b \omega})/\omega & \text { if } \omega \neq 0 \\ c-b & \text { if } \omega=0\end{cases}
   $$
-
 - Therefore $\what f$ is uniformly continuous for $f \in \square^1(\R \to \C, \lambda)$.
-
 - There exists a sequence of $\p{f_n} \subseteq {\square}^1(\R \to \C, \lambda)$. Where $f_n \rightrightarrows_{\R}f$.
-
 - Since $\n{\what f_n - \what f}_{\infty} \le \n{f_n - f}_1$, $\what f_n \rightrightarrows_{\R} \what f$.
-
 - Since uniform limit of uniformly continuous functions is uniformly continuous. $\what f(\omega)$ is uniformly continuous.
 
 ##### Derivative of Fourier transform
@@ -52,17 +47,14 @@ Then $\what f(\omega) \in C^1$ and $(\what f)'(\omega)=\what g(\omega)$.
 Suppose $f \in L^1(\R \to \C)$ and $f \in C^1$, $f' \in L^1$. Then $(f')\phat (\omega) =  i\omega \what f(\omega)$.
 
 - The given conditions guarantees $f(x) \to 0$ as $x \to \pm \infty$.
-
   - Since $f, f' \in L^1$, For $\epsilon > 0$ there exists $a \in \R$ where
     $$
     \int_{a}^\infty \abs{f'(x)} \dd x < \epsilon \land  \abs{f(a)} < \epsilon
     $$
-
   - Now for $b > a$, and $f' \in C$, we have
     $$
     \abs{f(b)} = \abs {\int_{a}^b f'(x) \dd x + f(a)} \le \int_{a}^\infty \abs{f'(x)} \dd x + \abs{f(a)} < 2 \epsilon
     $$
-
 - Now since $f' \in C$, we can apply integration by parts:
   $$
   \what{(f')}(\omega) = \int_\R f'(x) \exp(-i \omega x) \dd x = i\omega \int_\R f(x) \exp (-i\omega x) \dd x = i \omega \what f(\omega)
@@ -96,14 +88,13 @@ Suppose $f, g \in \L(\R \to \C)$. The convolution of $f$ and $g$ is denoted as $
 $$
 (f * g)(x) = \int_\R f(y) g(x - y) \dd y
 $$
+
 - If $f, g \in L^1(\R)$, $f * g$ is defined almost everywhere, and
   $$
   \n{f * g}_1 \le \int_{\R} \int_{\R} |f(y)||g(x - y)| \dd x \dd y \le \n{f}_1 \n{g}_1
   $$
   following Tonelli's Theorem.
-
 - $(f * g)(x) = (g * f)(x)$ when $(f*g)$ is defined at $x$.
-
   - This follows from a linear change of variable.
 
 

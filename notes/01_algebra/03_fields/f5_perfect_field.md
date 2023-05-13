@@ -25,20 +25,14 @@ Suppose $\char F = p \neq 0$. $F$ is perfect if and only if $F^p = F$.
     - $g(x)$ must be of the form $g(x) = (x - \alpha)^m$ for some $m = 1, \ldots, p - 1$.
     - $g(x) = x^m + (-m \alpha)x^{m -1} + \cdots$.
     - Suppose $(-m \alpha) \in F$, then $\alpha \in F$. Contradiction!
-  
 - Suppose $F^p = F$. $F$ is perfect.
-
   - Suppose $F$ is not perfect.
-
   - There exists a $f(x) \in F[x]$ is irreducible and inseparable.
-
   - Then $f'(x) = 0$ and for some $g(x) \in F[x]$.
-    $$
-    f(x) = g(x^p) = a_i (x^p)^{i} = b_i^p (x^p)^{i} = (b_i x^i)^p
-    $$
-
+  $$
+  f(x) = g(x^p) = a_i (x^p)^{i} = b_i^p (x^p)^{i} = (b_i x^i)^p
+  $$
   - But this shows $f(x)$ is reducible. Contradiction!
-
 
 All finite fields are perfect.
 

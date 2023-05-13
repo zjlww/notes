@@ -24,7 +24,7 @@ $$
 $$
 Another sufficient condition is $\forall n \in \N, \forall x \in [a, a+r]: f^{(n)}(x) \ge 0$. ==TODO== (Bernstein 9.30 Apostol II).
 
-### Real Binomial Series
+#### Real Binomial Series
 
 ##### Generalized Binomial Coefficients
 

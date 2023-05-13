@@ -55,7 +55,6 @@ We prove the case where $(G:H)$ and $(H:K)$ are both **finite**.
 - Suppose $G/H = \{a_1 H, a_2H, \cdots, a_nH\}$ and $H/K = \{b_1K , \cdots, b_mK\}$.
 - Define $A = \{a_i b_j K \mid 1 \le i \le n \land 1 \le j \le m\}$.
 - $A$ is a partition of $G$.
-
   - Let $x \in G$ be any element.
   - There exists unique $1 \le i \le n$ where $x \in a_iH$, so $a_i^{-1}x \in H$.
   - There exists unique $1 \le j \le m$ where $a_i^{-1} x \in b_j K$, so $b_j^{-1} a_j^{-1} x \in K$.
@@ -123,7 +122,6 @@ Consider $\phi: x \mapsto xH$.
 
 - $\phi$ is a group homomorphism from $G$ to $G / H$.
   - $\forall a, b \in G: \phi(ab) = abH = aH bH = \phi(a)\phi(b)$.
-
 - $\ker \phi = \{x \in G: \phi(x) = H\} = H$.
 
 ##### The fundamental theorem of group homomorphisms
@@ -134,17 +132,13 @@ Let $\phi: G \to H$ be a group homomorphism.
 
 - Define $\mu: G / \ker \phi \rightarrow \phi[G]$ by $g \ker\phi \mapsto \phi(g)$.
   - $\mu$ is clearly well-defined.
-
   - $\mu$ is group **isomorphism**.
     - It is an homomorphism as $\mu(ab \ker \phi) = \phi(a) \phi(b)$.
-    
     - It is an injection as
       $$
       \mu(a\ker\phi) = \mu(b \ker \phi) \iff a^{-1}b \in \ker\phi \iff a\ker \phi = b \ker \phi
       $$
-    
     - it is an surjection by definition.
-
 - Define $\gamma: G \rightarrow G / \ker\phi$ by $g \mapsto g(\ker\phi)$.
   - $\gamma$ is a group homomorphism, see (Normal subgroups are kernels).
 
@@ -155,7 +149,6 @@ The map $\phi$ is factored as $\phi=\mu \circ \gamma$.
 For $b \in\phi[G]$, $\phi^{-1}\c{b} \in G / \ker \phi$.
 
 - There exists $a \in G$ where $\phi(a) = b$.
-
 - $\mu^{-1}\c{b} = \c{a\ker \phi}$.
 - $\phi^{-1} \c{b} = \gamma^{-1} \circ \mu^{-1}\c{b} = a \ker \phi$.
 
@@ -194,16 +187,12 @@ $$
 For group $G$, the commutator subgroup of $G$ is defined as $C(G) := \c{aba^{-1}b^{-1}\mid a, b \in G}$.
 
 - $C(G)$ is a normal subgroup of $G$.
-
   - For any $x = aba^{-1} b^{-1} \in C(G)$ and $g \in G$, note the following
     $$
     g^{-1} x g = g^{-1} aba^{-1}b^{-1} g = (g^{-1} aba^{-1})(g b^{-1}b g^{-1})(b^{-1}g)
     $$
-
   - Therefore $g^{-1} x g \in C(G)$.
-
 - Suppose $N \ltrieq G$ then $G/N$ is abelian if and only if $C(G) \le N$.
-
   - ($\from$) If $C(G) \le N$ then for any $a, b \in G$,
     $$
     \begin{aligned}
@@ -211,8 +200,5 @@ For group $G$, the commutator subgroup of $G$ is defined as $C(G) := \c{aba^{-1}
     & =\left(a b b^{-1} a^{-1}\right) b a N=b a N=(b N)(a N)
     \end{aligned}
     $$
-
   - ($\to$) Suppose $G/N$ is abelian.
-
     - For any $a, b \in G$, $(a^{-1}N)(b^{-1}N) = (b^{-1}N)(a^{-1}N)$. So $(aba^{-1}b^{-1})N = N$.
-

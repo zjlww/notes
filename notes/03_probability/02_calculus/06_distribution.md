@@ -124,11 +124,11 @@ D_t E[f(\symbf X_t)] = E[D_t f(\symbf X_t)] = D_t\int_{\R^n} f(\symbf x) p_t(\sy
 $$
 Therefore we have
 $$
-\forall f(\symbf x) \in \D: \int_{\R^n} f(\symbf x) p'_t(\symbf x) \dd \symbf x = \int_{\R^n} f(\symbf x) \A^* p(\symbf x) \dd \symbf x
+\forall f(\symbf x) \in \D: \int_{\R^n} f(\symbf x) p'_t(\symbf x) \dd \symbf x = \int_{\R^n} f(\symbf x) \A_t^* p_t(\symbf x) \dd \symbf x
 $$
 Therefore $p_t(\symbf x)$ satisfies the following **Fokker-Planck Equation**:
 $$
-p'_t(\symbf x) = \A^* p(\symbf x),\quad  t \in [0, T]
+p'_t(\symbf x) = \A_t^* p_t(\symbf x),\quad  t \in [0, T]
 $$
 
 ##### Weak-sense time reversal of SDEs
@@ -143,7 +143,7 @@ Suppose $(\wbar\Omega, \wbar\F, (\wbar\F_t), T = [T, 0], P)$ is a complete filte
 
 Consider the following class of reverse-time SDE. We would like to find $\symbf {\wbar b}(\symbf x, t)$ that gives an appropriate time reversal SDE.
 $$
-\dd \symbf {\wbar X}_t = \symbf {\wbar b}(\symbf {\wbar X}_t, t) (-\dd t) + \sqrt{\lambda(t)} \symbf {{A}}(\symbf {\wbar X}_t, t) \dd \symbf {\wbar {B}}_t,\quad \symbf{\wbar X}_T = \symbf X_T, \quad t \in [T, 0]
+\dd \symbf {\wbar X}_t = \symbf {\wbar b}(\symbf {\wbar X}_t, t) \dd t + \sqrt{\lambda(t)} \symbf {{A}}(\symbf {\wbar X}_t, t) \dd \symbf {\wbar {B}}_t,\quad \symbf{\wbar X}_T = \symbf X_T, \quad t \in [T, 0]
 $$
 Recall that the forward SDE has FPK equation.
 $$
@@ -151,7 +151,7 @@ p'_t(\symbf x) = -D_i \p{\symbf b^{(i)}(\symbf x, t) p_t(\symbf x)} + D_{ij} \p{
 $$
 Notice that the backward SDE has FPK equation, the sign is **flipped** due to time reversal.
 $$
-p_t'(\symbf x) = D_i \p{-{\symbf {\wbar b}}^{(i)}(\symbf x, t) p_t(\symbf x)} - \lambda(t) D_{ij} \p{\symbf C^{(i, j)}(\symbf x, t) p_t(\symbf x)}, \quad t \in [0, T]
+-p_t'(\symbf x) = -D_i \p{-{\symbf {\wbar b}}^{(i)}(\symbf x, t) p_t(\symbf x)} + \lambda(t) D_{ij} \p{\symbf C^{(i, j)}(\symbf x, t) p_t(\symbf x)}, \quad t \in [0, T]
 $$
 To achieve weak-sense time reversal, we need the two FPK equations to be equal. Assuming that $p_t(\symbf x) > 0$ on $\R^n$,
 $$

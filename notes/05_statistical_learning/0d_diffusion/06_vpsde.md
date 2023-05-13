@@ -36,13 +36,13 @@ $$
 & \approx \symbf X_t - \frac{1}{2} \beta(t) \Delta t \symbf X_t + \sqrt{\beta(t)} \p{\symbf B_{t + \Delta t} - \symbf B_{t}}\\
 \end{aligned}
 $$
-Now, formally take the limit $N \to \infty$ hints as the following diffusion
+Now, formally take the limit $N \to \infty$ hints at the following SDE:
 $$
 \dd \symbf X_t = - \frac{1}{2} \beta(t) \dd \symbf X_t + \sqrt{\beta(t)}\dd \symbf B_t, \quad t \in [0, 1]
 $$
 It is called the Variance Preserving SDE (VPSDE) in Song's paper.
 
-This is a linear SDE with density
+This is a linear SDE with transition density:
 $$
 p_{t|0}(\symbf x_t | \symbf x_0) = \mathcal N(\symbf x_t \mid \symbf x_0 \sqrt{\bar \alpha(t)}, \p{1 - \bar \alpha(t)} \bI)
 $$
@@ -69,3 +69,31 @@ Now compare the unknowns and try to solve for $s(t)$ and $\sigma(t)$.
   \sigma^2(t) = \int_0^t \frac{\beta(\tau)}{\bar \alpha(\tau)} \dd \tau = \int_0^t \beta(\tau) \exp\p{\int_0^\tau \beta(\xi) \dd \xi} = \frac{1}{\bar \alpha(t)} - 1
   $$
 
+##### Weights of training loss in VPSDE ==TODO==
+
+To analyze the behavior of VPSDE, it is best to compare its training loss with that of EDM:
+
+Since:
+$$
+p_{t|0}(\symbf x_t | \symbf x_0) = \mathcal N(\symbf x_t \mid \symbf x_0 \sqrt{\bar \alpha(t)}, \p{1 - \bar \alpha(t)} \bI)
+$$
+We have:
+$$
+\log p_{t | 0} (\symbf x_t | \symbf x_0) = -\frac{\n{\symbf x_t - \symbf x_0 \sqrt{\bar \alpha(t)}}_2^2}{2(1 - \bar \alpha(t))} + \const
+$$
+And therefore:
+$$
+\nabla \log p_{t | 0}(\symbf x_t | \symbf x_0) = - \frac{{\symbf x_t - \symbf x_0 \sqrt{\bar \alpha(t)}}}{1 - \bar \alpha(t)}
+$$
+Let $\lambda(t) = {1 - \bar \alpha(t)}$. Now the total loss would be:
+$$
+\begin{aligned}
+\L_\theta & = \int_0^1 \lambda(t) \n{s_\theta(\symbf x_t, t) - \nabla \log p_{t | 0}(\symbf x_t | \symbf x_0)}_2^2 \dd t, \quad \\
+& = \int_0^1 \lambda(t) \norm{s_\theta(\symbf x_t, t) + \frac{\symbf x_t - \symbf x_0 \sqrt{\bar \alpha(t)}}{1 - \bar \alpha(t)}}_2^2 \dd t\\
+& = \int_0^1\frac{\bar \alpha(t)}{1 - \bar \alpha(t)} \norm{s_\theta(\symbf x_t, t)\frac{1 - \bar \alpha(t)}{\sqrt{\bar \alpha(t)}} + \frac{\symbf x_t}{\sqrt{\bar \alpha(t)}} - \symbf x_0}_2^2 \dd t
+\end{aligned}
+$$
+Where $p(\sigma)$ is the density of $\sigma(T)$ where $T \sim \operatorname{Uniform}[0, 1]$. According to change of variable formula:
+$$
+p(x) = \frac{1}{\sigma'(\sigma^{-1}(x))}
+$$

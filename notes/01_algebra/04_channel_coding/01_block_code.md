@@ -52,7 +52,6 @@ Given block code $C \subseteq Q^n$. We can represent it as a table (matrix) in $
   - $d(C') \in \c{d(C), d(C) - 1}$.
 - Zero a column in $A$ to obtain $C'$.
   - $d(C') \in \c{d(C), d(C) - 1}$.
-
 - Add a column to $A$ to obtain $C'$.
   - $d(C') \in \c{d(C), d(C) + 1}$.
 
@@ -177,14 +176,11 @@ $$
 For block code on $Q^n$, we often assume the following channel.
 
 - Let $\symbf X = (X_1, \ldots, X_n)$ be $Q$-valued random variables representing the sent block.
-
 - Let $\symbf Y = (Y_1, \ldots, Y_n)$ be $Q$-valued random variables representing the received block.
-
 - The channel add noise to each bit independently:
   $$
   p(y_1\ldots y_n \mid x_1\ldots x_n) = \prod_{i = 1}^n p(y_i | x_i)
   $$
-
 - And for each bit the channel acts like a $q$-ary symmetric channel with error probability $p \in (0, 1/2)$.
   $$
   p(y_i | x_i) = \begin{cases}
@@ -207,4 +203,3 @@ We have the following decoding methods:
   - ML is equivalent to MAP with uniform prior.
 - (Minimum distance, MD) $\hat x = \arg\min_{x \in C} d(x, y)$.
   - MD is equivalent to ML under independent symmetric channel.
-

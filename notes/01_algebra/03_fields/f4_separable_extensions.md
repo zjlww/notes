@@ -46,14 +46,11 @@ Consider field extension $E/F$. Suppose $f(x) \in F[x]$ splits in $E$.
 $f$ and $f'$ are co-prime if and only if $f$ is separable.
 
 - Suppose $\alpha_k \in E$ are distinct roots of $f(x)$.
-
 - Now split $f(x)$ in $E$.
   $$
   f(x)= c\p{x-\alpha_{1}}^{e_{1}} \cdots\p{x-\alpha_{n}}^{e_{n}} \implies f'(x) = c\sum_ie_i(x - \alpha_i)^{e_i - 1} \prod_{j \neq i} (x - \alpha_j)^{e_j}
   $$
-
 - Suppose $f(x)$ is separable and all $e_i = 1$, clearly $1 \in \gcd(f, f')$.
-
 - Suppose $1 \in \gcd(f, f')$. We must have $e_i = 1$ for all $i$.
 
 When $f$ is irreducible, $f$ and $f'$ are co-prime iff $f' = 0$ iff $f$ is separable.
@@ -93,24 +90,18 @@ Suppose $F$ is finite, $E$ is also finite. Suppose $E^* = \a \alpha$, then $F(\a
 Suppose $F$ is infinite. And $E = F(\beta, \gamma)$. Where $\beta, \gamma \in E- F$. We claim that there exists $\alpha = \beta + a \gamma$ where $a \in F^*$, and $F(\alpha) = F(\beta, \gamma)$.
 
 - Define $f(x) = \irr(\beta, F)$ and $g(x) = \irr(\gamma, F)$.
-
 - Let $(\beta_i)_{i=1}^n$ be the distinct zeros of $f(x)$ and $(\gamma_i)_{i=1}^m$ be the distinct zeros of $g(x)$ in $\overline F$.
-
   - Since $\beta, \gamma \notin F$, and $E/F$ is **separable**, $m, n \ge 2$.
   - w.l.o.g. we assume $\beta = \beta_1$ and $\gamma = \gamma_1$.
-
 - There exists $a \in F^*$ such that for all $1 \le i \le n, 1 \le j \le m$ except $i = j = 1$ we have
   $$
   a \gamma + \beta \neq a \gamma_j + \beta_i
   $$
-
   - Since we only eliminated finitely many elements from the infinite $F^*$:
     $$
     \forall 2 \le i \le n, \forall 2 \le j \le m: \frac{\beta_i - \beta_1}{\gamma_1 - \gamma_j} \neq a
     $$
-
 - Now we claim that $F(\alpha) = F(\beta, \gamma)$.
-
   - Consider $h(x) = f(\alpha - ax) \in F(\alpha)[x]$.
     - $h(\gamma_1) = f(\beta) = 0$.
     - For all $2 \le j \le m$, $h(\gamma_j) = f(\alpha - a \gamma_j) \neq 0$ since $\forall 1 \le i \le n:\alpha - a \gamma_j \neq \beta_i$.

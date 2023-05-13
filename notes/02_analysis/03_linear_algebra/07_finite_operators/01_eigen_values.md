@@ -43,28 +43,19 @@ We have following properties for eigenvalues / vectors:
 Suppose $V$ is a vector space over $\bF$. Suppose $T \in \mathcal{L}(V)$.
 
 - Let $p \in \symbf F[z]$ and $p(z)=a_{0}+a_{1} z+a_{2} z^{2}+\cdots+a_{m} z^{m}$.
-
 - Define $Q: \bF[z] \to \L(V)$ as $p \mapsto p(T)$. $p(T)=a_{0} I+a_{1} T+a_{2} T^{2}+\cdots+a_{m} T^{m} \in \L(V)$.
   - $Q(p + q) = Q(p) + Q(q)$.
   - $Q(pq) = Q(p)Q(q) = Q(q) Q(p)$.
-  
 - If $\lambda$ is an eigenvalue of $T$. $p(\lambda)$ is an eigenvalue of $p(T)$.
-  
   - $Tv = \lambda v \implies p(T)v = p(\lambda)v$.
-
 - Suppose $\bF = \C$. If $\alpha$ is an eigenvalue of $p(T)$, it must be of the form $p(\lambda)$ where $\lambda$ is an eigenvalue of $T$.
-  
   - $p(T)-\alpha I=c\prod_{i = 1}^d(T-\lambda_{1} I)$ is not invertible.
   - So one of $(T - \lambda_k I)$ is not invertible.
   - Therefore $p(\lambda_k) - \alpha = 0$.
-  
   - Notice that this does **not** work when $\bF = \R$.
-  
 - $\null p(T)$ and $\range p(T)$ are invariant under $T$.
-  
   - $p(T) v = 0 \implies T \circ p(T) (v) = 0 \implies p(T) (Tv) = 0$.
   - $v = p(T) u \implies Tv = p(T) (Tu)$.
-  
 
 ##### Existence of eigenvalue of Complex operators
 
@@ -78,11 +69,17 @@ Suppose $V$ is a vector space over $\C$ and $\dim V = n$. Suppose $T \in \L(V)$.
 
 ##### Upper triangular matrix
 
-A **square** matrix is called **upper triangular** if all the entries below the diagonal equal $0$. For example $\left(\begin{array}{ccc}
+A **square** matrix is called **upper triangular** if all the entries below the diagonal equal $0$. 
+
+For example
+$$
+\left(\begin{array}{ccc}
 \lambda_{1} & & * \\
 & \ddots & \\
 0 & & \lambda_{n}
-\end{array}\right) \in \bF^{n \times n}$ is an upper triangular matrix.
+\end{array}\right) \in \bF^{n \times n}
+$$
+is an upper triangular matrix.
 
 Suppose $T \in \mathcal{L}(V)$ and $v_{1}, \ldots, v_{n}$ is a basis of $V$. Then the following are equivalent:
 
@@ -121,4 +118,3 @@ Let $\lambda_{1}, \ldots, \lambda_{m}$ denote the distinct eigenvalues of $T$. T
 - There exist 1-dimensional subspaces $U_{1}, \ldots, U_{n}$ of $V$, each invariant under $T,$ such that $V=U_{1} \oplus \cdots \oplus U_{n}$.
 - $V=E\left(\lambda_{1}, T\right) \oplus \cdots \oplus E\left(\lambda_{m}, T\right)$.
 - $\operatorname{dim} V=\operatorname{dim} E\left(\lambda_{1}, T\right)+\cdots+\operatorname{dim} E\left(\lambda_{m}, T\right)$.
-

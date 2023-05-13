@@ -5,7 +5,6 @@ A function $A(t): I \subseteq \R \to \bF^{n \times m}$ is a matrix function. And
 - Derivative and integrals are defined **element wise**.
 - $(A B)'(t) = A'(t)B(t) + A(t) B'(t)$.
   - Expand down to elements $(AB)'(t) = (A_{ij}(t)B_{jk}(t))'$.
-
 - Suppose $A(t): I \to \bF^{n \times n}$ and $\det A(t) \neq 0$. Then $\frac{\dd }{\dd t} A(t)^{-1} = -A(t)^{-1}A'(t) A(t)^{-1}$.
 - Function products are defined according to linear algebra rules.
 

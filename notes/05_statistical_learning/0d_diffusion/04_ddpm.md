@@ -1,4 +1,6 @@
-#### Discrete-Time Diffusion Models: DDPM Formulation
+#### Denoising Diffusion Probabilistic Models
+
+This is the original formulation of the DDPM, this derivation is very influential and is referenced in many works.
 
 > Ho, J., Jain, A., & Abbeel, P. (2020). Denoising Diffusion Probabilistic Models. *ArXiv, abs/2006.11239*.
 
@@ -68,7 +70,7 @@ So the conditional density $q(\symbf x_{n - 1} | \symbf x_n, \symbf x_0), n \in 
 
 $$
 \begin{aligned}
-q(\symbf{x}_{n - 1} | \symbf{x}_n, \symbf{x}_0) &= \mathcal N\p{\symbf{x}_{n - 1}; \tilde \mu_n(\symbf{x}_n, \symbf{x}_0), \tilde \beta_n I}\\
+q(\symbf{x}_{n - 1} | \symbf{x}_n, \symbf{x}_0) &= \mathcal N\p{\symbf{x}_{n - 1}; \tilde \mu_n(\symbf{x}_n, \symbf{x}_0), \tilde \beta_n \bI}\\
 \quad \tilde\mu_{n}\left(\symbf{x}_n, \symbf{x}_0\right) &= \frac{\sqrt{\bar{\alpha}_{n-1}} \beta_{n}}{1-\bar{\alpha}_{n}} \symbf{x}_{0}+\frac{\sqrt{\alpha_{n}}\left(1-\bar{\alpha}_{n-1}\right)}{1-\bar{\alpha}_{n}} \symbf{x}_{n}; \quad \tilde{\beta}_{n}=\frac{1-\bar{\alpha}_{n-1}}{1-\bar{\alpha}_{n}} \beta_{n}
 \end{aligned}
 $$
@@ -83,6 +85,8 @@ p_\theta(\symbf x_0, \ldots, \symbf x_T) = p_\theta(\symbf x_T) \prod_{n = 1}^T 
 $$
 this process is also called the **denoising process**.
 
+##### ELBO of DDPM
+
 But there is indeed an ELBO we could use for training. This is equivalent to an VAE with approximate posterior $q$ and prior $p_\theta$.
 
 $$
@@ -90,31 +94,24 @@ $$
 \mathcal L_\theta
 &= E\s{\log p_\theta(\symbf{X}_0|\symbf{Z}) - \log q(\symbf{Z}|\symbf{X}_0) + \log p_\theta(\symbf{Z})}\\
 &= E\s{\log p_\theta(\symbf{X}_0, \symbf{X}_{1..T}) - \log q(\symbf{X}_{1..T}|\symbf{X}_0)}\\
-&= E\s{\log p_\theta(\symbf{X}_T) + \sum_{n=1}^T\log \frac{p_\theta(\symbf{X}_{n-1}|\symbf{X}_{n})}{q(\symbf{X}_n|\symbf{X}_{n-1})}}\\
 &= E\s{
 \log p_\theta(\symbf{X}_T) + \sum_{n=2}^T\log \frac{p_\theta(\symbf{X}_{n-1}|\symbf{X}_{n})}{q(\symbf{X}_{n-1}|\symbf{X}_n, \symbf{X}_0)} + \log \frac{p_\theta (\symbf{X}_0 | \symbf{X}_1)}{q(\symbf{X}_1 | \symbf{X}_0)}
 }\\
 &= E\s{
-\log p_\theta(\symbf{X}_T) + \sum_{n=2}^T\log \frac{p_\theta(\symbf{X}_{n-1}|\symbf{X}_{n})}{q(\symbf{X}_{n-1}|\symbf{X}_n, \symbf{X}_0)}  + \sum_{n=2}^T\log  \frac{q(\symbf{X}_{n-1}|\symbf{X}_0)}{q(\symbf{X}_n|\symbf{X}_0)} + \log \frac{p_\theta (\symbf{X}_0 | \symbf{X}_1)}{q(\symbf{X}_1 | \symbf{X}_0)}
-}\\
-&= E\s{
 \log \frac{p_\theta(\symbf{X}_T)}{q(\symbf{X}_T|\symbf{X}_0)} + \sum_{n=2}^T\log \frac{p_\theta(\symbf{X}_{n-1}|\symbf{X}_{n})}{q(\symbf{X}_{n-1}|\symbf{X}_{n}, \symbf{X}_0)} + \log p_\theta (\symbf{X}_0 | \symbf{X}_1)
-}\\
+} + \const\\
 &= E\s{
 \log p_\theta (\symbf{X}_0 | \symbf{X}_1) - \sum_{n=2}^T\d{q(\symbf{x}_{n-1}|\symbf{X}_n, \symbf{X}_0)}{p_\theta(\symbf{x}_{n-1}|\symbf{X}_n)} - \d{q(\symbf{x}_T|\symbf{X}_0)}{p_\theta(\symbf{x}_T)}
-}\\
-&= E\s{
-\log p_\theta (\symbf{X}_0 | \symbf{X}_1) - \sum_{n=2}^T\d{q(\symbf{x}_{n-1}|\symbf{X}_n, \symbf{X}_0)}{p_\theta(\symbf{x}_{n-1}|\symbf{X}_n)}
 } + \const
 \end{aligned}
 $$
 
-The parameterization of $p_\theta(\symbf x_{n - 1} | \symbf x_n)$ for $n \ge 2$ given by J. Ho is as following
+Consider the following restricted sampler formulation for $p_\theta(\symbf x_{n - 1} | \symbf x_n)$, $n \ge 2$ consider:
 $$
-p_\theta(\symbf x_{n - 1} |\symbf x_n) = \mathcal N(\symbf x_{n - 1}; \mu_\theta(\symbf x_n, n), \Sigma_\theta(\symbf x_n, n))
+p_\theta(\symbf x_{n - 1} |\symbf x_n) = \mathcal N(\symbf x_{n - 1}; \mu_\theta(\symbf x_n, n), \Sigma_\theta(\symbf x_n, n)),\quad \Sigma_\theta(\symbf x_n, n) = \sigma_n^2 \bI
 $$
 
-- Set $\Sigma_\theta(\symbf x_n, n) := \sigma_n^2 \bI$. Note that $\sigma_n^2 = \beta_n$ is optimal for $X_0 \sim \mathcal N(0, I)$. And we will be **assuming** $\sigma_n^2 = \beta_n$ from now on.
+- Note that $\sigma_n^2 = \beta_n$ is optimal for $X_0 \sim \mathcal N(0, I)$. And we will be **assuming** $\sigma_n^2 = \beta_n$ from now on.
 
 - Then by the analytic KL-divergence of isotropic Gaussians:
   $$
@@ -159,14 +156,14 @@ Predicting $\symbf{E}_n$ given $\symbf X_0$ seems to be a good choice. Let $E_\t
 
 As we have shown before, such a loss is equivalent to denoising score matching. Define $S_\theta(\symbf{x}_n, n) = -E_\theta(\symbf{x}_n, n) / \sqrt{1 - \bar\alpha_n}$.
 $$
-\widetilde L_\theta^{(n)} = (1 - \bar \alpha_n) E\s{\norm{S_\theta(\symbf{X}_n, n) - \nabla_{1}\log q(\symbf{X}_n | \symbf{X}_0)}_2^2}
+\widetilde L_\theta^{(n)} = (1 - \bar \alpha_n) E\s{\norm{S_\theta(\symbf{X}_n, n) - \nabla\log q(\symbf{X}_n | \symbf{X}_0)}_2^2}
 $$
-The sampling process resembles sampling the reverse SDE, and the update rule is
+The sampling process resembles sampling the reverse SDE, and the update rule is:
 $$
 \symbf x_{n - 1} = \frac{1}{\sqrt{\alpha_n}}(\symbf x_n + \beta_n S_\theta(\symbf x_n, n)) + \sqrt{\beta_n} \symbf z_n
 $$
 
-##### Choice of variance
+##### Optimal variance ==TODO==
 
 Consider the following alternative derivation of $\L_\theta$:
 $$
@@ -200,3 +197,4 @@ When $q_0(\symbf{x}_0) = \mathcal N(\symbf{x}_0; \symbf{0}, \symbf{I})$, then
   - $q(\symbf{x}_n | \symbf{x}_{n - 1}) = \mathcal N(\symbf{x}_n; \sqrt {1-\beta_n} \symbf{x}_{n-1}, \beta_n \symbf{I})$.
 - Therefore $q(\symbf{x}_{n - 1} | \symbf{x}_n) = \mathcal N(\symbf{x}_{n-1}; \sqrt{1 - \beta_n} \symbf{x}_n, \beta_n \symbf{I})$.
 - Clearly $\sigma_n := \beta_n$ is the optimal choice here.
+

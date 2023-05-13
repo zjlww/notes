@@ -69,7 +69,6 @@ Suppose $R$ is **UFD**. And $a, b \in R$. Then $\GCD_R(a, b) \neq \varnothing$.
 - When $a = 0$, $\GCD_R(a, b) = bR^* \neq \varnothing$.
 - Otherwise factorize $a = u\prod_{i=1}^tp_i^{e_i}$ and $b=v\prod_{i=1}^tp_i^{f_i}$.
   - Where $u$ and $v$ are units, and $p_i$ are primes not associates of each other.
-
 - Define $c = \prod_{i=1}^t p_i^{m_i}$ where $m_i = \min(e_i, f_i)$.
 - It is easy to see that $\GCD_R(a, b) = cR^*\neq \varnothing$.
 

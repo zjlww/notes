@@ -44,18 +44,14 @@ Suppose $\I = \N$.
 Suppose $\I = [0, T]$, $T \in (0, \infty]$. And $E$ is **topological** with $\E$ the **Borel** $\sigma$-algebra.
 
 - $(X_t)$ is **continuous** if $\forall \omega \in \Omega: (X_t(\omega)) \in C[\I]$.
-
 - $(X_t)$ is **a.s. continuous** if $P(X_t \in C[\I])) = 1$.
   - Indistinguishable relationship preserves a.s. continuity.
   - Modification does not preserve a.s. continuity.
-  
 - We similarly define right / left-continuous and a.s. right / left-continuous.
-
 - $(X_t)$ is **progressively measurable** with regard to $(\F_t)$.
   $$
   \forall t \in (0, T):X_u(\omega) \in \L([0,t] \times \Omega \to E, \B[0, t] \otimes \F_t/\E)
   $$
-
   - Progressively measurability implies adapted.
   - $(X_t)$ that is left / right-continuous is progressively measurable.
     - Consider fixed $t \in T$.
@@ -72,27 +68,20 @@ Suppose $(\Omega, \F, (\F_t), \I, P)$ is a filtered space. And $(B_t)$ is an ada
 We say $(B_t)$ has **independent increments** with respect to $(\F_t)$ if any of the following is true:
 
 1. For $s \ge 0$, $(B(s, t + s])_{t \ge 0} \perp \F_s$.
-
 2. For all $A \in \F_s$, and any $(t_i)_{i = 1}^n > 0$, all measurable functions $F: \R^n \to \R$ that are **box indicators**.
    $$
    E\s{1_A \cdot F\p{B(s, s + t_i])_{i=1}^n}} = P(A) E\s{F\p{B(s, s + t_i])_{i = 1}^n}}
    $$
-
    - Notice that expectation over box indicators is equivalent to
      $$
      P(A, (B(s, s + t_i] \in A_i)_{i = 1}^n) = P(A) P((B(s, s + t_i] \in A_i)_{i = 1}^n)
      $$
      where $(A_i)_{i = 1}^n \in \B(\R)$ are intervals.
-
    - $1 \leftrightarrow 2$ is apparent, since testing independence on $\pi$-generator is enough.
-
 3. Replace box indicators in 2, with bounded measurable functions.
-
    - $3 \to 2$ is easy to see.
    - $2 \to 3$: notice that bounded measurable functions are series of box indicators. Then apply dominated convergence.
-
 4. Replace box indicators in 2 with bounded continuous functions.
-
    - The proof is similar to $3$.
 
 Suppose $(B_t)$ is adapted to $(\F_t)$ and has independent increments with respect to $(\F_t)$. Then
@@ -104,11 +93,8 @@ Suppose $(B_t)$ is adapted to $(\F_t)$ and has independent increments with respe
 When we do not specify the filtration $\p{\F_t}$, the natural filtration of $\p{B_t}$ is assumed. And we have more equivalent definitions of independent increments:
 
 5. For all $t_0 < t_1 < \cdots < t_n$ in $\I$. The random variables $\c{B_{t_0}, B(t_0, t_1], \ldots, B(t_{n - 1}, t_n]}$ are independent.
-
    - $1 \to 4$ is apparent.
-
    - $4 \to 1$ due to $\c{B_{t_0} \in A_0, B(t_0, t_1] \in A_1,\ldots}$ is a $\pi$-generator of $\F_s$.
-
    - When $B_0 = 0$ almost surely, $B_{t_0}$ can be dropped from the list. Otherwise, it is a mistake to drop the anchor variable $B_{t_0}$.
      - Consider the counter example $B_t(\omega) := B(\omega)$, all paths are constants, and all $B(s, t]$ are independent since they are single valued.
 
@@ -119,15 +105,12 @@ Suppose $(\Omega, \F, (\F_t), \I, P)$ is a filtered space. And $(X_t)$ is adapte
 $(X_t)$ is **Markov with respect to** $(\F_t)$ if any of the following is true:
 
 1. For all $B \in \B(\R)$, $\forall s \le t \in \I: P(X_t \in B | \F_s)= P(X_t \in B | X_s)$.
-
 2. For all **bounded continuous** $g: \R \to \R$:
    $$
    \forall s \le t \in \I: E[g(X_t) | \F_s] = E[g(X_t) | X_s] \quad (*)
    $$
-
    - $2 \to 1$, indicators are increasing limits of $g_n$, now apply MCT.
    - $1 \to 2$, $g$ is the sum of multiple indicator functions. Now apply DCT.
-   
 3. Replace bounded continuous functions in $2$ with bounded measurable functions.
 
 $(X_t)$ is a Markov process if $(X_t)$ is Markov with respect to $(\F_t^X)$.
@@ -154,14 +137,10 @@ And $(X_t)_{t \in \I}$ is an adapted real process with the **independent increme
   $$
   E[1_B(X_t) | \F_s^{X}] = E[1_B(X_t) | X_s]
   $$
-
 - First notice the following:
-
   - $E[1_B(X_t) | X_s = x] = E[1_B(X_t - X_s + x)]$.
   - $E[1_B(X_t)|X_{\le s} = x_{\le s}] = E[1_B(X_t - X_s + x)]$.
-
 - Then notice:
-
   - $E[1_B(X_t)| X_s] = E[1_B(X_t)| X_s = X_s(\omega)]$.
   - $E[1_B(X_t) | \F_s^X] = E[1_B(X_t) | X_{\le s} = X_{\le s}(\omega)]$.
 
@@ -257,12 +236,10 @@ Suppose $(\Omega, \F, (\F_t), [0, \infty), P)$ is a filtered space. And $(B_t)$ 
 $(B_t)$ has **strong independent increments** with respect to $(\F_t)$ if for any finite stopping time $\tau$:
 
 1. $(B_{\tau + t} - B_\tau)_{t \ge 0}$ is **independent** of $\F_\tau$.
-
 2. For all $A \in \F_\tau$, and any $(t_i)_{i = 1}^n > 0$, all **bounded continuous** $F: \R^n \to \R$:
    $$
    E[1_A \cdot F(B_{t_1 + \tau} - B_\tau, \cdots ,B_{t_{n} + \tau} - B_\tau)] = P(A) E[F(B_{t_1 + \tau} - B_\tau, \cdots ,B_{t_{n} + \tau} - B_\tau)] \quad (*)
    $$
-
 3. For all $A \in \F_\tau$, and any $(t_i)_{i = 1}^n > 0$ and $(A_i)_{i = 1}^n \in \B(\R)$.
    $$
    P(A, \cap_i (B_{t_i + \tau} - B_\tau \in A_i)) = P(A) P(\cap_i(B_{t_i + \tau} - B_\tau \in A_i))
@@ -280,7 +257,6 @@ $(X_t)$ is **strongly Markov** with respect to $(\F_t)$ if for any **finite stop
    $$
    \forall t \ge 0: E[g(X_{t + \tau}) | \F_\tau] = E[g(X_{t + \tau}) | X_\tau] \quad (*)
    $$
-
 2. For all $B \in \B(\R)$, $\forall t \ge 0: P(X_{t + \tau} \in B | \F_\tau)= P(X_{t + \tau} \in B | X_\tau)$.
 
 When no filtration is mentioned, the natural filtration of $\p{B_t}$ is assumed.

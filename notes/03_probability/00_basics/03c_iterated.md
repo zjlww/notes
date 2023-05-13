@@ -21,9 +21,7 @@ Then $X_{N(\omega)}(\omega)$ is a real random variable on $\F$.
 Continue above discussion, assuming $X_i$ are i.i.d. random variables.
 
 - $E[S_N|N=n] = E[S_n] = nE[X]$.
-
 - $E[S_N] = E[E[S_N|N]] = E[NE[X]] = E[N]E[X]$.
-
 - $E[S_N^2] = E[N]\var[X] + E[N^2]E^2[X]$. Since
   $$
   \begin{aligned}
@@ -32,7 +30,6 @@ Continue above discussion, assuming $X_i$ are i.i.d. random variables.
   & = E[N]\var[X] + E[N^2]E^2[X]
   \end{aligned}
   $$
-  
 - $\var[S_N] = E[S_N^2] - E^2[S_N] = E[N]\var[X] + E^2[X]\var[N]$.
 
 Suppose $X_i$ are i.i.d. $\N$ valued random variables with the same generating function $X(z) =E[z^X]$.

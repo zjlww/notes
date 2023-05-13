@@ -27,16 +27,12 @@ By defining $p(\infty) := (0, 1)$, $p: \eC \to \bS$ is a **homeomorphism**, call
   $$
   p(x + iy) = p(z) = \p{\frac{2x}{1 + \abs{z}^2}, \frac{2y}{1 + \abs{z}^2}, \frac{\abs{z}^2 - 1}{1 + \abs{z}^2}} \in \bS
   $$
-
 - Lines and circles in $\C$ are mapped to circles on $\bS$.
-
   - Circles on $\bS$ are intersections of planes with $\bS$.
     $$
     (A, B, C)^T p(z) = D \implies (C - D) (x^2 + y^2) + 2Ax + 2By - C - D = 0
     $$
-
   - Apparently, lines in $\C$ are mapped to circles on $\bS$ containing the pole $(0, 1)$.
-
   - Circles in $\C$ are mapped to circles on $\bS$ not containing the pole $(0, 1)$.
 
 Consider the map $r: \eC \to \eC$ where $z \mapsto 1/z$ and $r(\infty) = 0$.
@@ -96,19 +92,15 @@ Suppose $p_1, \ldots, p_n$ are the poles in $\C$, and $\infty$ is possibly a pol
   $$
   f(z) = g_k\p{\frac{1}{z - p_k}} + h_k(z)
   $$
-  
 - For possibly a pole $\infty$, consider $f(1/z)$. Near zero we have:
   $$
   f\p{\frac{1}{z}} = g_\infty\p{\frac{1}{z}} + h_\infty(z)
   $$
-
 - Now consider $F: \C \to \C$ defined as
   $$
   F(z):= f(z) - g_\infty(z) - \sum_{k=1}^n g_k\p{\frac{1}{z - p_k}}
   $$
-
 - Apparently $F(z)$ is holomorphic on $\C$ therefore **entire**. $F(z)$ is also bounded.
-
 - Therefore $F(z)$ is constant on $\C$.
 
 #### Open Mapping Theorem
@@ -124,39 +116,31 @@ $$
 Where each zero and pole are counted their order times. And there are no poles on $C$.
 
 - Suppose $D$ contains only a zero of order $n$ at $c$.
-
   - Then near $c$, we have
     $$
     f(z) = (z - c)^n g(z)
     $$
-
   - $g(z)$ is nonzero near $c$. So near $c$ we have:
     $$
     f'(z) = n(z - c)^{n - 1} g(z) + (z - c)^n g'(z)
     $$
-
   - By a keyhole contour integral, we have
     $$
     \frac{1}{2\pi i} \oint_C \frac{f'(z)}{f(z)} \dd z = \frac{1}{2\pi i} \oint_C\frac{n}{z - c} + \frac{g'(z)}{g(z)} \dd z = n
     $$
-
 - Suppose $D$ contains only a pole of order $n$ at $c$.
-
   - Then near $c$, we have
     $$
     f(z) = (z - c)^{-n} g(z)
     $$
-
   - $g(z)$ is nonzero near $c$. So near $c$ we have:
     $$
     f'(z) = -n(z - c)^{-(n + 1)} g(z) + (z - c)^{-n} g'(z)
     $$
-
   - By a keyhole contour integral, we have
     $$
     \frac{1}{2\pi i} \oint_C \frac{f'(z)}{f(z)} \dd z = \frac{1}{2\pi i} \oint_C\frac{-n}{z - c} + \frac{g'(z)}{g(z)} \dd z = -n
     $$
-
 - For the case of multiple poles and zeros, consider a contour with multiple keyholes.
 
 ##### Rouche theorem
@@ -168,9 +152,7 @@ Suppose $D = B(z_0, r_0)$ and $\overline D \subseteq \Omega$. Denote $C = \part 
 Then if $\forall z \in C: \abs{f(z)} > \abs{g(z)}$. $f$ and $f + g$ have the same number of zeros in $D$.
 
 - For $t \in [0, 1]$, define $f_t(z) = f(z) + tg(z)$.
-
 - The $\abs{f_t(z)} \ge \abs{f(z)} - t\abs{g(z)} > 0$.
-
 - With argument principle, the number of zeros in $D$ changes continuously in $t$. Therefore must be constant.
   $$
   \frac{1}{2\pi i} \oint_C \frac{f_t'(z)}{f_t(z)} \dd z = \#_{\text{zeros in }D}
@@ -198,4 +180,3 @@ Suppose $f$ is holomorphic and non-constant on region $\Omega$, $f$ is an **open
 Suppose $f$ is holomorphic and non-constant on region $\Omega$, $\abs{f}$ cannot attain a maximum on $\Omega$.
 
 - This immediately follows from the open mapping theorem.
-

@@ -18,23 +18,16 @@ $$
 $$
 
 - We write $f \in R(\alpha)[a, b]$, and say $f$ is called Riemann-Stieltjes integrable with respect to $\alpha$ on $[a, b]$.
-
 - When such $A$ exists, it must be unique following the definition.
-
 - $f$ is the **integrand** and $\alpha$ is the **integrator**. 
-
 - When the integral exists, $x$ is called the **dummy variable**.
   $$
   A = \int_a^b f(x) \dd \alpha (x) = \int_{a}^b f \dd \alpha
   $$
-
 - $f \in R(\alpha)[a, b]$ implies $f \in R(\alpha)[c, d]$ for any $[c, d] \subset [a, b]$.
-
 - We extend the definition of RS integral to $a > b$:
-
   - When $a > b$, define $\int_a^b f \dd\alpha = - \int_b^a f \dd\alpha$ if the latter exists.
   - When $a = b$, define $\int_a^b f \dd\alpha = 0$.
-
 
 When $\alpha(x) = x$, the integral is exactly the Riemann integral.
 
@@ -92,8 +85,6 @@ For a proof, consider image partition $g[P_\epsilon] \in P[c, d]$.
 
 ##### Reduce RS integral to Riemann I
 
- 
-
 Suppose $f \in R(\alpha)[a, b]$ and $\alpha \in C^1[a, b]$. Then $f\alpha' \in R[a, b]$ and
 $$
 \int_{a}^{b} f(x) \alpha^{\prime}(x) \dd x = \int_{a}^{b} f(x) \dd \alpha(x)
@@ -112,16 +103,12 @@ Proof:
 Suppose $f, \alpha: [a, b] \to \R$ are **bounded**.
 
 - Suppose $P = \{x_k\}_{k=0}^n \in P[a, b]$.
-
 - Define $M_{k}(f)=\sup \left\{f(x): x \in\left[x_{k-1}, x_{k}\right]\right\}$ and $m_{k}(f)=\inf \left\{f(x): x \in\left[x_{k-1}, x_{k}\right]\right\}$.
-
 - Define the **upper and lower Stieltjes sums** of $f$ with respect to $\alpha$ for the partition $P$ as:
   $$
   U(P, f, \alpha):=\sum_{k=1}^{n} M_{k}(f) \Delta \alpha_{k};\quad L(P, f, \alpha):=\sum_{k=1}^{n} m_{k}(f) \Delta \alpha_{k}
   $$
-
 - Define the **upper and lower RS integral** of $f$ with respect to $\alpha$ as:
-
 $$
 \overline \alpha(f) =\overline{\int_{a}^{b}} f \dd \alpha :=\inf \{U(P, f, \alpha): P \in P[a, b]\}; \quad \overline \alpha(f) =\underline{\int_{a}^{b}} f \dd \alpha :=\sup \{L(P, f, \alpha): P \in P[a, b]\}
 $$
@@ -134,20 +121,14 @@ Suppose $f, g, \alpha: [a, b] \to \R$ are **bounded**. And $\alpha \nearrow [a, 
   $$
   \forall T =\{t_k\}_{k = 1}^n \triangledown P: m_k(f) \Delta \alpha_k \le f(t_k) \Delta \alpha_k \le M_k(f) \Delta \alpha_k
   $$
-
 - $P' \supseteq P \implies L(P, f, \alpha)\le L(P', f, \alpha)\le U(P', f, \alpha) \le U(P, f, \alpha)$.
-
   - The difference $U(P, f, \alpha) - L(P, f, \alpha)$ **decreases** as $P$ gets **finer**.
-
 - For any $P_1, P_2 \in P[a, b]$, $L(P_1, f, \alpha) \le \underline \alpha(f) \le \overline \alpha(f) \le U(P_2, f, \alpha)$.
-
 - The upper and lower integral has sub-linearity:
-
   - For $a < c < b$, $\overline{\int_{a}^{b}} f \dd \alpha=\overline{\int_{a}^{c}} f \dd \alpha+\overline{\int_{c}^{b}} f \dd \alpha$ and $\underline{\int_{a}^{b}} f \dd \alpha=\underline{\int_{a}^{c}} f \dd \alpha+\underline{\int_{c}^{b}} f \dd \alpha$.
   - For $c \in [0, \infty)$, $\overline \alpha(cf) = (c \overline\alpha)(f) = c(\overline \alpha (f))$.
   - $\overline \alpha (-f) = - \underline \alpha f$.
   - But $\overline \alpha(f + g) \le \overline \alpha(f) + \overline \alpha (g)$ and $\underline \alpha(f + g) \ge \underline \alpha (f) + \underline \alpha(g)$.
-
 
 ##### Riemann's condition
 
@@ -317,12 +298,10 @@ Suppose $f \nearrow [a, b]$. Suppose $g \in C[a, b]$.
   $$
   \int_{a}^{b} f(x) g(x) \dd x=f(a) \int_{a}^{x_{0}} g(x) d x+f(b) \int_{x_{0}}^{b} g(x) \dd x
   $$
-
 - (**Bonnet**) Further suppose $\forall x \in [a, b]: f(x) \ge 0$. There exists a $x_0 \in [a, b]$ such that:
   $$
   \int_{a}^{b} f(x) g(x) d x=f(b) \int_{x_{0}}^{b} g(x) \dd x
   $$
-
 - Since modify $f(a)$ and $f(b)$ does not change Riemann integrals. You can replace $f(a)$ with any $A \le f(a+)$ and $f(b)$ with $B \ge f(b-)$.
 
 ##### Parameterized RS Integral is Continuous

@@ -21,7 +21,7 @@ Denote the density of $\symbf X_t$ as $p(\symbf x; \sigma(t))$.
 
 Then according to weak-sense time reversal, we have the reverse diffusion for $\lambda(t)\in C([0, T] \to \R^+)$:
 $$
-\dd \symbf X_t = -(1 + \lambda(t)) \dot \sigma(t) \sigma(t) \nabla_{\symbf x} \log p(\symbf X_t; \sigma(t)) \dd (-t) + \sqrt{2 \lambda (t)\dot \sigma(t)\sigma(t)}\dd \symbf {\wbar B}_t,\quad t \in [T, 0]
+\dd \symbf X_t = -(1 + \lambda(t)) \dot \sigma(t) \sigma(t) \nabla_{\symbf x} \log p(\symbf X_t; \sigma(t)) \dd t + \sqrt{2 \lambda (t)\dot \sigma(t)\sigma(t)}\dd \symbf {\wbar B}_t,\quad t \in [T, 0]
 $$
 The $\beta(t)$ in EDM is defined as $\beta(t) = \lambda(t) \dot \sigma(t) / \sigma(t)$. By taking $\beta(t) = \lambda(t) = 0$, we will obtain the probability flow ODE.
 
@@ -47,7 +47,7 @@ $$
 $$
 Similar to driftless diffusion, we have reverse diffusion:
 $$
-\dd \what {\symbf X}_t = \p{\frac{\dot s(t)}{s(t)} \what {\symbf X}_t - (1 + \lambda(t))s(t)\dot \sigma(t) \sigma(t) \nabla_{\symbf x} \log p\p{\frac{\what {\symbf X}_t}{s(t)}; \sigma(t)}} \dd (-t) + s(t) \sqrt{2 \lambda(t)\dot \sigma(t) \sigma(t)} \dd \symbf B_t,\quad t \in [T, 0]
+\dd \what {\symbf X}_t = \p{\frac{\dot s(t)}{s(t)} \what {\symbf X}_t - (1 + \lambda(t))s(t)\dot \sigma(t) \sigma(t) \nabla_{\symbf x} \log p\p{\frac{\what {\symbf X}_t}{s(t)}; \sigma(t)}} \dd t + s(t) \sqrt{2 \lambda(t)\dot \sigma(t) \sigma(t)} \dd \symbf B_t,\quad t \in [T, 0]
 $$
 
 ##### The denoising function and the score function
@@ -60,14 +60,14 @@ Define the denoising function $D(\symbf x, \sigma): \R^n \times \R^+ \to \R^n$ a
 
 According to tweedie's formula, we have the following relationship:
 $$
-D(\symbf x, \sigma) = \symbf x - S(\symbf x, \sigma) \sigma^2  = \symbf x - \sigma^2\nabla \log p(\symbf x; \sigma)
+D(\symbf x, \sigma) = \symbf x + S(\symbf x, \sigma) \sigma^2  = \symbf x + \sigma^2\nabla \log p(\symbf x; \sigma)
 $$
 Let $\symbf N \sim \mathcal N(\symbf 0, \bI_n)$ be independent to all other variables. Then $D(\symbf x, \sigma)$ is the function such that
 $$
 D(\symbf x, \sigma) = \argmin{D}  E\n{D(\symbf X_0 + \sigma \symbf N, \sigma) - \symbf X_0}_2^2
 $$
 
-##### Hyperparameters in diffusion
+##### Hyperparameters of diffusion in EDM
 
 The choice of $\lambda(t)$, $s(t)$, and $\sigma(t)$ changes the reverse diffusion process, therefore the truncation error when applying numerical solvers to them.
 
@@ -75,7 +75,7 @@ In EDM, the authors proposed $\lambda(t) = 0$, $\sigma(t) = t$ and $s(t) = 1$ fo
 
 - Suppose $\symbf x(t)$ is a solution of the probability flow ODE, then
   $$
-  \dot {\symbf x}(t) = -t\nabla_{\symbf x} \log p(\symbf x(t), t) = \frac{D(\symbf x(t), t) - \symbf x(t)}{t}
+  \dot {\symbf x}(t) = -t\nabla_{\symbf x} \log p(\symbf x(t), t) = \frac{\symbf x(t) - D(\symbf x(t), t)}{t}
   $$
 
 - The tangent vector at $\symbf x(t)$ is pointing towards the denoised data $D(\symbf x(t), t)$, which is largely stable. So the solution trajectory is mostly linear.
@@ -131,4 +131,17 @@ Now following EDM, we derive appropriate choices of scaling factors.
     c_{\text{skip}}(\sigma) := \frac{\sigma_{\text{data}}^2}{\sigma^2 + \sigma_{\text{data}}^2},\quad c_{\text{out}}(\sigma) := \sqrt{(1 - c_{\text{skip}}(\sigma))^2\sigma_{\text{data}}^2 + c_{\text{skip}}^2(\sigma)\sigma^2} = \sigma \cdot \sigma_{\text{data}} / \sqrt{\sigma^2+\sigma_{\text{data}}^2}
     $$
 
-- Empirically, we require the effective weight $c_{\text{loss}}(\sigma) c_{\text{out}}^2(\sigma)$ to be uniform so $c_{\text{loss}}(\sigma) = (\sigma^2 + \sigma_{\text{data}}^2) / (\sigma \cdot \sigma_{\text{data}})$.
+- Empirically, we require the effective weight $c_{\text{loss}}(\sigma) c_{\text{out}}^2(\sigma)$ to be uniform so $c_{\text{loss}}(\sigma) = (\sigma^2 + \sigma_{\text{data}}^2) / (\sigma \cdot \sigma_{\text{data}})^2$.
+
+##### Loss weighting
+
+The loss of **multi-scale denoising score matching** can be written as:
+$$
+\L_\theta = \int_0^\infty w(\sigma) p(\sigma) \n{D_\theta(\symbf Y_\sigma; \sigma) - \symbf X_0}_2^2 \dd \sigma
+$$
+Where $w(\sigma)$ is the weighting function, and $p(\sigma)$ is the sample density function.
+
+In different works with multi-scale denoising score-matching training, we have different choice of $w, p$.
+
+In the EDM paper, $w(\sigma) = c_{\mathrm{loss}}(\sigma)$ defined above. And $\ln (\Sigma) \sim \mathcal N(-1.2, 1.2)$ where values of $\Sigma$ are clipped to $[0.002, 80]$. Notice that $\sigma_{\mathrm{data}} = 1 / 2$ in the paper.
+

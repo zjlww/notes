@@ -48,6 +48,7 @@ Suppose $R$ is a **NC ring**. A **nonzero nonunit** element $p$ of $R$ is **prim
 $$
 \forall a, b \in R : (p \mid ab \implies p \mid a \lor p \mid b)
 $$
+
 - $p \in R$ is prime, iff $(p)$ is a nonzero prime ideal.
   - Hint: $p \mid a \iff a \in (p)$.
 
@@ -69,7 +70,6 @@ Suppose $R$ is a **NCU ring**. Given $M \sqsubseteq R$. $M$ is a maximal ideal i
   - Then there exists $\c{0} \subset N \sqsubset R/M$.
   - Then $M \subset \phi^{-1}[N] \sqsubset R$.
   - So $M$ is not maximal.
-
 - $\from$ consider the contrapositive. Suppose $M$ is not maximal.
   - Then there exists $M \subset S \sqsubset R$.
   - Then $\c{0 + M} \subset \phi[S] \sqsubset R/M$.

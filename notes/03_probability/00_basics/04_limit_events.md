@@ -32,7 +32,6 @@ Suppose $\{A_n\}_{n = 1}^\infty$ is independent. Then $\sum_{n = 1}^\infty P(A_n
   P(A^*)^c & = P(\cup_{n = 1}^\infty \cap_{k = n}^\infty A_k^c) = \lim_{n \to \infty} P(\cap_{k = n}^\infty A_k^c) = \lim_{n\to \infty}\prod_{k = n}^\infty (1 - P(A_k^c)) =\\ & = \lim_{n \to \infty} \exp \sum_{k = n}^\infty \log (1 - P(A_k^c)) \le \exp \left(-\sum_{k = n}^\infty P(A_k)\right)
   \end{aligned}
   $$
-
 - So $\sum_{n = 1}^\infty P(A_n) = \infty$ implies $P(A^*)^c = 0$, so $P(A^*) = 1$.
 
 ##### Cantelli III ==TODO==

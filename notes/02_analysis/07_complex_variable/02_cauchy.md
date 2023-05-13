@@ -16,33 +16,25 @@ whenever the **Lebesgue integral** on the right exists.
   $$
   \int_{\gamma}(\alpha f+\beta g)=\alpha \int_{\gamma} f+\beta \int_{\nu} g
   $$
-
 - Let $\gamma_{1}$ and $\gamma_{2}$ denote the restrictions of $\gamma$ to $[a, c]$ and $[c, b]$, respectively, where $a<c<b$. If the right hand side exists:
   $$
   \int_{\gamma} f=\int_{\gamma_{1}} f+\int_{\gamma_{2}} f
   $$
-
 - Let $\gamma$ be a rectifiable path of length $\Lambda(\gamma) .$ If the integral $\int_{\gamma} f$ exists and if $|f(z)| \leq M$ for all $z$ on the graph of $\gamma$, then we have the inequality
   $$
   \left|\int_{\gamma} f\right| \leq M \Lambda(\gamma)
   $$
-
 - Let $\gamma$ be a **piecewise smooth path** with domain $[a, b]$. If the contour integral $\int_{\gamma} f$ exists, we have
   $$
   \int_{\gamma} f=\int_{a}^{b} f[\gamma(t)] \gamma^{\prime}(t) d t
   $$
-
 - (**Integral on equivalent paths**)
-
   - Let $\gamma$ and $\delta$ be equivalent paths describing the same curve $\Gamma$.
-
   - If $\int_{\gamma} f$ exists, then $\int_{\delta} f$ also exists. Moreover, we have $\int_{\gamma} f=\int_{\delta} f$.
-
   - Suppose $\delta(t)=\gamma[u(t)]$ where $u$ is strictly increasing on $[c, d]$.
     $$
     \int_{u(c)}^{u(d)} f[\gamma(t)] d \gamma(t)=\int_{c}^{d} f[\delta(t)] d \delta(t)=\int_{\delta} f
     $$
-    
   - This allows us to ignore some details in curve parameterization.
 
 ##### Cauchy's Lemma
@@ -71,23 +63,17 @@ $$
 $$
 
 - Let $d = (a + b) / 2$, $e = (b + c) / 2$ and $f = (c + a) / 2$.
-
 - Note the following:
   $$
   \int_{\triangle_{abc}} \phi(z) \dd z = \p{\int_{\triangle_{adf}} + \int_{\triangle_{dbe}} + \int_{\triangle_{fec}} + \int_{\triangle_{edf}}} \phi(z) \dd z
   $$
-
 - Therefore we have estimate by integrating on a smaller triangle,
   $$
   \abs{\int_{\triangle_{abc}}\phi(z) \dd z} \le 4 \abs{\max\c{{\int_{\triangle_{adf}},  \int_{\triangle_{dbe}},\int_{\triangle_{fec}} ,\int_{\triangle_{edf}}} \phi(z) \dd z}}
   $$
-
 - Now repeat this process iteratively. We form a decreasing compact triangle chain $\p{\triangle_{n}}_{n=0}^\infty$, where $\triangle_0 = \triangle_{abc}$.
-
 - Suppose $z_0 = \cap_{n} \triangle_n$. And $\phi(z) = \phi(z_0) + \phi'(z_0)(z - z_0) + h(z)(z - z_0))$ where $\lim_{z \to z_0} h(z) = 0$.
-
 - For any $\epsilon > 0$, there exists some $B(z_0, r_\epsilon)$ where $\abs{h(z)} < \epsilon$.
-
 - For some $N > 0$, for all $n > N$, $\triangle_n \subseteq B(z_0, r_\epsilon)$.
   $$
   \begin{aligned}
@@ -101,24 +87,19 @@ $$
 A holomorphic function $f: \Omega \to \C$ in an **open ball** has a primitive in that ball.
 
 - w.l.o.g. assume the open ball is $D = B(0, 1)$.
-
 - For $z \in D$, 
-
 - Define $F(z): D\to \C$ as
   $$
   F(z) = \int_{0}^{\Re z} f(s) \dd s + \int_{\Re z}^{z} f(s) \dd s
   $$
-
 - Now consider $F(z + h) - F(z)$, by drawing a diagram, we can show that:
   $$
   F(z + h) - F(z) = \int_{z}^{z + h} f(s) \dd s = \int_{z}^{z + h} f(z) + f'(z)(s - z) + \varphi(s)(s - z) \dd s
   $$
-
 - Observe that
   $$
   \frac{F(z + h) - F(z)}{h} = f(z) + \frac{f'(z)}{2} h + \int_{z}^{z + h} \varphi(s) (s - z) \dd s
   $$
-
 - Therefore $F(z)$ a primitive of $f(z)$ in $\Omega$.
 
 #### Homotopy and Cauchy's Theorem
@@ -184,9 +165,7 @@ A holomorphic function $f: \Omega \to \C$ in an **simply connected region** has 
   $$
   F(z) = \int_\gamma f(z)\dd z
   $$
-
 - Homotopic integral lemma guarantees that $F(z)$ is well defined.
-
 - The process showing $F'(z) = f(z)$ is the same as in the disk case.
 
 #### Cauchy's Integral Formula
@@ -203,19 +182,15 @@ $$
 For $n = 0$, Take the "**keyhole**" contour, there are four parts, inner circle, outer circle, and two corridors.
 
 - Let $\epsilon, r$ be the radius of the inner circle $C_\epsilon$ and outer circle $C_r$.
-
 - Let $\delta$ be the width of the corridor $C_\delta$.
-
 - Notice that
   $$
   \frac{f(s)}{s - z} = \frac{f(s) - f(z)}{s - z} + \frac{f(z)}{s - z}
   $$
-
 - Consider $C_\epsilon$ as $\epsilon \to 0$.
   $$
   \int_{C_\epsilon} \frac{f(s)}{s - z} \dd s \to \int_{C_\epsilon} f'(z) + \frac{f(z)}{s - z} \dd s \to f(z) \int_{C_\epsilon}\frac{1}{s - z} \dd s = f(z) (2\pi i)
   $$
-
 - Therefore $n = 0$ is proved.
   $$
   f(z) = \frac{1}{2\pi i} \oint_C \frac{f(s)}{(s - z)} \dd s
@@ -227,15 +202,12 @@ For $n \ge 1$, we proceed with induction.
   $$
   \lim_{h \to 0}\frac{f^{(n-1)}(z+h)-f^{(n-1)}(z)}{h} = \lim_{h \to 0}\frac{(n - 1)!}{2\pi i} \int_C f(s)\frac{\s{\p{s - (z + h)}^{-n} - \p{s - z}^{-n}}}{h}  \dd s
   $$
-
 - Consider function $g(s, h)$:
   $$
   g(s, h) := \frac{\s{\p{s - (z + h)}^{-n} - \p{s - z}^{-n}}}{h}
   $$
-
   - $g(s, h)$ is (uniformly) continuous on $A[z_0, r_0 - \epsilon, r_0 + \epsilon] \times [-\epsilon, \epsilon]$ for $\epsilon$ small enough.
   - So $f(s) g(s, h)$ is uniformly continuous as well.
-
 - Therefore, swapping limit and integration is legal, and a derivative gives the desired result.
 
 ##### Cauchy's integral estimate
@@ -274,7 +246,6 @@ $$
   & = \frac{1}{2\pi i} \oint_C \frac{f(s)}{s - z_0} \cdot \sum_{n=0}^\infty \p{\frac{z - z_0}{s - z_0}}^n \dd s = \sum_{n=0}^\infty \s{\frac{1}{2\pi i} \oint_{C} \frac{f(s)}{(s - z_0)^{n + 1}} \dd s} (z - a)^n
   \end{aligned}
   $$
-
 - The series converges uniformly over $C$, therefore the sum and the integral can be exchanged.
 
 If $D = A(z_0; r_0, \infty)$ where $\overline D \subseteq \Omega$, and $C = \part D$ (clockwise), then $f$ is outer analytic at $z_0$.
@@ -323,4 +294,3 @@ Suppose $\p{z_n} \subseteq \Omega$ are distinct values with a limit point in $\O
   - Since $\Omega$ is connected, there is a compact curve $\Gamma$ joining $b$ and $c$.
   - There exists a finite open cover of $\Gamma$ lying in $\Omega$.
   - Now transmit the zero property through the finite open cover.
-

@@ -171,23 +171,14 @@ Suppose $f: (a, b) \to \R$.
 $f$ can have no more than countably many jump / removable discontinuities.
 
 - Consider following definitions:
-
   - $M(x) := \max(|f(x) - f(x-)|, |f(x) - f(x+)|)$.
-
   - $J(\epsilon) := \{x \in (a, b): f(x-), f(x+) \text{ exists} \land M(x) > \epsilon\}$.
-
   - Define $D = \cup_{n} J(1/n)$. $D$ is the set of all jump and removable discontinuities.
-
 - Now let's show that $J(1/n)$ are countable.
-
   - When $a = f(x-)$ exists, there exists $\delta > 0$ such that $f(x - \delta, x) \in B(a, \epsilon)$ for any $\epsilon > 0$.
-
   - Suppose $x \in J(1/n)$, $f(x - \delta, x) \in B(f(x-), 1/n)$.
-
   - Suppose $t \in (x - \delta, x)$, then $t \notin J(1/n)$. So $(x - \delta, x) \cap J(1/n) = \varnothing$.
-
   - There exists a surjection from $\Q$ to $J(1/n)$, so $J(1/n)$ is countable.
-
 - Therefore $D = \cup_n J(1/n)$ is countable.
 
 ##### Increasing real functions
@@ -195,10 +186,5 @@ $f$ can have no more than countably many jump / removable discontinuities.
 Suppose $f: [a, b] \to \R$ is **increasing** on $[a, b]$.
 
 - One-sided limit exists at any $p \in [a, b]$. **All discontinuities in $[a, b]$ are jumps**.
-
   - Jump at $p \in (a, b)$ is defined as $\hat f(p) = f(p+) - f(p-)$.
-
 - Clearly the sum of all jumps is bounded.
-
-  
-
