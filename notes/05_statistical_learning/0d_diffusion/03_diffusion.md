@@ -17,7 +17,7 @@ $$
 \symbf X_t = \symbf X_0 + \int_0^t \sqrt{2\dot \sigma(\tau)\sigma(\tau)} \dd \symbf B_\tau, \quad \int_0^t \sqrt{2\dot \sigma(\tau)\sigma(\tau)} \dd \symbf B_\tau \sim \mathcal N\p{\symbf 0, \sigma^2(t)\bI_n}, \quad t \in [0, T]
 $$
 
-Denote the density of $\symbf X_t$ as $p(\symbf x; \sigma(t))$.
+Denote the density of $\symbf X_t$ as $p(\symbf x; \sigma(t))$ or just $p(\symbf x_t)$ by omitting $\sigma(t)$.
 
 Then according to weak-sense time reversal, we have the reverse diffusion for $\lambda(t)\in C([0, T] \to \R^+)$:
 $$

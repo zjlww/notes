@@ -1,6 +1,6 @@
 #### Denoising Diffusion Implicit Models: Variance Explosion
 
-Similar to `DDPM: Variance Explosion` we now derive a version of DDIM without the need of 
+Similar to `DDPM: Variance Explosion` we now derive a version of DDIM without scaling $\symbf x_0$.
 
 > Song, J., Meng, C., & Ermon, S. (2020). Denoising Diffusion Implicit Models. *ArXiv, abs/2010.02502*.
 

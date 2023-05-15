@@ -38,6 +38,8 @@ $$
 
 When taking $\rho_n^2 = \tilde \beta_n$, $q_\rho\p {\symbf x_{n-1} | \symbf  x_n, \symbf x_0}$ is equivalent to the DDPM case. Thus DDIM is a generalization of DDPM.
 
+- In the DDIM paper, the author tried the definition $(\rho_n^2)_{n = 1}^T = (\eta^2 \tilde \beta_n)$. And the deterministic sampler $\eta = 0$ worked the best.
+
 ##### ELBO of DDIM
 
 Similar to DDPM, the ELBO of DDIM is the sum of denoising score matching terms. Thus DDIM is a discrete diffusion sampler.

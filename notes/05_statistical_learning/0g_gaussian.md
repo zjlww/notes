@@ -16,7 +16,7 @@ We can immediately see that $p(x_a|x_b)$ is Normal by looking at unnormalized co
 
 - We can solve for its mean and variance as following:
 
-- Recall that
+- Recall that:
   $$
   p(x_a, x_b) = \frac{1}{(2\pi)^{m/2}|\Sigma|^{1/2}} \exp \left (-\frac{1}{2} (x^T \Lambda x - 2x^T \Lambda \mu + \text{const.})\right)
   $$

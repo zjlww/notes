@@ -151,8 +151,8 @@ $$
 Now notice that as the partition becomes finer and $T \to \infty$:
 $$
 \begin{align}
-\lim_{T \to \infty}\sum_{n = 2}^T D_n(\symbf x_n, \symbf x_0) &\to \int_{\sigma_{\min}}^{\sigma_{\max}} \frac{D[\sigma^2](t)}{2 \sigma^4(t)} \norm{\symbf x_{0} - D_\theta(\symbf x_{\sigma(t)}, \sigma(t))}_2^2 \dd t \\
-&= \int_{\sigma_{\min}}^{\sigma_{\max}} D[\sigma^2](t) \norm{S_\theta(\symbf x_{\sigma(t)}, \sigma(t)) - \nabla \log p(\symbf x_{\sigma(t)} | \symbf x_0)}_2^2 \dd t
+\lim_{T \to \infty}\sum_{n = 2}^T D_n(\symbf x_n, \symbf x_0) &\to \int_{\sigma_{\min}}^{\sigma_{\max}} \frac{D[\sigma^2](t)}{2 \sigma^4(t)} \norm{\symbf x_{0} - D_\theta(\symbf x_t, \sigma(t))}_2^2 \dd t \\
+&= \int_{\sigma_{\min}}^{\sigma_{\max}} D[\sigma^2](t) \norm{S_\theta(\symbf x_t, \sigma(t)) - \nabla \log p(\symbf x_t | \symbf x_0)}_2^2 \dd t
 \end{align}
 $$
 This is consistent with the result given in reference [1] and [2]. The verification is left to the readers.
